@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+.app-header {
+  background-color: #343a40; /* un tono oscuro profesional */
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+.app-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
