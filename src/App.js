@@ -9,67 +9,45 @@ import {
 } from 'react-leaflet';
 import { CRS, divIcon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import planoImg from './assets/PG1-PlantaBaja.jpg'; // Imagen rotada correctamente
+import planoImg from './assets/PG1-PlantaBaja.jpg';
+import aulasData from './data/aulas.json';
 
 function App() {
-  // 📐 Dimensiones del plano
   const imageWidth = 7017;
   const imageHeight = 4963;
   const imageBounds = [[0, 0], [imageHeight, imageWidth]];
+  const [aulaActiva, setAulaActiva] = useState(null);
 
-  // 🟨 Aula: Sala de Juegos
-  const salaJuegosBounds = [
-    [767, 4220],   // esquina inferior izquierda
-    [1015, 4748]   // esquina superior derecha
-  ];
-
-  // ✅ Coordenadas estilizadas y rectificadas (sentido SALIDA → aula)
-  const rutaEvacuacion = [
-    [727, 2488],     // salida exterior
-    [911, 2488],
-    [1183, 2488],
-    [1175, 2720],
-    [1175, 3032],
-    [1175, 3280],
-    [1175, 3568],
-    [1175, 3768],
-    [1175, 4032],
-    [1175, 4304],
-    [1031, 4312]     // llegada al aula
-  ];
-
-  // ▶️ Icono de flecha (reversa)
   const arrowIcon = divIcon({
-    html: '⬅️', // apunta hacia la izquierda, puedes usar ↖️ ↩️ ➡️ etc.
+    html: '⬅️',
     iconSize: [24, 24],
     iconAnchor: [12, 12],
     className: ''
   });
 
-  // 🎯 Controla si se ha hecho clic en el aula
-  const [mostrarRuta, setMostrarRuta] = useState(false);
-
-  // 🔍 Clics en el mapa
-  function ClickHandler() {
+  // Clic sobre el mapa
+  function ClickHandler({ aulas }) {
     useMapEvent('click', (e) => {
       const { lat, lng } = e.latlng;
       console.log(`📍 Coordenadas clic: [${Math.round(lat)}, ${Math.round(lng)}]`);
 
-      // Comprueba si el clic está dentro del aula
-      const dentroDeAula =
-        lat >= salaJuegosBounds[0][0] &&
-        lat <= salaJuegosBounds[1][0] &&
-        lng >= salaJuegosBounds[0][1] &&
-        lng <= salaJuegosBounds[1][1];
+      const aulaClicada = aulas.find(aula => {
+        const y1 = aula.coordenadas.infDer[0];
+        const y2 = aula.coordenadas.supIzq[0];
+        const x1 = aula.coordenadas.supIzq[1];
+        const x2 = aula.coordenadas.infDer[1];
+        return lat >= y1 && lat <= y2 && lng >= x1 && lng <= x2;
+      });
 
-      setMostrarRuta(dentroDeAula);
+      setAulaActiva(aulaClicada || null);
     });
     return null;
   }
 
+  const aulas = aulasData["Planta Baja"];
+
   return (
     <div className="App">
-      {/* Cabecera */}
       <header style={{
         backgroundColor: '#1a1a1a',
         color: '#fff',
@@ -82,7 +60,6 @@ function App() {
         El monje en Apuros
       </header>
 
-      {/* Mapa */}
       <MapContainer
         crs={CRS.Simple}
         bounds={imageBounds}
@@ -91,36 +68,41 @@ function App() {
         style={{ width: '100%', height: '90vh' }}
         whenCreated={(map) => map.fitBounds(imageBounds)}
       >
-        {/* Imagen del plano */}
         <ImageOverlay url={planoImg} bounds={imageBounds} />
 
-        {/* Aula: solo resaltada si se ha clicado */}
-        {mostrarRuta && (
-          <Rectangle
-            bounds={salaJuegosBounds}
-            pathOptions={{
-              color: 'orange',
-              fillColor: 'orange',
-              fillOpacity: 0.5,
-              weight: 4
-            }}
-          />
-        )}
+        {/* Aulas (resaltadas dinámicamente al clic) */}
+        {aulas.map((aula) => {
+          const { coordenadas, color, id } = aula;
+          const bounds = [coordenadas.infDer, coordenadas.supIzq];
 
-        {/* Ruta y flechas si está activado */}
-        {mostrarRuta && (
+          return (
+            <Rectangle
+              key={id}
+              bounds={bounds}
+              pathOptions={{
+                color: aulaActiva?.id === id ? 'orange' : color,
+                fillColor: aulaActiva?.id === id ? 'orange' : color,
+                fillOpacity: 0.5,
+                weight: aulaActiva?.id === id ? 4 : 2
+              }}
+            />
+          );
+        })}
+
+        {/* Ruta y flechas */}
+        {aulaActiva?.ruta && (
           <>
             <Polyline
-              positions={rutaEvacuacion}
+              positions={aulaActiva.ruta}
               pathOptions={{ color: 'orange', weight: 4 }}
             />
-            {rutaEvacuacion.map((p, i) => (
+            {aulaActiva.ruta.map((p, i) => (
               <Marker key={i} position={p} icon={arrowIcon} />
             ))}
           </>
         )}
 
-        <ClickHandler />
+        <ClickHandler aulas={aulas} />
       </MapContainer>
     </div>
   );

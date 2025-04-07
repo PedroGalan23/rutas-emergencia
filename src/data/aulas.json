@@ -1,0 +1,32 @@
+{
+    "Planta Baja": [
+      {
+        "id": "aula-1",
+        "nombre": "Sala de Juegos",
+        "sector": "amarillo",
+        "color": "orange",
+        "coordenadas": {
+          "supIzq": [1015, 4220],
+          "infDer": [767, 4748]
+        },
+        "ruta": [
+          [727, 2488],
+          [911, 2488],
+          [1183, 2488],
+          [1175, 2720],
+          [1175, 3032],
+          [1175, 3280],
+          [1175, 3568],
+          [1175, 3768],
+          [1175, 4032],
+          [1175, 4304],
+          [1031, 4312]
+        ]
+      }
+    ],
+    "Planta Intermedia": [],
+    "Planta Primera": [],
+    "Planta Segunda": [],
+    "Planta Cubierta": []
+  }
+  
