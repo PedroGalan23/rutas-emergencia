@@ -9,7 +9,11 @@ import {
 } from 'react-leaflet';
 import { CRS, divIcon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import planoImg from './assets/PG1-PlantaBaja.jpg';
+import planoBaja from './assets/PG1-PlantaBaja.jpg';
+import planoIntermedia from './assets/PG2-Planta Intermedia.jpg';
+import planoPrimera from './assets/PG3-Planta Primera.jpg';
+import planoSegunda from './assets/PG4-Planta Segunda.jpg';
+import planoCubierta from './assets/PG5-Planta cubierta.jpg';
 import aulasData from './data/aulas.json';
 
 function App() {
@@ -17,6 +21,15 @@ function App() {
   const imageHeight = 4963;
   const imageBounds = [[0, 0], [imageHeight, imageWidth]];
   const [aulaActiva, setAulaActiva] = useState(null);
+  const [plantaSeleccionada, setPlantaSeleccionada] = useState('Planta Baja');
+
+  const planos = {
+    'Planta Baja': planoBaja,
+    'Planta Intermedia': planoIntermedia,
+    'Planta Primera': planoPrimera,
+    'Planta Segunda': planoSegunda,
+    'Planta Cubierta': planoCubierta
+  };
 
   const arrowIcon = divIcon({
     html: '⬅️',
@@ -44,20 +57,33 @@ function App() {
     return null;
   }
 
-  const aulas = aulasData["Planta Baja"];
+  const aulas = aulasData[plantaSeleccionada];
 
   return (
     <div className="App">
-      <header style={{
-        backgroundColor: '#1a1a1a',
-        color: '#fff',
-        padding: '1rem',
-        textAlign: 'center',
-        fontSize: '1.8rem',
-        fontFamily: 'Segoe UI, sans-serif',
-        letterSpacing: '1px'
-      }}>
-        El monje en Apuros
+      <header className="app-header">
+        <h1>El monje en Apuros</h1>
+        <select
+          value={plantaSeleccionada}
+          onChange={(e) => {
+            setPlantaSeleccionada(e.target.value);
+            setAulaActiva(null); // 🔥 Esto borra la ruta cuando cambias de planta
+          }}
+          style={{
+            padding: '0.5rem',
+            fontSize: '1rem',
+            marginTop: '0.5rem',
+            borderRadius: '5px',
+            border: '1px solid #ccc'
+          }}
+        >
+
+          {Object.keys(planos).map((planta) => (
+            <option key={planta} value={planta}>
+              {planta}
+            </option>
+          ))}
+        </select>
       </header>
 
       <MapContainer
@@ -65,10 +91,10 @@ function App() {
         bounds={imageBounds}
         minZoom={-3}
         maxZoom={1}
-        style={{ width: '100%', height: '90vh' }}
+        style={{ width: '100%', height: 'calc(100vh - 80px)' }}
         whenCreated={(map) => map.fitBounds(imageBounds)}
       >
-        <ImageOverlay url={planoImg} bounds={imageBounds} />
+        <ImageOverlay url={planos[plantaSeleccionada]} bounds={imageBounds} />
 
         {/* Aulas (resaltadas dinámicamente al clic) */}
         {aulas.map((aula) => {
