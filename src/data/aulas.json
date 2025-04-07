@@ -22,7 +22,47 @@
           [1175, 4304],
           [1031, 4312]
         ]
+      },
+      {
+        "id": "B105",
+        "nombre": "Museo",
+        "sector": "amarillo",
+        "color": "orange",
+        "coordenadas": {
+          "supIzq": [1604, 3920],
+          "infDer": [1296, 4164]
+        },
+        "ruta": [
+          [1300, 4052],
+          [1192, 4052],
+          [1192, 3760],
+          [1192, 3428],
+          [1192, 3012],
+          [1188, 2596],
+          [1084, 2456],
+          [716, 2476]
+        ]
+      },
+      {
+        "id": "B104",
+        "nombre": "AULA INFORMÁTICA DERECHA",
+        "sector": "amarillo",
+        "color": "orange",
+        "coordenadas": {
+          "supIzq": [1078, 3902],
+          "infDer": [770, 4170]
+        },
+        "ruta": [
+          [1124, 4062],
+          [1192, 4058],
+          [1192, 3410],
+          [1182, 2894],
+          [1162, 2472],
+          [1026, 2452],
+          [726, 2472]
+        ]
       }
+      
     ],
     "Planta Intermedia": [],
     "Planta Primera": [],
