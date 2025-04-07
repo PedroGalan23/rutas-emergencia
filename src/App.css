@@ -1,48 +1,68 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-header {
+  background-color: #1e1e2f;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app-header h1 {
+  font-size: 1.8rem;
+  margin: 0;
+  white-space: nowrap;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.select-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
 }
 
-.App-link {
-  color: #61dafb;
+.select-container label {
+  font-size: 0.9rem;
+  color: #ddd;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.select-container select {
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: all 0.2s ease-in-out;
 }
-.app-header {
-  background-color: #343a40; /* un tono oscuro profesional */
-  color: #fff;
-  text-align: center;
-  padding: 1rem;
+
+.select-container select:hover,
+.select-container select:focus {
+  background-color: #f0f0f0;
+  transform: scale(1.02);
 }
-.app-header h1 {
-  margin: 0;
-  font-size: 1.5rem;
+
+.flecha-svg {
+  transition: transform 0.2s ease;
+  filter: drop-shadow(0 0 3px orange);
+}
+
+.flecha-lider {
+  font-size: 22px;
+  animation: liderMove 0.6s ease-in-out infinite alternate;
+  text-shadow: 0 0 5px rgba(255,140,0,0.8);
+}
+
+@keyframes liderMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(-3px); }
 }
