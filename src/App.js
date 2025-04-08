@@ -15,6 +15,8 @@ import planoPrimera from './assets/PG3-Planta Primera.jpg';
 import planoSegunda from './assets/PG4-Planta Segunda.jpg';
 import planoCubierta from './assets/PG5-Planta cubierta.jpg';
 import aulasData from './data/aulas.json';
+import monje1 from './assets/monje1.png';
+import monje2 from './assets/monje2.png';
 import './App.css';
 
 function App() {
@@ -24,8 +26,10 @@ function App() {
   const [aulaActiva, setAulaActiva] = useState(null);
   const [plantaSeleccionada, setPlantaSeleccionada] = useState('Planta Baja');
   const [flechaPosicion, setFlechaPosicion] = useState(null);
+  const [monjeFrame, setMonjeFrame] = useState(0);
   const flechaIndex = useRef(0);
   const animationRef = useRef(null);
+  const monjeFrames = [monje1, monje2];
 
   const planos = {
     'Planta Baja': planoBaja,
@@ -43,9 +47,8 @@ function App() {
     return deg;
   }
 
-  function crearIconoFlecha(angle) {
+  function crearIconoFlecha(angle, color = 'orange') {
     const size = 20;
-    const color = 'orange';
     const svg = `
       <svg width="${size}" height="${size}" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <polygon points="0,0 100,50 0,100" fill="${color}" />
@@ -58,6 +61,13 @@ function App() {
       iconAnchor: [size / 2, size / 2]
     });
   }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMonjeFrame((prev) => (prev + 1) % monjeFrames.length);
+    }, 500);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (!aulaActiva?.ruta) return;
@@ -140,27 +150,20 @@ function App() {
 
           return (
             <Rectangle
-            key={id}
-            bounds={bounds}
-            pathOptions={{
-              color: aulaActiva?.id === id ? 'orange' : color,
-              fillColor: aulaActiva?.id === id ? 'orange' : color,
-              fillOpacity: 0.5,
-              weight: aulaActiva?.id === id ? 4 : 2
-            }}
-            interactive={true}
-          >
-            <Tooltip
-              direction="top"
-              offset={[0, -8]}
-              opacity={1}
-              sticky
-              interactive
+              key={id}
+              bounds={bounds}
+              pathOptions={{
+                color: aulaActiva?.id === id ? 'orange' : color,
+                fillColor: aulaActiva?.id === id ? 'orange' : color,
+                fillOpacity: 0.5,
+                weight: aulaActiva?.id === id ? 4 : 2
+              }}
+              interactive={true}
             >
-              {nombre}
-            </Tooltip>
-          </Rectangle>
-          
+              <Tooltip direction="top" offset={[0, -8]} opacity={1} sticky interactive>
+                {nombre}
+              </Tooltip>
+            </Rectangle>
           );
         })}
 
@@ -169,7 +172,7 @@ function App() {
             const siguiente = aulaActiva.ruta[i + 1];
             const angulo = calcularAngulo(p, siguiente);
             return (
-              <Marker key={i} position={p} icon={crearIconoFlecha(angulo)} />
+              <Marker key={i} position={p} icon={crearIconoFlecha(angulo, aulaActiva.color)} />
             );
           })}
 
@@ -177,10 +180,10 @@ function App() {
           <Marker
             position={flechaPosicion}
             icon={divIcon({
-              html: `<div class="flecha-lider">🚶‍♂️</div>`,
+              html: `<img src="${monjeFrames[monjeFrame]}" class="monje-animado" />`,
               className: '',
-              iconSize: [24, 24],
-              iconAnchor: [12, 12]
+              iconSize: [40, 40],
+              iconAnchor: [20, 20]
             })}
           />
         )}
