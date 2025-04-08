@@ -66,8 +66,6 @@ function App() {
     });
   }
 
-
-
   function createTextIcon(text) {
     // Reemplazamos las nuevas líneas (\n) por <br> para el HTML.
     const formattedText = text.replace(/\n/g, '<br>');
@@ -77,7 +75,6 @@ function App() {
       iconAnchor: [0, 0]
     });
   }
-
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -135,7 +132,6 @@ function App() {
           <img src={monje2} alt="Monje" style={{ height: '1.5em', verticalAlign: 'middle', marginRight: '0.5em' }} />
           PLAN DE INCENDIO
         </h1>
-
         <div className="select-container">
           <label htmlFor="planta">Selecciona una planta:</label>
           <select
@@ -157,83 +153,87 @@ function App() {
         </div>
       </header>
 
-      <MapContainer
-        crs={CRS.Simple}
-        center={[imageHeight / 2, imageWidth / 2]} // [2481.5, 3508.5] aprox.
-        zoom={-2}             // Nivel inicial (prueba -2, -3, etc. según tu preferencia)
-        minZoom={-2}          // El usuario no podrá alejarse más de este nivel
-        maxZoom={1}           // El usuario podrá acercarse hasta zoom 1
-        style={{ width: '100%', height: 'calc(100vh - 100px)' }}
-      >
-        <ImageOverlay
-          url={planos[plantaSeleccionada]}
-          bounds={imageBounds} // [[0,0], [4963,7017]]
-        />
-
-        {/* Renderizado de las aulas */}
-        {aulas.map((aula) => {
-          const { coordenadas, color, id, nombre } = aula;
-          const bounds = [coordenadas.infDer, coordenadas.supIzq];
-
-          return (
-            <Rectangle
-              key={id}
-              bounds={bounds}
-              pathOptions={{
-                color: aulaActiva?.id === id ? 'purple' : color,
-                fillColor: aulaActiva?.id === id ? 'purple' : color,
-
-                fillOpacity: 0.5,
-                weight: aulaActiva?.id === id ? 4 : 2
-              }}
-              interactive={true}
-            >
-              <Tooltip direction="top" offset={[0, -8]} opacity={1} sticky interactive>
-                {nombre}
-              </Tooltip>
-            </Rectangle>
-          );
-        })}
-
-        {/* Renderizado de las zonas comunes */}
-        {zonasComunes.map((zona) => (
-          <Marker
-            key={zona.id}
-            position={zona.coordenadas}
-            icon={createTextIcon(zona.nombre)}
-            interactive={false}
+      {/* Contenedor con dimensiones fijas y overflow hidden */}
+      <div style={{ width: '80%', height: 'calc(100vh - 100px)', margin: '0 auto', overflow: 'hidden' }}>
+        <MapContainer
+          crs={CRS.Simple}
+          center={[imageHeight / 2, imageWidth / 2]} // [2481.5, 3508.5] aprox.
+          zoom={-2}
+          minZoom={-2}
+          maxZoom={1}
+          maxBounds={imageBounds}              // Evita desplazarse fuera de la imagen
+          maxBoundsViscosity={1.0}
+          style={{ width: '100%', height: '100%' }}
+        >
+          <ImageOverlay
+            url={planos[plantaSeleccionada]}
+            bounds={imageBounds} // [[0,0], [4963,7017]]
           />
-        ))}
 
-        {aulaActiva?.ruta &&
-          aulaActiva.ruta.slice(0, -1).map((p, i) => {
-            const siguiente = aulaActiva.ruta[i + 1];
-            const angulo = calcularAngulo(p, siguiente);
+          {/* Renderizado de las aulas */}
+          {aulas.map((aula) => {
+            const { coordenadas, color, id, nombre } = aula;
+            const bounds = [coordenadas.infDer, coordenadas.supIzq];
+
             return (
-              <Marker
-                key={i}
-                position={p}
-                icon={crearIconoFlecha(angulo, aulaActiva.color)}
-              />
+              <Rectangle
+                key={id}
+                bounds={bounds}
+                pathOptions={{
+                  color: aulaActiva?.id === id ? 'purple' : color,
+                  fillColor: aulaActiva?.id === id ? 'purple' : color,
+                  fillOpacity: 0.5,
+                  weight: aulaActiva?.id === id ? 4 : 2
+                }}
+                interactive={true}
+              >
+                <Tooltip direction="top" offset={[0, -8]} opacity={1} sticky interactive>
+                  {nombre}
+                </Tooltip>
+              </Rectangle>
             );
           })}
 
-        {flechaPosicion &&
-          aulaActiva?.ruta &&
-          flechaIndex.current < aulaActiva.ruta.length && (
+          {/* Renderizado de las zonas comunes */}
+          {zonasComunes.map((zona) => (
             <Marker
-              position={flechaPosicion}
-              icon={divIcon({
-                html: `<img src="${monjeFrames[monjeFrame]}" class="monje-animado" />`,
-                className: '',
-                iconSize: [40, 40],
-                iconAnchor: [20, 20]
-              })}
+              key={zona.id}
+              position={zona.coordenadas}
+              icon={createTextIcon(zona.nombre)}
+              interactive={false}
             />
-          )}
+          ))}
 
-        <ClickHandler aulas={aulas} />
-      </MapContainer>
+          {aulaActiva?.ruta &&
+            aulaActiva.ruta.slice(0, -1).map((p, i) => {
+              const siguiente = aulaActiva.ruta[i + 1];
+              const angulo = calcularAngulo(p, siguiente);
+              return (
+                <Marker
+                  key={i}
+                  position={p}
+                  icon={crearIconoFlecha(angulo, aulaActiva.color)}
+                />
+              );
+            })}
+
+          {flechaPosicion &&
+            aulaActiva?.ruta &&
+            flechaIndex.current < aulaActiva.ruta.length && (
+              <Marker
+                position={flechaPosicion}
+                icon={divIcon({
+                  html: `<img src="${monjeFrames[monjeFrame]}" class="monje-animado" />`,
+                  className: '',
+                  iconSize: [40, 40],
+                  iconAnchor: [20, 20]
+                })}
+              />
+            )}
+
+          <ClickHandler aulas={aulas} />
+        </MapContainer>
+      </div>
     </div>
   );
 }
