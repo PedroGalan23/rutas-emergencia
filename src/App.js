@@ -18,6 +18,7 @@ import aulasData from './data/aulas.json';
 import zonasComunesData from './data/zonasComunes.json';
 import monje1 from './assets/monje1.png';
 import monje2 from './assets/monje2.png';
+import escalerasIcon from './assets/escaleras.svg';
 import './App.css';
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
   const [flechaPosicion, setFlechaPosicion] = useState(null);
   const [monjeFrame, setMonjeFrame] = useState(0);
   const flechaIndex = useRef(0);
-  const animationRef = useRef(null);
+  const animationInterval = useRef(null);
   const monjeFrames = [monje1, monje2];
 
   const planos = {
@@ -42,15 +43,22 @@ function App() {
 
   function calcularAngulo(p1, p2) {
     const dx = p2[1] - p1[1];
-    const dy = -(p2[0] - p1[0]); // Invertido por CRS.Simple
+    const dy = -(p2[0] - p1[0]);
     const rad = Math.atan2(dy, dx);
     const deg = (rad * 180) / Math.PI;
     return deg;
   }
 
+  function createEscalerasIcon() {
+    return divIcon({
+      html: `<img src="${escalerasIcon}" alt="Escaleras" style="width: 40px; height: 40px;" />`,
+      className: '',
+      iconAnchor: [20, 20]
+    });
+  }
+
   function crearIconoFlecha(angle, color = 'orange') {
     const size = 30;
-    // Dibujamos la flecha con un trazo más grueso (stroke-width="8")
     const svg = `
       <svg width="${size}" height="${size}" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <path d="M10,50 L80,50 M80,50 L70,40 M80,50 L70,60"
@@ -67,7 +75,6 @@ function App() {
   }
 
   function createTextIcon(text) {
-    // Reemplazamos las nuevas líneas (\n) por <br> para el HTML.
     const formattedText = text.replace(/\n/g, '<br>');
     return divIcon({
       html: `<div class="zona-label">${formattedText}</div>`,
@@ -90,17 +97,12 @@ function App() {
     flechaIndex.current = 0;
     setFlechaPosicion(ruta[0]);
 
-    const animate = () => {
-      flechaIndex.current += 1;
-      if (flechaIndex.current < ruta.length) {
-        setFlechaPosicion(ruta[flechaIndex.current]);
-        animationRef.current = setTimeout(animate, 300);
-      }
-    };
+    animationInterval.current = setInterval(() => {
+      flechaIndex.current = (flechaIndex.current + 1) % ruta.length;
+      setFlechaPosicion(ruta[flechaIndex.current]);
+    }, 300);
 
-    animate();
-
-    return () => clearTimeout(animationRef.current);
+    return () => clearInterval(animationInterval.current);
   }, [aulaActiva]);
 
   function ClickHandler({ aulas }) {
@@ -121,7 +123,6 @@ function App() {
     return null;
   }
 
-  // Extraemos las aulas y las zonas comunes de la planta seleccionada.
   const aulas = aulasData[plantaSeleccionada];
   const zonasComunes = zonasComunesData[plantaSeleccionada] || [];
 
@@ -141,7 +142,7 @@ function App() {
               setPlantaSeleccionada(e.target.value);
               setAulaActiva(null);
               setFlechaPosicion(null);
-              clearTimeout(animationRef.current);
+              clearInterval(animationInterval.current);
             }}
           >
             {Object.keys(planos).map((planta) => (
@@ -153,15 +154,7 @@ function App() {
         </div>
       </header>
 
-      {/* Contenedor con dimensiones fijas y overflow hidden */}
-      <div
-        style={{
-          width: '100%',                 // Usamos el 100% del ancho
-          height: 'calc(100vh - 100px)', // Ajusta si quieres más o menos altura bajo la cabecera
-          overflow: 'hidden',            // Para no ver nada fuera de los límites
-          margin: 0                      // Quita el auto que centraba el contenedor
-        }}
-      >
+      <div style={{ width: '100%', height: 'calc(100vh - 100px)', overflow: 'hidden', margin: 0 }}>
         <MapContainer
           crs={CRS.Simple}
           center={[imageHeight / 2, imageWidth / 2]}
@@ -170,21 +163,13 @@ function App() {
           maxZoom={1}
           maxBounds={imageBounds}
           maxBoundsViscosity={1.0}
-          style={{
-            width: '100%',
-            height: '100%'
-          }}
+          style={{ width: '100%', height: '100%' }}
         >
-          <ImageOverlay
-            url={planos[plantaSeleccionada]}
-            bounds={imageBounds}
-          />
+          <ImageOverlay url={planos[plantaSeleccionada]} bounds={imageBounds} />
 
-          {/* Renderizado de las aulas */}
           {aulas.map((aula) => {
             const { coordenadas, color, id, nombre } = aula;
             const bounds = [coordenadas.infDer, coordenadas.supIzq];
-
             return (
               <Rectangle
                 key={id}
@@ -204,10 +189,9 @@ function App() {
             );
           })}
 
-          {/* Renderizado de las zonas comunes */}
-          {zonasComunes.map((zona) => (
+          {zonasComunes.map((zona, index) => (
             <Marker
-              key={zona.id}
+              key={zona.id || `zona-${index}`}
               position={zona.coordenadas}
               icon={createTextIcon(zona.nombre)}
               interactive={false}
@@ -228,8 +212,7 @@ function App() {
             })}
 
           {flechaPosicion &&
-            aulaActiva?.ruta &&
-            flechaIndex.current < aulaActiva.ruta.length && (
+            aulaActiva?.ruta && (
               <Marker
                 position={flechaPosicion}
                 icon={divIcon({
