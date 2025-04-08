@@ -33,6 +33,20 @@ body {
   color: #ddd;
 }
 
+.zona-label {
+  color: black;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 2px 4px;
+  border-radius: 3px;
+  white-space: nowrap;
+  text-align: center;  /* Centra el contenido */
+  display: inline-block; /* Para que text-align tenga efecto */
+}
+
+
+
+
 .select-container select {
   padding: 0.4rem 0.6rem;
   font-size: 1rem;

@@ -15,6 +15,7 @@ import planoPrimera from './assets/PG3-Planta Primera.jpg';
 import planoSegunda from './assets/PG4-Planta Segunda.jpg';
 import planoCubierta from './assets/PG5-Planta cubierta.jpg';
 import aulasData from './data/aulas.json';
+import zonasComunesData from './data/zonasComunes.json';
 import monje1 from './assets/monje1.png';
 import monje2 from './assets/monje2.png';
 import './App.css';
@@ -62,6 +63,17 @@ function App() {
     });
   }
 
+  function createTextIcon(text) {
+    // Reemplazamos las nuevas líneas (\n) por <br> para el HTML.
+    const formattedText = text.replace(/\n/g, '<br>');
+    return divIcon({
+      html: `<div class="zona-label">${formattedText}</div>`,
+      className: '',
+      iconAnchor: [0, 0]
+    });
+  }
+
+
   useEffect(() => {
     const interval = setInterval(() => {
       setMonjeFrame((prev) => (prev + 1) % monjeFrames.length);
@@ -107,7 +119,9 @@ function App() {
     return null;
   }
 
+  // Extraemos las aulas y las zonas comunes de la planta seleccionada.
   const aulas = aulasData[plantaSeleccionada];
+  const zonasComunes = zonasComunesData[plantaSeleccionada] || [];
 
   return (
     <div className="app">
@@ -136,14 +150,18 @@ function App() {
 
       <MapContainer
         crs={CRS.Simple}
-        bounds={imageBounds}
-        minZoom={-3}
-        maxZoom={1}
+        center={[imageHeight / 2, imageWidth / 2]} // [2481.5, 3508.5] aprox.
+        zoom={-2}             // Nivel inicial (prueba -2, -3, etc. según tu preferencia)
+        minZoom={-2}          // El usuario no podrá alejarse más de este nivel
+        maxZoom={1}           // El usuario podrá acercarse hasta zoom 1
         style={{ width: '100%', height: 'calc(100vh - 100px)' }}
-        whenCreated={(map) => map.fitBounds(imageBounds)}
       >
-        <ImageOverlay url={planos[plantaSeleccionada]} bounds={imageBounds} />
+        <ImageOverlay
+          url={planos[plantaSeleccionada]}
+          bounds={imageBounds} // [[0,0], [4963,7017]]
+        />
 
+        {/* Renderizado de las aulas */}
         {aulas.map((aula) => {
           const { coordenadas, color, id, nombre } = aula;
           const bounds = [coordenadas.infDer, coordenadas.supIzq];
@@ -167,26 +185,42 @@ function App() {
           );
         })}
 
+        {/* Renderizado de las zonas comunes */}
+        {zonasComunes.map((zona) => (
+          <Marker
+            key={zona.id}
+            position={zona.coordenadas}
+            icon={createTextIcon(zona.nombre)}
+            interactive={false}
+          />
+        ))}
+
         {aulaActiva?.ruta &&
           aulaActiva.ruta.slice(0, -1).map((p, i) => {
             const siguiente = aulaActiva.ruta[i + 1];
             const angulo = calcularAngulo(p, siguiente);
             return (
-              <Marker key={i} position={p} icon={crearIconoFlecha(angulo, aulaActiva.color)} />
+              <Marker
+                key={i}
+                position={p}
+                icon={crearIconoFlecha(angulo, aulaActiva.color)}
+              />
             );
           })}
 
-        {flechaPosicion && aulaActiva?.ruta && flechaIndex.current < aulaActiva.ruta.length && (
-          <Marker
-            position={flechaPosicion}
-            icon={divIcon({
-              html: `<img src="${monjeFrames[monjeFrame]}" class="monje-animado" />`,
-              className: '',
-              iconSize: [40, 40],
-              iconAnchor: [20, 20]
-            })}
-          />
-        )}
+        {flechaPosicion &&
+          aulaActiva?.ruta &&
+          flechaIndex.current < aulaActiva.ruta.length && (
+            <Marker
+              position={flechaPosicion}
+              icon={divIcon({
+                html: `<img src="${monjeFrames[monjeFrame]}" class="monje-animado" />`,
+                className: '',
+                iconSize: [40, 40],
+                iconAnchor: [20, 20]
+              })}
+            />
+          )}
 
         <ClickHandler aulas={aulas} />
       </MapContainer>
