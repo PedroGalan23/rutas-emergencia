@@ -154,20 +154,30 @@ function App() {
       </header>
 
       {/* Contenedor con dimensiones fijas y overflow hidden */}
-      <div style={{ width: '80%', height: 'calc(100vh - 100px)', margin: '0 auto', overflow: 'hidden' }}>
+      <div
+        style={{
+          width: '100%',                 // Usamos el 100% del ancho
+          height: 'calc(100vh - 100px)', // Ajusta si quieres más o menos altura bajo la cabecera
+          overflow: 'hidden',            // Para no ver nada fuera de los límites
+          margin: 0                      // Quita el auto que centraba el contenedor
+        }}
+      >
         <MapContainer
           crs={CRS.Simple}
-          center={[imageHeight / 2, imageWidth / 2]} // [2481.5, 3508.5] aprox.
+          center={[imageHeight / 2, imageWidth / 2]}
           zoom={-2}
           minZoom={-2}
           maxZoom={1}
-          maxBounds={imageBounds}              // Evita desplazarse fuera de la imagen
+          maxBounds={imageBounds}
           maxBoundsViscosity={1.0}
-          style={{ width: '100%', height: '100%' }}
+          style={{
+            width: '100%',
+            height: '100%'
+          }}
         >
           <ImageOverlay
             url={planos[plantaSeleccionada]}
-            bounds={imageBounds} // [[0,0], [4963,7017]]
+            bounds={imageBounds}
           />
 
           {/* Renderizado de las aulas */}
