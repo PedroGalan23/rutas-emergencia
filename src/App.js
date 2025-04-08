@@ -126,7 +126,11 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>🧘‍♂️ El Monje en Apuros</h1>
+        <h1>
+          <img src={monje2} alt="Monje" style={{ height: '1.5em', verticalAlign: 'middle', marginRight: '0.5em' }} />
+          PLAN DE INCENDIO
+        </h1>
+
         <div className="select-container">
           <label htmlFor="planta">Selecciona una planta:</label>
           <select
