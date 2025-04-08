@@ -49,10 +49,13 @@ function App() {
   }
 
   function crearIconoFlecha(angle, color = 'orange') {
-    const size = 20;
+    const size = 30;
+    // Dibujamos la flecha con un trazo más grueso (stroke-width="8")
     const svg = `
       <svg width="${size}" height="${size}" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="0,0 100,50 0,100" fill="${color}" />
+        <path d="M10,50 L80,50 M80,50 L70,40 M80,50 L70,60"
+              stroke="${color}" stroke-width="8" fill="none"
+              stroke-linecap="round" stroke-linejoin="round" />
       </svg>
     `;
     return divIcon({
@@ -62,6 +65,8 @@ function App() {
       iconAnchor: [size / 2, size / 2]
     });
   }
+
+
 
   function createTextIcon(text) {
     // Reemplazamos las nuevas líneas (\n) por <br> para el HTML.
@@ -175,8 +180,9 @@ function App() {
               key={id}
               bounds={bounds}
               pathOptions={{
-                color: aulaActiva?.id === id ? 'orange' : color,
-                fillColor: aulaActiva?.id === id ? 'orange' : color,
+                color: aulaActiva?.id === id ? 'purple' : color,
+                fillColor: aulaActiva?.id === id ? 'purple' : color,
+
                 fillOpacity: 0.5,
                 weight: aulaActiva?.id === id ? 4 : 2
               }}
