@@ -44,13 +44,79 @@
     ],
     "Planta Intermedia": [],
     "Planta Primera": [
-      {
-        "id": "zona3",
-        "nombre": "Zona de Descanso",
-        "coordenadas": [1200, 2200]
-      }
+        {
+            "id": "patioJuanxxiii",
+            "nombre": "PATIO JUAN XXIII",
+            "coordenadas": [3511, 2696]
+          },
+          {
+            "id": "patioLourdes",
+            "nombre": "PATIO DE LOURDES",
+            "coordenadas": [4621, 2221]
+          },
+          {
+              "id": "pistasDeportivas",
+              "nombre": "PISTAS DEPORTIVAS",
+              "coordenadas": [4493, 5081]
+          },
+          {
+              "id": "pistasDeportivas2",
+              "nombre": "PISTAS DEPORTIVAS",
+              "coordenadas": [3541, 5489]
+          },
+            {
+                "id": "patioUniversidad",
+                "nombre": "PATIO\nDE LA\nUNIVERSIDAD",
+                "coordenadas": [1823, 4716]
+            },
+            {
+                "id": "claustroConvento",
+                "nombre": "CLAUSTRO DEL\nCONVENTO",
+                "coordenadas": [1982, 2952]
+            },
+            {
+                "id": "iglesia",
+                "nombre": "IGLESIA",
+                "coordenadas": [2117, 1872]
+            }
     ],
-    "Planta Segunda": [],
+    "Planta Segunda": [
+        {
+            "id": "patioJuanxxiii",
+            "nombre": "PATIO JUAN XXIII",
+            "coordenadas": [3511, 2696]
+          },
+          {
+            "id": "patioLourdes",
+            "nombre": "PATIO DE LOURDES",
+            "coordenadas": [4621, 2221]
+          },
+          {
+              "id": "pistasDeportivas",
+              "nombre": "PISTAS DEPORTIVAS",
+              "coordenadas": [4493, 5081]
+          },
+          {
+              "id": "pistasDeportivas2",
+              "nombre": "PISTAS DEPORTIVAS",
+              "coordenadas": [3541, 5489]
+          },
+            {
+                "id": "patioUniversidad",
+                "nombre": "PATIO\nDE LA\nUNIVERSIDAD",
+                "coordenadas": [1823, 4716]
+            },
+            {
+                "id": "claustroConvento",
+                "nombre": "CLAUSTRO DEL\nCONVENTO",
+                "coordenadas": [1982, 2952]
+            },
+            {
+                "id": "iglesia",
+                "nombre": "IGLESIA",
+                "coordenadas": [2117, 1872]
+            }
+    ],
     "Planta Cubierta": []
   }
   

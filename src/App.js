@@ -54,7 +54,7 @@ function App() {
     const svg = `
       <svg width="${size}" height="${size}" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <path d="M10,50 L80,50 M80,50 L70,40 M80,50 L70,60"
-              stroke="${color}" stroke-width="8" fill="none"
+              stroke="${color}" stroke-width="14" fill="none"
               stroke-linecap="round" stroke-linejoin="round" />
       </svg>
     `;
