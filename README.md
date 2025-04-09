@@ -68,3 +68,19 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+ImageOverlay: muestra el plano correspondiente.
+
+Rectangle: dibuja las aulas (colores y bordes).
+
+Tooltip: muestra el nombre del aula al pasar el ratón.
+
+Marker (zonas comunes): muestra etiquetas con nombres de espacios compartidos.
+
+Flechas: indican el recorrido hacia la salida.
+
+Monje: se mueve siguiendo la ruta.
+
+ClickHandler: detecta clics en el plano.

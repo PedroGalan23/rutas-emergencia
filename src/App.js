@@ -181,7 +181,21 @@ function App() {
         </div>
       </header>
 
-      {/* Contenedor del mapa interactivo */}
+      {/*ImageOverlay: muestra el plano correspondiente.
+
+        Rectangle: dibuja las aulas (colores y bordes).
+
+        Tooltip: muestra el nombre del aula al pasar el ratón.
+
+        Marker (zonas comunes): muestra etiquetas con nombres de espacios compartidos.
+
+        Flechas: indican el recorrido hacia la salida.
+
+        Monje: se mueve siguiendo la ruta.
+
+        ClickHandler: detecta clics en el plano. 
+        
+      Contenedor del mapa interactivo */}
       <div style={{ width: '100%', height: 'calc(100vh - 100px)', overflow: 'hidden', margin: 0 }}>
         <MapContainer
           crs={CRS.Simple}
