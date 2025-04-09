@@ -61,6 +61,11 @@ function App() {
     const size = 30;
     const svg = `
       <svg width="${size}" height="${size}" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <!-- Borde negro -->
+        <path d="M10,50 L80,50 M80,50 L70,40 M80,50 L70,60"
+              stroke="black" stroke-width="16" fill="none"
+              stroke-linecap="round" stroke-linejoin="round" />
+        <!-- Trazo principal en color -->
         <path d="M10,50 L80,50 M80,50 L70,40 M80,50 L70,60"
               stroke="${color}" stroke-width="14" fill="none"
               stroke-linecap="round" stroke-linejoin="round" />
@@ -73,6 +78,7 @@ function App() {
       iconAnchor: [size / 2, size / 2]
     });
   }
+  
 
   function createTextIcon(text) {
     const formattedText = text.replace(/\n/g, '<br>');
@@ -86,7 +92,7 @@ function App() {
   useEffect(() => {
     const interval = setInterval(() => {
       setMonjeFrame((prev) => (prev + 1) % monjeFrames.length);
-    }, 500);
+    }, 1500);
     return () => clearInterval(interval);
   }, []);
 
@@ -100,7 +106,7 @@ function App() {
     animationInterval.current = setInterval(() => {
       flechaIndex.current = (flechaIndex.current + 1) % ruta.length;
       setFlechaPosicion(ruta[flechaIndex.current]);
-    }, 300);
+    }, 450);
 
     return () => clearInterval(animationInterval.current);
   }, [aulaActiva]);

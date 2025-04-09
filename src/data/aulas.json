@@ -665,7 +665,127 @@
       }
     ],
     "Planta Intermedia": [],
-    "Planta Primera": [{
+    "Planta Primera": [
+      {
+        "id": "P4",
+        "nombre": "AULA P4 (PASILLO CORO  PRIMERA PLANTA)",
+        "sector": "#95A472",
+        "color": "#95A472",
+        "coordenadas": {
+          "supIzq": [930, 2271],
+          "infDer": [751, 2590]
+        },
+        "ruta": [
+          [915, 2468],
+          [984, 2465],
+          [983, 2666],
+          [992, 2963],
+          [991, 3213],
+          [988, 3402],
+          [844, 3412]
+        ]
+      },
+      {
+        "id": "P6",
+        "nombre": "AULA P6 (PASILLO CORO  PRIMERA PLANTA)",
+        "sector": "#95A472",
+        "color": "#95A472",
+        "coordenadas": {
+          "supIzq": [926, 2612],
+          "infDer": [748, 2966]
+        },
+        "ruta": [
+          [918, 2667],
+          [991, 2666],
+          [994, 2917],
+          [990, 3136],
+          [989, 3403],
+          [846, 3403]
+        ]
+      },
+      {
+        "id": "P8",
+        "nombre": "AULA TALLER (PASILLO CORO PRIMERA PLANTA)",
+        "sector": "#95A472",
+        "color": "#95A472",
+        "coordenadas": {
+          "supIzq": [932, 2978],
+          "infDer": [748, 3238]
+        },
+        "ruta": [
+          [923, 3137],
+          [990, 3136],
+          [989, 3403],
+          [846, 3403]
+        ]
+      },
+      {
+        "id": "P10",
+        "nombre": "AULA P10 (PASILLO CORO PRIMERA PLANTA)",
+        "sector": "#95A472",
+        "color": "#95A472",
+        "coordenadas": {
+          "supIzq": [1262, 3270],
+          "infDer": [1074, 3802]
+        },
+        "ruta": [
+          [1064, 3355],
+          [993, 3348],
+          [933, 3413]
+        ]
+      },
+      {
+        "id": "P13",
+        "nombre": "AULA P13 (PASILLO CORO PRIMERA PLANTA)",
+        "sector": "#95A472",
+        "color": "#95A472",
+        "coordenadas": {
+          "supIzq": [932, 3453],
+          "infDer": [740, 3805]
+        },
+        "ruta": [
+          [911, 3583],
+          [982, 3582],
+          [980, 3405],
+          [846, 3403]
+        ]
+      },
+      {
+        "id": "P14",
+        "nombre": "AULA P14 (PASILLO CORO PRIMERA PLANTA)",
+        "sector": "#95A472",
+        "color": "#95A472",
+        "coordenadas": {
+          "supIzq": [1264, 2670],
+          "infDer": [1072, 3260]
+        },
+        "ruta": [
+          [1081, 2737],
+          [981, 2739],
+          [982, 2984],
+          [980, 3245],
+          [980, 3402],
+          [879, 3409]
+        ]
+      },
+      {
+        "id": "P30",
+        "nombre": "AULA P30 (JUNTO ESCALERA PRINCIPAL PRIMERA PLANTA)",
+        "sector": "blue",
+        "color": "blue",
+        "coordenadas": {
+          "supIzq": [1698, 3632],
+          "infDer": [1276, 3804]
+        },
+        "ruta": [
+          [908, 4528],
+          [963, 4527],
+          [965, 4683],
+          [958, 4816],
+          [824, 4826]
+        ]
+      },
+      {
         "id": "P35",
         "nombre": "AULA P35 (PASILLO OLMA PRIMERA PLANTA)",
         "sector": "blue",
@@ -675,10 +795,9 @@
           "infDer": [741, 4567]
         },
         "ruta": [
-          [854, 4390],
-          [966, 4376],
-          [964, 4640],
-          [958, 4816],
+          [908, 4528],
+          [963, 4527],
+          [965, 4683],
           [958, 4816],
           [824, 4826]
         ]
@@ -709,12 +828,13 @@
           "infDer": [1058, 5788]
         },
         "ruta": [
-          [1096, 5638],
-          [1068, 5538],
-          [968, 5550],
-          [966, 5366],
-          [964, 4816],
-          [824, 4826]
+          [1076, 5578],
+          [1076, 5542],
+          [977, 5542],
+          [981, 5299],
+          [976, 4993],
+          [977, 4796],
+          [838, 4793]
         ]
       },
       {
@@ -727,18 +847,18 @@
           "infDer": [1512, 5778]
         },
         "ruta": [
-          [1762, 5662],
-          [1746, 5560],
-          [1068, 5538],
-          [968, 5550],
-          [966, 5366],
-          [964, 4816],
-          [824, 4826]
+          [1756, 5592],
+          [1698, 5391],
+          [1424, 5397],
+          [1128, 5401],
+          [1136, 5054],
+          [1144, 4812],
+          [860, 4804]
         ]
       },
       {
         "id": "P48",
-        "nombre": "AULA P47 (PASILLO PISCINA PRIMERA PLANTA)",
+        "nombre": "AULA P48 (PASILLO PISCINA PRIMERA PLANTA)",
         "sector": "blue",
         "color": "blue",
         "coordenadas": {
@@ -748,14 +868,294 @@
         "ruta": [
           [2100, 5638],
           [2092, 5554],
-          [1746, 5560],
-          [1068, 5538],
-          [968, 5550],
-          [966, 5366],
-          [964, 4816],
-          [824, 4826]
+          [1706, 5554],
+          [1698, 5391],
+          [1424, 5397],
+          [1128, 5401],
+          [1136, 5054],
+          [1144, 4812],
+          [860, 4804]
         ]
-      }],
+      },
+      {
+        "id": "P49",
+        "nombre": "AULA P49 (PASILLO PISCINA PRIMERA PLANTA)",
+        "sector": "blue",
+        "color": "blue",
+        "coordenadas": {
+          "supIzq": [2709, 5550],
+          "infDer": [2301, 5774]
+        },
+        "ruta": [
+          [2338, 5571],
+          [2105, 5556],
+          [1706, 5557],
+          [1698, 5391],
+          [1424, 5397],
+          [1128, 5401],
+          [1136, 5054],
+          [1144, 4812],
+          [860, 4804]
+      ]
+
+      },
+      {
+        "id": "P51",
+        "nombre": "AULA P51 (PASILLO UNIVERSIDAD PRIMERA PLANTA)",
+        "sector": "#5A352A",
+        "color": "#5A352A",
+        "coordenadas": {
+          "supIzq": [2680, 5133],
+          "infDer": [2402, 5510]
+        },
+        "ruta": [
+          [2426, 5148],
+          [2428, 4876],
+          [2429, 4548],
+          [2435, 4302],
+          [2448, 4126],
+          [2649, 4109],
+          [2649, 4292]
+        ]
+      },
+      {
+        "id": "P52",
+        "nombre": "AULA P52 (PASILLO UNIVERSIDAD PRIMERA PLANTA)",
+        "sector": "#5A352A",
+        "color": "#5A352A",
+        "coordenadas": {
+          "supIzq": [2681, 4853],
+          "infDer": [2464, 5115]
+        },
+        "ruta": [
+          [2479, 4870],
+          [2428, 4876],
+          [2429, 4548],
+          [2435, 4302],
+          [2448, 4126],
+          [2649, 4109],
+          [2649, 4292]
+        ]
+      },
+      {
+        "id": "P57",
+        "nombre": "CPD",
+        "sector": "#5A352A",
+        "color": "#5A352A",
+        "coordenadas": {
+          "supIzq": [2679, 4489],
+          "infDer": [2499, 4706]
+        },
+        "ruta": [
+          [2512, 4551],
+          [2429, 4548],
+          [2435, 4302],
+          [2448, 4126],
+          [2649, 4109],
+          [2649, 4292]
+        ]
+      },
+      {
+        "id": "P60",
+        "nombre": "DESPACHO JEFATURA DE ESTUDIOS SECUNDARIA",
+        "sector": "gold",
+        "color": "gold",
+        "coordenadas": {
+          "supIzq": [3110, 3893],
+          "infDer": [2943, 4063]
+        },
+        "ruta": [
+          [3067, 4048],
+          [3059, 4117],
+          [2919, 4111],
+          [2761, 4103],
+          [2761, 3973]
+        ]
+      },
+      {
+        "id": "P64",
+        "nombre": "DESPACHO JEFE DE ESTUDIOS DE PRIMARIA",
+        "sector": "gold",
+        "color": "gold",
+        "coordenadas": {
+          "supIzq": [3309, 3898],
+          "infDer": [3152, 4070]
+        },
+        "ruta": [
+          [3232, 4055],
+          [3226, 4118],
+          [3050, 4114],
+          [2919, 4111],
+          [2761, 4103],
+          [2761, 3973]
+        ]
+      },
+      {
+        "id": "P65",
+        "nombre": "DESPACHO DIRECCION INFPRI",
+        "sector": "gold",
+        "color": "gold",
+        "coordenadas": {
+          "supIzq": [3510, 3899],
+          "infDer": [3354, 4072]
+        },
+        "ruta": [
+          [3474, 4058],
+          [3468, 4119],
+          [3207, 4121],
+          [2919, 4111],
+          [2761, 4103],
+          [2761, 3973]
+        ]
+      },
+      {
+        "id": "P66",
+        "nombre": "DESPACHO DE DIRECCIÓN PASTORAL",
+        "sector": "gold",
+        "color": "gold",
+        "coordenadas": {
+          "supIzq": [3713, 3905],
+          "infDer": [3554, 4075]
+        },
+        "ruta": [
+          [3672, 4062],
+          [3668, 4123],
+          [3531, 4122],
+          [3328, 4115],
+          [3125, 4114],
+          [2919, 4111],
+          [2761, 4103],
+          [2761, 3973]
+        ]
+      },
+      {
+        "id": "P72",
+        "nombre": "AULA P72 (PASILLO BACH  PRIMERA PLANTA)",
+        "sector": "#F86624",
+        "color": "#F86624",
+        "coordenadas": {
+          "supIzq": [3941, 3464],
+          "infDer": [3767, 3852]
+        },
+        "ruta": [
+          [3936, 3490],
+          [3992, 3489],
+          [3996, 3049],
+          [4005, 2623],
+          [4002, 2293],
+          [4005, 2129],
+          [3887, 2127]
+        ]
+      },
+      {
+        "id": "P77",
+        "nombre": "AULA P77 (PASILLO BACH  PRIMERA PLANTA)",
+        "sector": "#F86624",
+        "color": "#F86624",
+        "coordenadas": {
+          "supIzq": [3943, 3035],
+          "infDer": [3766, 3452]
+        },
+        "ruta": [
+          [3933, 3048],
+          [3996, 3049],
+          [4005, 2623],
+          [4002, 2293],
+          [4005, 2129],
+          [3887, 2127]
+        ]
+      },
+      {
+        "id": "P78",
+        "nombre": "AULA P78 (PASILLO BACH  PRIMERA PLANTA)",
+        "sector": "#F86624",
+        "color": "#F86624",
+        "coordenadas": {
+          "supIzq": [3949, 2606],
+          "infDer": [3762, 3023]
+        },
+        "ruta": [
+          [3941, 2628],
+          [4002, 2626],
+          [4008, 2373],
+          [4009, 2129],
+          [3888, 2122]
+        ]
+      },
+      {
+        "id": "P79",
+        "nombre": "AULA P79 (PASILLO BACH  PRIMERA PLANTA)",
+        "sector": "#F86624",
+        "color": "#F86624",
+        "coordenadas": {
+          "supIzq": [3947, 2213],
+          "infDer": [3758, 2592]
+        },
+        "ruta": [
+          [3936, 2253],
+          [4005, 2250],
+          [3999, 2129],
+          [3899, 2127]
+        ]
+      },
+      {
+        "id": "P82",
+        "nombre": "AULA P82 (MIGUEL HERNÁNDEZ PRIMERA PLANTA)",
+        "sector": "#F86624",
+        "color": "#F86624",
+        "coordenadas": {
+          "supIzq": [4030, 1768],
+          "infDer": [3632, 1984]
+        },
+        "ruta": [
+          [3662, 1978],
+          [3652, 2019],
+          [3824, 2028],
+          [4004, 2040],
+          [3999, 2129],
+          [3873, 2132]
+        ]
+      },
+      {
+        "id": "P83",
+        "nombre": "AULA P83 (MIGUEL HERNÁNDEZ PRIMERA PLANTA)",
+        "sector": "#F86624",
+        "color": "#F86624",
+        "coordenadas": {
+          "supIzq": [3627, 1730],
+          "infDer": [3132, 1950]
+        },
+        "ruta": [
+          [1,1],
+          [1,1],
+          [1,1],
+          [1,1],
+          [1,1],
+          [1,1],
+          [1,1]
+        ]
+      },
+      {
+        "id": "P84",
+        "nombre": "AULA P84 (PASILLO BACH  PRIMERA PLANTA)",
+        "sector": "#F86624",
+        "color": "#F86624",
+        "coordenadas": {
+          "supIzq": [3120, 1679],
+          "infDer": [2824, 1975]
+        },
+        "ruta": [
+          [3102, 1974],
+          [3299, 1985],
+          [3551, 2006],
+          [3788, 2028],
+          [3994, 2046],
+          [4003, 2134],
+          [3888, 2132]
+        ]
+      }
+
+    ],
     "Planta Segunda": [],
     "Planta Cubierta": []
   }
