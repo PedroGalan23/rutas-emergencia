@@ -1,5 +1,5 @@
+// Importaciones de React y Leaflet
 import React, { useEffect, useRef, useState } from 'react';
-
 import {
   MapContainer,
   ImageOverlay,
@@ -10,6 +10,8 @@ import {
 } from 'react-leaflet';
 import { CRS, divIcon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+
+// Importación de imágenes y datos
 import planoBaja from './assets/PG1-PlantaBaja.jpg';
 import planoIntermedia from './assets/PG2-Planta Intermedia.jpg';
 import planoPrimera from './assets/PG3-Planta Primera.jpg';
@@ -23,17 +25,25 @@ import escalerasIcon from './assets/escaleras.svg';
 import './App.css';
 
 function App() {
+  // Dimensiones del plano
   const imageWidth = 7017;
   const imageHeight = 4963;
   const imageBounds = [[0, 0], [imageHeight, imageWidth]];
+
+  // Estados para aula seleccionada, planta, posición de flecha, y animación del monje
   const [aulaActiva, setAulaActiva] = useState(null);
   const [plantaSeleccionada, setPlantaSeleccionada] = useState('Planta Baja');
   const [flechaPosicion, setFlechaPosicion] = useState(null);
   const [monjeFrame, setMonjeFrame] = useState(0);
+
+  // Refs para controlar el índice y el intervalo de animación
   const flechaIndex = useRef(0);
   const animationInterval = useRef(null);
+
+  // Frames del monje animado
   const monjeFrames = [monje1, monje2];
 
+  // Mapear plantas con sus respectivos planos
   const planos = {
     'Planta Baja': planoBaja,
     'Planta Intermedia': planoIntermedia,
@@ -42,6 +52,7 @@ function App() {
     'Planta Cubierta': planoCubierta
   };
 
+  // Calcular ángulo entre dos puntos para rotar la flecha
   function calcularAngulo(p1, p2) {
     const dx = p2[1] - p1[1];
     const dy = -(p2[0] - p1[0]);
@@ -50,6 +61,7 @@ function App() {
     return deg;
   }
 
+  // Crear icono para representar escaleras
   function createEscalerasIcon() {
     return divIcon({
       html: `<img src="${escalerasIcon}" alt="Escaleras" style="width: 40px; height: 40px;" />`,
@@ -58,6 +70,7 @@ function App() {
     });
   }
 
+  // Crear flechas SVG con rotación y color según el sector del aula
   function crearIconoFlecha(angle, color = 'orange') {
     const size = 30;
     const svg = `
@@ -79,8 +92,8 @@ function App() {
       iconAnchor: [size / 2, size / 2]
     });
   }
-  
 
+  // Crear iconos con texto para zonas comunes
   function createTextIcon(text) {
     const formattedText = text.replace(/\n/g, '<br>');
     return divIcon({
@@ -90,6 +103,7 @@ function App() {
     });
   }
 
+  // Efecto que alterna el frame del monje cada 1.5 segundos
   useEffect(() => {
     const interval = setInterval(() => {
       setMonjeFrame((prev) => (prev + 1) % monjeFrames.length);
@@ -97,6 +111,7 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
+  // Efecto para animar la ruta del monje cuando se selecciona un aula
   useEffect(() => {
     if (!aulaActiva?.ruta) return;
 
@@ -112,11 +127,13 @@ function App() {
     return () => clearInterval(animationInterval.current);
   }, [aulaActiva]);
 
+  // Componente para capturar clics sobre el mapa y detectar si se ha hecho clic en un aula
   function ClickHandler({ aulas }) {
     useMapEvent('click', (e) => {
       const { lat, lng } = e.latlng;
       console.log(`📍 Coordenadas clic: [${Math.round(lat)}, ${Math.round(lng)}]`);
 
+      // Buscar aula dentro del área clicada
       const aulaClicada = aulas.find(aula => {
         const y1 = aula.coordenadas.infDer[0];
         const y2 = aula.coordenadas.supIzq[0];
@@ -130,11 +147,13 @@ function App() {
     return null;
   }
 
+  // Obtener aulas y zonas comunes de la planta seleccionada
   const aulas = aulasData[plantaSeleccionada];
   const zonasComunes = zonasComunesData[plantaSeleccionada] || [];
 
   return (
     <div className="app">
+      {/* Encabezado con selector de planta */}
       <header className="app-header">
         <h1>
           <img src={monje2} alt="Monje" style={{ height: '1.5em', verticalAlign: 'middle', marginRight: '0.5em' }} />
@@ -146,6 +165,7 @@ function App() {
             id="planta"
             value={plantaSeleccionada}
             onChange={(e) => {
+              // Cambiar de planta y reiniciar selección y animación
               setPlantaSeleccionada(e.target.value);
               setAulaActiva(null);
               setFlechaPosicion(null);
@@ -161,19 +181,22 @@ function App() {
         </div>
       </header>
 
+      {/* Contenedor del mapa interactivo */}
       <div style={{ width: '100%', height: 'calc(100vh - 100px)', overflow: 'hidden', margin: 0 }}>
-      <MapContainer
-        crs={CRS.Simple}
-        bounds={imageBounds}
-        minZoom={-3}
-        maxZoom={1}
-        maxBounds={imageBounds}
-        maxBoundsViscosity={1.0}
-        style={{ width: '100%', height: 'calc(100vh - 100px)' }}
-        whenCreated={(map) => map.fitBounds(imageBounds)}
-      >
-        <ImageOverlay url={planos[plantaSeleccionada]} bounds={imageBounds} />
+        <MapContainer
+          crs={CRS.Simple}
+          bounds={imageBounds}
+          minZoom={-3}
+          maxZoom={1}
+          maxBounds={imageBounds}
+          maxBoundsViscosity={1.0}
+          style={{ width: '100%', height: 'calc(100vh - 100px)' }}
+          whenCreated={(map) => map.fitBounds(imageBounds)}
+        >
+          {/* Imagen del plano */}
+          <ImageOverlay url={planos[plantaSeleccionada]} bounds={imageBounds} />
 
+          {/* Dibujar aulas */}
           {aulas.map((aula) => {
             const { coordenadas, color, id, nombre } = aula;
             const bounds = [coordenadas.infDer, coordenadas.supIzq];
@@ -196,6 +219,7 @@ function App() {
             );
           })}
 
+          {/* Mostrar zonas comunes como texto flotante */}
           {zonasComunes.map((zona, index) => (
             <Marker
               key={zona.id || `zona-${index}`}
@@ -205,6 +229,7 @@ function App() {
             />
           ))}
 
+          {/* Dibujar flechas a lo largo de la ruta del aula seleccionada */}
           {aulaActiva?.ruta &&
             aulaActiva.ruta.slice(0, -1).map((p, i) => {
               const siguiente = aulaActiva.ruta[i + 1];
@@ -218,6 +243,7 @@ function App() {
               );
             })}
 
+          {/* Mostrar el monje animado moviéndose por la ruta */}
           {flechaPosicion &&
             aulaActiva?.ruta && (
               <Marker
@@ -231,6 +257,7 @@ function App() {
               />
             )}
 
+          {/* Activar handler para clics en el mapa */}
           <ClickHandler aulas={aulas} />
         </MapContainer>
       </div>
