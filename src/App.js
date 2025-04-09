@@ -155,17 +155,15 @@ function App() {
       </header>
 
       <div style={{ width: '100%', height: 'calc(100vh - 100px)', overflow: 'hidden', margin: 0 }}>
-        <MapContainer
-          crs={CRS.Simple}
-          center={[imageHeight / 2, imageWidth / 2]}
-          zoom={-2}
-          minZoom={-2}
-          maxZoom={1}
-          maxBounds={imageBounds}
-          maxBoundsViscosity={1.0}
-          style={{ width: '100%', height: '100%' }}
-        >
-          <ImageOverlay url={planos[plantaSeleccionada]} bounds={imageBounds} />
+      <MapContainer
+        crs={CRS.Simple}
+        bounds={imageBounds}
+        minZoom={-3}
+        maxZoom={1}
+        style={{ width: '100%', height: 'calc(100vh - 100px)' }}
+        whenCreated={(map) => map.fitBounds(imageBounds)}
+      >
+        <ImageOverlay url={planos[plantaSeleccionada]} bounds={imageBounds} />
 
           {aulas.map((aula) => {
             const { coordenadas, color, id, nombre } = aula;
