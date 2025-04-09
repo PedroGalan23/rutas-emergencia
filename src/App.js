@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+
 import {
   MapContainer,
   ImageOverlay,
@@ -166,6 +167,8 @@ function App() {
         bounds={imageBounds}
         minZoom={-3}
         maxZoom={1}
+        maxBounds={imageBounds}
+        maxBoundsViscosity={1.0}
         style={{ width: '100%', height: 'calc(100vh - 100px)' }}
         whenCreated={(map) => map.fitBounds(imageBounds)}
       >
