@@ -1269,7 +1269,286 @@
 
     ],
     "Planta Segunda": [
-
+      {
+        "id": "S1",
+        "nombre": "S1",
+        "sector": "yellow",
+        "color": "yellow",
+        "coordenadas": {
+          "supIzq": [3179, 1826],
+          "infDer": [2845, 2088]
+        }
+      },
+      {
+        "id": "S2",
+        "nombre": "S2",
+        "sector": "yellow",
+        "color": "yellow",
+        "coordenadas": {
+          "supIzq": [3633, 1868],
+          "infDer": [3181, 2058]
+        }
+      },
+      {
+        "id": "S3",
+        "nombre": "S3",
+        "sector": "yellow",
+        "color": "yellow",
+        "coordenadas": {
+          "supIzq": [4042, 1912],
+          "infDer": [3638, 2096]
+        }
+      },
+      {
+        "id": "S4",
+        "nombre": "S4",
+        "sector": "yellow",
+        "color": "yellow",
+        "coordenadas": {
+          "supIzq": [3950, 2352],
+          "infDer": [3778, 2708]
+        }
+      },
+      {
+        "id": "S5",
+        "nombre": "S5",
+        "sector": "yellow",
+        "color": "yellow",
+        "coordenadas": {
+          "supIzq": [3950, 2704],
+          "infDer": [3770, 3136]
+        }
+      },
+      {
+        "id": "S6",
+        "nombre": "S6",
+        "sector": "yellow",
+        "color": "yellow",
+        "coordenadas": {
+          "supIzq": [3950, 3128],
+          "infDer": [3786, 3560]
+        }
+      },
+      {
+        "id": "S7",
+        "nombre": "S7",
+        "sector": "yellow",
+        "color": "yellow",
+        "coordenadas": {
+          "supIzq": [3950, 3552],
+          "infDer": [3782, 3956]
+        }
+      },
+      {
+        "id": "S8",
+        "nombre": "S8",
+        "sector": "yellow",
+        "color": "yellow",
+        "coordenadas": {
+          "supIzq": [3946, 4048],
+          "infDer": [3782, 4248]
+        }
+      },
+      {
+        "id": "S9",
+        "nombre": "S9",
+        "sector": "green",
+        "color": "green",
+        "coordenadas": {
+          "supIzq": [2691, 4620],
+          "infDer": [2475, 4948]
+        }
+      },
+      {
+        "id": "S10",
+        "nombre": "S10",
+        "sector": "green",
+        "color": "green",
+        "coordenadas": {
+          "supIzq": [2691, 4942],
+          "infDer": [2473, 5238]
+        }
+      },
+      {
+        "id": "S11",
+        "nombre": "S11",
+        "sector": "green",
+        "color": "green",
+        "coordenadas": {
+          "supIzq": [2691, 5238],
+          "infDer": [2471, 5632]
+        }
+      },
+      {
+        "id": "S12",
+        "nombre": "S12",
+        "sector": "green",
+        "color": "green",
+        "coordenadas": {
+          "supIzq": [2691, 5670],
+          "infDer": [2415, 5904]
+        }
+      },
+      {
+        "id": "S13",
+        "nombre": "S13",
+        "sector": "green",
+        "color": "green",
+        "coordenadas": {
+          "supIzq": [2415, 5742],
+          "infDer": [2151, 5906]
+        }
+      },
+      {
+        "id": "S14",
+        "nombre": "S14",
+        "sector": "green",
+        "color": "green",
+        "coordenadas": {
+          "supIzq": [2151, 5741],
+          "infDer": [1984, 5904]
+        }
+      },
+      {
+        "id": "S15",
+        "nombre": "S15",
+        "sector": "green",
+        "color": "green",
+        "coordenadas": {
+          "supIzq": [1890, 5730],
+          "infDer": [1679, 5906]
+        }
+      },
+      {
+        "id": "S16",
+        "nombre": "S16",
+        "sector": "green",
+        "color": "green",
+        "coordenadas": {
+          "supIzq": [1677, 5717],
+          "infDer": [1482, 5904]
+        }
+      },
+      {
+        "id": "S17",
+        "nombre": "S17",
+        "sector": "green",
+        "color": "green",
+        "coordenadas": {
+          "supIzq": [1483, 5717],
+          "infDer": [1291, 5901]
+        }
+      },
+      {
+        "id": "S18",
+        "nombre": "S18",
+        "sector": "green",
+        "color": "green",
+        "coordenadas": {
+          "supIzq": [1292, 5641],
+          "infDer": [1059, 5908]
+        }
+      },
+      {
+        "id": "S19",
+        "nombre": "S19",
+        "sector": "green",
+        "color": "green",
+        "coordenadas": {
+          "supIzq": [955, 5638],
+          "infDer": [756, 5917]
+        }
+      },
+      {
+        "id": "S20",
+        "nombre": "S20",
+        "sector": "green",
+        "color": "green",
+        "coordenadas": {
+          "supIzq": [962, 5295],
+          "infDer": [761, 5641]
+        }
+      },
+      {
+        "id": "S21",
+        "nombre": "S21",
+        "sector": "green",
+        "color": "green",
+        "coordenadas": {
+          "supIzq": [961, 5003],
+          "infDer": [762, 5296]
+        }
+      },
+      {
+        "id": "S22",
+        "nombre": "S22",
+        "sector": "green",
+        "color": "green",
+        "coordenadas": {
+          "supIzq": [959, 4703],
+          "infDer": [750, 4871]
+        }
+      },
+      {
+        "id": "S23",
+        "nombre": "S23",
+        "sector": "green",
+        "color": "green",
+        "coordenadas": {
+          "supIzq": [960, 4282],
+          "infDer": [755, 4702]
+        }
+      },
+      {
+        "id": "S24",
+        "nombre": "S24",
+        "sector": "blue",
+        "color": "blue",
+        "coordenadas": {
+          "supIzq": [947, 3571],
+          "infDer": [752, 3923]
+        }
+      },
+      {
+        "id": "S25",
+        "nombre": "S25",
+        "sector": "blue",
+        "color": "blue",
+        "coordenadas": {
+          "supIzq": [945, 3093],
+          "infDer": [754, 3366]
+        }
+      },
+      {
+        "id": "S26",
+        "nombre": "S26",
+        "sector": "blue",
+        "color": "blue",
+        "coordenadas": {
+          "supIzq": [943, 2725],
+          "infDer": [761, 3095]
+        }
+      },
+      {
+        "id": "S27",
+        "nombre": "S27",
+        "sector": "blue",
+        "color": "blue",
+        "coordenadas": {
+          "supIzq": [941, 2387],
+          "infDer": [764, 2725]
+        }
+      },
+      {
+        "id": "S28",
+        "nombre": "S28",
+        "sector": "yellow",
+        "color": "yellow",
+        "coordenadas": {
+          "supIzq": [4433, 3008],
+          "infDer": [4101, 3272]
+        }
+      }
     ],
     "Planta Cubierta": []
   }
