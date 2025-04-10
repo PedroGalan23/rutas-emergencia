@@ -1,18 +1,17 @@
 // Importaciones de React, Leaflet y QRCode
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import {
   MapContainer,
   ImageOverlay,
   Rectangle,
   Marker,
   Tooltip,
-  useMapEvent
+  useMapEvent,
+  useMap
 } from 'react-leaflet';
 import { CRS, divIcon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { useMap } from 'react-leaflet';
 import { QRCodeCanvas } from 'qrcode.react';
-
 
 import monjeBombero from './assets/monjeBombero.png';
 import salidasEmergencia from './data/salidasEmergencia.json';
@@ -65,7 +64,7 @@ function App() {
     const zoom = map.getZoom();
 
     // FACTOR BASE
-    const baseScale = Math.pow(1.5, zoom); // puedes ajustar 1.3 a lo que veas mejor
+    const baseScale = Math.pow(1.5, zoom); // Puedes ajustar a lo que veas mejor
 
     // ESCALA MÍNIMA PARA NO SER ENANA
     const scale = Math.max(baseScale, 0.7); // Nunca menor a 0.7
@@ -89,15 +88,13 @@ function App() {
     );
   }
 
-
-
   function calcularCentro(coordenadas) {
     const centroY = (coordenadas.supIzq[0] + coordenadas.infDer[0]) / 2;
     const centroX = (coordenadas.supIzq[1] + coordenadas.infDer[1]) / 2;
     return [centroY, centroX];
   }
 
-  // Ajusta según quieras: quita 'overflow' y 'text-overflow' para NO truncar
+  // Estilos de la etiqueta según el tamaño
   function obtenerEstilosEtiqueta(coordenadas) {
     const ancho = Math.abs(coordenadas.infDer[1] - coordenadas.supIzq[1]);
     const alto = Math.abs(coordenadas.infDer[0] - coordenadas.supIzq[0]);
@@ -108,19 +105,19 @@ function App() {
       return `
         font-size: 8px;
         padding: 1px 3px;
-        white-space: normal;     /* <<< Permite saltos de línea si hace falta */
+        white-space: normal;
       `;
     }
     return `
       font-size: 12px;
       padding: 2px 5px;
-      white-space: normal;       /* <<< No recorta */
+      white-space: normal;
     `;
   }
 
   function createEscalerasIcon() {
     return divIcon({
-      html: `<img src="${escalerasIcon}" alt="Escaleras" style="width: 40px; height: 40px;" />`,
+      html: `<img src="${escalerasIcon}" alt="Escaleras" style="width:40px; height:40px;" />`,
       className: '',
       iconAnchor: [20, 20]
     });
@@ -157,6 +154,7 @@ function App() {
     });
   }
 
+  // Animación del monje
   useEffect(() => {
     const interval = setInterval(() => {
       setMonjeFrame((prev) => (prev + 1) % monjeFrames.length);
@@ -164,6 +162,7 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
+  // Animación de la flecha siguiendo la ruta activa
   useEffect(() => {
     if (!aulaActiva?.ruta) return;
     const ruta = aulaActiva.ruta;
@@ -193,6 +192,95 @@ function App() {
     });
     return null;
   }
+
+  // **********************************************************************
+  // COMPONENTE QrOverlay:
+  // Se utiliza useLayoutEffect para actualizar la posición del div de forma síncrona.
+  // Se incluye una comprobación para actualizar solo si la diferencia es mayor a 1 píxel.
+  // La disposición es horizontal y se incluye un punto morado junto a "Usted está aquí".
+  // Las coordenadas fijas (esquinas proporcionadas) se usan para calcular el centro.
+  // **********************************************************************
+  const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada }) {
+    const map = useMap();
+    const overlayRef = useRef(null);
+    const prevPointRef = useRef({ x: 0, y: 0 });
+    // Coordenadas fijas para el QR:
+    // Esquina superior Izquierda [719, 3556]
+    // Esquina inferior Derecha [3, 5896]
+    const qrCoords = { supIzq: [719, 3556], infDer: [3, 5896] };
+    const fixedCenter = {
+      lat: (qrCoords.supIzq[0] + qrCoords.infDer[0]) / 2,
+      lng: (qrCoords.supIzq[1] + qrCoords.infDer[1]) / 2
+    };
+
+    useLayoutEffect(() => {
+      function updatePosition() {
+        if (overlayRef.current) {
+          const point = map.latLngToContainerPoint(fixedCenter);
+          // Actualizar solo si la diferencia supera 1 píxel para evitar actualizaciones mínimas
+          if (
+            Math.abs(point.x - prevPointRef.current.x) < 1 &&
+            Math.abs(point.y - prevPointRef.current.y) < 1
+          ) {
+            return;
+          }
+          overlayRef.current.style.left = `${point.x}px`;
+          overlayRef.current.style.top = `${point.y}px`;
+          prevPointRef.current = { x: point.x, y: point.y };
+        }
+      }
+      map.on('zoomend moveend', updatePosition);
+      updatePosition();
+      return () => {
+        map.off('zoomend moveend', updatePosition);
+      };
+    }, [map, fixedCenter]);
+
+    if (!aulaActiva) return null;
+
+    const url =
+      window.location.origin +
+      `?planta=${encodeURIComponent(plantaSeleccionada)}` +
+      (aulaActiva ? `&id=${encodeURIComponent(aulaActiva.id)}` : '');
+
+    return (
+      <div
+        ref={overlayRef}
+        style={{
+          position: 'absolute',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 1000,
+          padding: '5px',
+          border: '2px solid black',
+          backgroundColor: 'white',
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center'
+        }}
+      >
+        <QRCodeCanvas value={url} size={60} style={{ marginRight: '8px' }} />
+        <div style={{ fontSize: '12px', lineHeight: '1.2' }}>
+          <strong>{aulaActiva.nombre}</strong>
+          <br />
+          ID: {aulaActiva.id}
+          <br />
+          <span style={{ display: 'inline-flex', alignItems: 'center' }}>
+            <span
+              style={{
+                width: '8px',
+                height: '8px',
+                backgroundColor: 'purple',
+                borderRadius: '50%',
+                marginRight: '4px'
+              }}
+            ></span>
+            Usted está aquí
+          </span>
+        </div>
+      </div>
+    );
+  });
+  // **********************************************************************
 
   const aulas = aulasData[plantaSeleccionada];
   const zonasComunes = zonasComunesData[plantaSeleccionada] || [];
@@ -290,40 +378,25 @@ function App() {
                     {nombre}
                   </Tooltip>
                 </Rectangle>
-
-                {/* AQUÍ antes tenías el Marker de la etiqueta con divIcon manual */}
-                {/* Lo cambias por esto: */}
-
                 <EtiquetaAula position={centro} id={id} />
-
               </React.Fragment>
             );
           })}
-
 
           {zonasComunes.map((zona, index) => (
             <Marker
               key={zona.id || `zona-${index}`}
               position={zona.coordenadas}
-              icon={divIcon({ html: '', className: '' })} // <<< esto evita imagen detrás
+              icon={divIcon({ html: '', className: '' })}
               interactive={false}
             >
-              <Tooltip
-                permanent
-                direction="center"
-                className="zona-tooltip"
-                opacity={1}
-              >
+              <Tooltip permanent direction="center" className="zona-tooltip" opacity={1}>
                 <span style={{ display: 'inline-block', whiteSpace: 'pre-line' }}>
                   {zona.nombre}
                 </span>
               </Tooltip>
-
             </Marker>
           ))}
-
-
-
 
           {aulaActiva?.ruta &&
             aulaActiva.ruta.slice(0, -1).map((p, i) => {
@@ -351,8 +424,13 @@ function App() {
           )}
 
           <ClickHandler aulas={aulas} />
+
+          {/* Se agrega el componente QrOverlay para mostrar el QR en las coordenadas deseadas */}
+          <QrOverlay aulaActiva={aulaActiva} plantaSeleccionada={plantaSeleccionada} />
         </MapContainer>
 
+        {/*
+        // OPCIONAL: Se comenta el panel de información original, ya que ahora la información (QR + datos) se muestra sobre el plano.
         {aulaActiva && (
           <div className="info-panel">
             <table>
@@ -379,6 +457,7 @@ function App() {
             </table>
           </div>
         )}
+        */}
       </div>
     </div>
   );
