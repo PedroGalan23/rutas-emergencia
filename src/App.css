@@ -140,6 +140,16 @@ body {
   text-align: center; /* Centrado del texto */
 }
 
+.zona-tooltip {
+  background: none;
+  border: none;
+  box-shadow: none;
+  color: black;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  white-space: pre-line; /* respeta \n */
+}
 
 
 

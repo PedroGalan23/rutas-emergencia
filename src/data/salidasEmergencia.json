@@ -1,0 +1,14 @@
+{
+  "Planta Baja": [
+    {
+      "id": "salidaEmergencia1",
+      "nombre": "SALIDA EMERGENCIA",
+      "coordenadas": [4175, 1847]
+    },
+    {
+      "id": "salidaEmergencia2Conserjeria",
+      "nombre": "SALIDA CONSERJERÍA",
+      "coordenadas": [727, 2468]
+    }
+  ]
+}

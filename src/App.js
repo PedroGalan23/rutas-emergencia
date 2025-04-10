@@ -13,6 +13,9 @@ import 'leaflet/dist/leaflet.css';
 import { useMap } from 'react-leaflet';
 import { QRCodeCanvas } from 'qrcode.react';
 
+
+import monjeBombero from './assets/monjeBombero.png';
+import salidasEmergencia from './data/salidasEmergencia.json';
 import planoBaja from './assets/PG1-PlantaBaja.jpg';
 import planoIntermedia from './assets/PG2-Planta Intermedia.jpg';
 import planoPrimera from './assets/PG3-Planta Primera.jpg';
@@ -252,6 +255,20 @@ function App() {
         >
           <ImageOverlay url={planos[plantaSeleccionada]} bounds={imageBounds} />
 
+          {(salidasEmergencia[plantaSeleccionada] || []).map((salida, index) => (
+            <Marker
+              key={`salida-${index}`}
+              position={salida.coordenadas}
+              icon={divIcon({
+                html: `<img src="${monjeBombero}" alt="Salida Emergencia" style="width:25px; height:25px;" />`,
+                className: '',
+                iconSize: [25, 25],
+                iconAnchor: [10, 10]
+              })}
+              interactive={false}
+            />
+          ))}
+
           {aulas.map((aula) => {
             const { coordenadas, color, id, nombre } = aula;
             const bounds = [coordenadas.infDer, coordenadas.supIzq];
@@ -288,10 +305,25 @@ function App() {
             <Marker
               key={zona.id || `zona-${index}`}
               position={zona.coordenadas}
-              icon={createTextIcon(zona.nombre)}
+              icon={divIcon({ html: '', className: '' })} // <<< esto evita imagen detrás
               interactive={false}
-            />
+            >
+              <Tooltip
+                permanent
+                direction="center"
+                className="zona-tooltip"
+                opacity={1}
+              >
+                <span style={{ display: 'inline-block', whiteSpace: 'pre-line' }}>
+                  {zona.nombre}
+                </span>
+              </Tooltip>
+
+            </Marker>
           ))}
+
+
+
 
           {aulaActiva?.ruta &&
             aulaActiva.ruta.slice(0, -1).map((p, i) => {
