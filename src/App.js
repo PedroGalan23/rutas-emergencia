@@ -109,7 +109,7 @@ function App() {
   useEffect(() => {
     const interval = setInterval(() => {
       setMonjeFrame((prev) => (prev + 1) % monjeFrames.length);
-    }, 1500);
+    }, 500);
     return () => clearInterval(interval);
   }, []);
 
@@ -123,7 +123,7 @@ function App() {
     animationInterval.current = setInterval(() => {
       flechaIndex.current = (flechaIndex.current + 1) % ruta.length;
       setFlechaPosicion(ruta[flechaIndex.current]);
-    }, 450);
+    }, 300);
 
     return () => clearInterval(animationInterval.current);
   }, [aulaActiva]);

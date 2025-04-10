@@ -127,6 +127,18 @@ body {
   color: #333;
 }
 
+.label-aula {
+  padding: 2px 5px;
+  background: white;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  white-space: nowrap;           /* Evita que el texto se divida en varias líneas */
+  overflow: hidden;
+  text-overflow: ellipsis;       /* Si el texto es muy largo, agrega puntos suspensivos */
+  transform: translate(-50%, -50%); /* Centrado exacto en el punto dado */
+}
+
+
 /* Los estilos de Leaflet y animaciones */
 .zona-label {
   color: black;
