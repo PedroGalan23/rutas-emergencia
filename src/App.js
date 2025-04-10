@@ -10,9 +10,9 @@ import {
 } from 'react-leaflet';
 import { CRS, divIcon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { useMap } from 'react-leaflet';
 import { QRCodeCanvas } from 'qrcode.react';
 
-// Importación de imágenes y datos
 import planoBaja from './assets/PG1-PlantaBaja.jpg';
 import planoIntermedia from './assets/PG2-Planta Intermedia.jpg';
 import planoPrimera from './assets/PG3-Planta Primera.jpg';
@@ -26,26 +26,21 @@ import escalerasIcon from './assets/escaleras.svg';
 import './App.css';
 
 function App() {
-  // Dimensiones del plano
   const imageWidth = 7017;
   const imageHeight = 4963;
   const imageBounds = [[0, 0], [imageHeight, imageWidth]];
 
-  // Estados para aula seleccionada, planta, posición de flecha, animación del monje y opción "Imprimible"
   const [aulaActiva, setAulaActiva] = useState(null);
   const [plantaSeleccionada, setPlantaSeleccionada] = useState('Planta Baja');
   const [flechaPosicion, setFlechaPosicion] = useState(null);
   const [monjeFrame, setMonjeFrame] = useState(0);
   const [imprimible, setImprimible] = useState(false);
 
-  // Refs para controlar el índice y el intervalo de animación
   const flechaIndex = useRef(0);
   const animationInterval = useRef(null);
 
-  // Frames del monje animado
   const monjeFrames = [monje1, monje2];
 
-  // Mapear plantas con sus respectivos planos
   const planos = {
     'Planta Baja': planoBaja,
     'Planta Intermedia': planoIntermedia,
@@ -54,7 +49,6 @@ function App() {
     'Planta Cubierta': planoCubierta
   };
 
-  // Calcular ángulo entre dos puntos para rotar la flecha
   function calcularAngulo(p1, p2) {
     const dx = p2[1] - p1[1];
     const dy = -(p2[0] - p1[0]);
@@ -63,7 +57,64 @@ function App() {
     return deg;
   }
 
-  // Crear icono para representar escaleras
+  function EtiquetaAula({ position, id }) {
+    const map = useMap();
+    const zoom = map.getZoom();
+
+    // FACTOR BASE
+    const baseScale = Math.pow(1.5, zoom); // puedes ajustar 1.3 a lo que veas mejor
+
+    // ESCALA MÍNIMA PARA NO SER ENANA
+    const scale = Math.max(baseScale, 0.7); // Nunca menor a 0.7
+
+    return (
+      <Marker
+        position={position}
+        icon={divIcon({
+          html: `
+            <div class="label-aula" style="
+              transform: translate(-50%, -50%) scale(${scale});
+            ">
+              ${id}
+            </div>
+          `,
+          className: '',
+          iconAnchor: [0, 0]
+        })}
+        interactive={false}
+      />
+    );
+  }
+
+
+
+  function calcularCentro(coordenadas) {
+    const centroY = (coordenadas.supIzq[0] + coordenadas.infDer[0]) / 2;
+    const centroX = (coordenadas.supIzq[1] + coordenadas.infDer[1]) / 2;
+    return [centroY, centroX];
+  }
+
+  // Ajusta según quieras: quita 'overflow' y 'text-overflow' para NO truncar
+  function obtenerEstilosEtiqueta(coordenadas) {
+    const ancho = Math.abs(coordenadas.infDer[1] - coordenadas.supIzq[1]);
+    const alto = Math.abs(coordenadas.infDer[0] - coordenadas.supIzq[0]);
+    const anchoMinimo = 50;
+    const altoMinimo = 20;
+
+    if (ancho < anchoMinimo || alto < altoMinimo) {
+      return `
+        font-size: 8px;
+        padding: 1px 3px;
+        white-space: normal;     /* <<< Permite saltos de línea si hace falta */
+      `;
+    }
+    return `
+      font-size: 12px;
+      padding: 2px 5px;
+      white-space: normal;       /* <<< No recorta */
+    `;
+  }
+
   function createEscalerasIcon() {
     return divIcon({
       html: `<img src="${escalerasIcon}" alt="Escaleras" style="width: 40px; height: 40px;" />`,
@@ -72,7 +123,6 @@ function App() {
     });
   }
 
-  // Crear flechas SVG con rotación y color según el sector del aula
   function crearIconoFlecha(angle, color = 'orange') {
     const size = 30;
     const svg = `
@@ -95,7 +145,6 @@ function App() {
     });
   }
 
-  // Crear iconos con texto para zonas comunes
   function createTextIcon(text) {
     const formattedText = text.replace(/\n/g, '<br>');
     return divIcon({
@@ -105,7 +154,6 @@ function App() {
     });
   }
 
-  // Efecto que alterna el frame del monje cada 1.5 segundos
   useEffect(() => {
     const interval = setInterval(() => {
       setMonjeFrame((prev) => (prev + 1) % monjeFrames.length);
@@ -113,7 +161,6 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  // Efecto para animar la ruta del monje cuando se selecciona un aula
   useEffect(() => {
     if (!aulaActiva?.ruta) return;
     const ruta = aulaActiva.ruta;
@@ -128,13 +175,11 @@ function App() {
     return () => clearInterval(animationInterval.current);
   }, [aulaActiva]);
 
-  // Componente para capturar clics sobre el mapa y detectar si se ha hecho clic en un aula
   function ClickHandler({ aulas }) {
     useMapEvent('click', (e) => {
       const { lat, lng } = e.latlng;
       console.log(`📍 Coordenadas clic: [${Math.round(lat)}, ${Math.round(lng)}]`);
-      // Buscar aula dentro del área clicada
-      const aulaClicada = aulas.find(aula => {
+      const aulaClicada = aulas.find((aula) => {
         const y1 = aula.coordenadas.infDer[0];
         const y2 = aula.coordenadas.supIzq[0];
         const x1 = aula.coordenadas.supIzq[1];
@@ -146,13 +191,11 @@ function App() {
     return null;
   }
 
-  // Obtener aulas y zonas comunes de la planta seleccionada
   const aulas = aulasData[plantaSeleccionada];
   const zonasComunes = zonasComunesData[plantaSeleccionada] || [];
 
   return (
     <div className="app">
-      {/* Encabezado con título, checkbox "Imprimible" a la izquierda y selector de planta a la derecha */}
       <header className="app-header">
         <h1>
           <img
@@ -180,7 +223,6 @@ function App() {
               id="planta"
               value={plantaSeleccionada}
               onChange={(e) => {
-                // Cambiar de planta y reiniciar selección y animación
                 setPlantaSeleccionada(e.target.value);
                 setAulaActiva(null);
                 setFlechaPosicion(null);
@@ -197,7 +239,6 @@ function App() {
         </div>
       </header>
 
-      {/* Mapa interactivo */}
       <div className="map-container">
         <MapContainer
           crs={CRS.Simple}
@@ -209,33 +250,40 @@ function App() {
           style={{ width: '100%', height: '100%' }}
           whenCreated={(map) => map.fitBounds(imageBounds)}
         >
-          {/* Imagen del plano */}
           <ImageOverlay url={planos[plantaSeleccionada]} bounds={imageBounds} />
 
-          {/* Dibujar aulas */}
           {aulas.map((aula) => {
             const { coordenadas, color, id, nombre } = aula;
             const bounds = [coordenadas.infDer, coordenadas.supIzq];
+            const centro = calcularCentro(coordenadas);
+
             return (
-              <Rectangle
-                key={id}
-                bounds={bounds}
-                pathOptions={{
-                  color: aulaActiva?.id === id ? 'purple' : color,
-                  fillColor: aulaActiva?.id === id ? 'purple' : color,
-                  fillOpacity: 0.5,
-                  weight: aulaActiva?.id === id ? 4 : 2
-                }}
-                interactive={true}
-              >
-                <Tooltip direction="top" offset={[0, -8]} opacity={1} sticky interactive>
-                  {nombre}
-                </Tooltip>
-              </Rectangle>
+              <React.Fragment key={id}>
+                <Rectangle
+                  bounds={bounds}
+                  pathOptions={{
+                    color: aulaActiva?.id === id ? 'purple' : color,
+                    fillColor: aulaActiva?.id === id ? 'purple' : color,
+                    fillOpacity: 0.5,
+                    weight: aulaActiva?.id === id ? 4 : 2
+                  }}
+                  interactive={true}
+                >
+                  <Tooltip direction="top" offset={[0, -8]} opacity={1} sticky interactive>
+                    {nombre}
+                  </Tooltip>
+                </Rectangle>
+
+                {/* AQUÍ antes tenías el Marker de la etiqueta con divIcon manual */}
+                {/* Lo cambias por esto: */}
+
+                <EtiquetaAula position={centro} id={id} />
+
+              </React.Fragment>
             );
           })}
 
-          {/* Mostrar zonas comunes como texto flotante */}
+
           {zonasComunes.map((zona, index) => (
             <Marker
               key={zona.id || `zona-${index}`}
@@ -245,7 +293,6 @@ function App() {
             />
           ))}
 
-          {/* Dibujar flechas a lo largo de la ruta del aula seleccionada */}
           {aulaActiva?.ruta &&
             aulaActiva.ruta.slice(0, -1).map((p, i) => {
               const siguiente = aulaActiva.ruta[i + 1];
@@ -259,12 +306,11 @@ function App() {
               );
             })}
 
-          {/* Mostrar el monje animado, solo si "Imprimible" no está activado */}
           {!imprimible && flechaPosicion && aulaActiva?.ruta && (
             <Marker
               position={flechaPosicion}
               icon={divIcon({
-                html: `<img src="${monjeFrames[monjeFrame]}" class="monje-animado" />`,
+                html: `<img src="${monjeFrames[monjeFrame]}" class="monje-animado" alt="Monje animado" />`,
                 className: '',
                 iconSize: [40, 40],
                 iconAnchor: [20, 20]
@@ -272,18 +318,15 @@ function App() {
             />
           )}
 
-          {/* Handler de clics en el mapa */}
           <ClickHandler aulas={aulas} />
         </MapContainer>
 
-        {/* Panel de información en la esquina inferior derecha */}
         {aulaActiva && (
           <div className="info-panel">
             <table>
               <tbody>
                 <tr>
                   <td className="qr-cell">
-                    {/* Se genera el QR usando el id del aula (o cualquier otro dato representativo) */}
                     <QRCodeCanvas value={aulaActiva.id} size={80} />
                   </td>
                 </tr>
