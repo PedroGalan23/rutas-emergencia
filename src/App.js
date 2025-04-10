@@ -1,4 +1,4 @@
-// Importaciones de React y Leaflet
+// Importaciones de React, Leaflet y QRCode
 import React, { useEffect, useRef, useState } from 'react';
 import {
   MapContainer,
@@ -10,6 +10,7 @@ import {
 } from 'react-leaflet';
 import { CRS, divIcon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { QRCodeCanvas } from 'qrcode.react';
 
 // Importación de imágenes y datos
 import planoBaja from './assets/PG1-PlantaBaja.jpg';
@@ -30,11 +31,12 @@ function App() {
   const imageHeight = 4963;
   const imageBounds = [[0, 0], [imageHeight, imageWidth]];
 
-  // Estados para aula seleccionada, planta, posición de flecha, y animación del monje
+  // Estados para aula seleccionada, planta, posición de flecha, animación del monje y opción "Imprimible"
   const [aulaActiva, setAulaActiva] = useState(null);
   const [plantaSeleccionada, setPlantaSeleccionada] = useState('Planta Baja');
   const [flechaPosicion, setFlechaPosicion] = useState(null);
   const [monjeFrame, setMonjeFrame] = useState(0);
+  const [imprimible, setImprimible] = useState(false);
 
   // Refs para controlar el índice y el intervalo de animación
   const flechaIndex = useRef(0);
@@ -114,7 +116,6 @@ function App() {
   // Efecto para animar la ruta del monje cuando se selecciona un aula
   useEffect(() => {
     if (!aulaActiva?.ruta) return;
-
     const ruta = aulaActiva.ruta;
     flechaIndex.current = 0;
     setFlechaPosicion(ruta[0]);
@@ -132,7 +133,6 @@ function App() {
     useMapEvent('click', (e) => {
       const { lat, lng } = e.latlng;
       console.log(`📍 Coordenadas clic: [${Math.round(lat)}, ${Math.round(lng)}]`);
-
       // Buscar aula dentro del área clicada
       const aulaClicada = aulas.find(aula => {
         const y1 = aula.coordenadas.infDer[0];
@@ -141,7 +141,6 @@ function App() {
         const x2 = aula.coordenadas.infDer[1];
         return lat >= y1 && lat <= y2 && lng >= x1 && lng <= x2;
       });
-
       setAulaActiva(aulaClicada || null);
     });
     return null;
@@ -153,50 +152,53 @@ function App() {
 
   return (
     <div className="app">
-      {/* Encabezado con selector de planta */}
+      {/* Encabezado con título, checkbox "Imprimible" a la izquierda y selector de planta a la derecha */}
       <header className="app-header">
         <h1>
-          <img src={monje2} alt="Monje" style={{ height: '1.5em', verticalAlign: 'middle', marginRight: '0.5em' }} />
+          <img
+            src={monje2}
+            alt="Monje"
+            style={{ height: '1.5em', verticalAlign: 'middle', marginRight: '0.5em' }}
+          />
           PLAN DE INCENDIO
         </h1>
-        <div className="select-container">
-          <label htmlFor="planta">Selecciona una planta:</label>
-          <select
-            id="planta"
-            value={plantaSeleccionada}
-            onChange={(e) => {
-              // Cambiar de planta y reiniciar selección y animación
-              setPlantaSeleccionada(e.target.value);
-              setAulaActiva(null);
-              setFlechaPosicion(null);
-              clearInterval(animationInterval.current);
-            }}
-          >
-            {Object.keys(planos).map((planta) => (
-              <option key={planta} value={planta}>
-                {planta}
-              </option>
-            ))}
-          </select>
+        <div className="controls">
+          <div className="imprimible-container">
+            <label htmlFor="imprimible">
+              <input
+                type="checkbox"
+                id="imprimible"
+                checked={imprimible}
+                onChange={(e) => setImprimible(e.target.checked)}
+              />
+              Imprimible
+            </label>
+          </div>
+          <div className="planta-container">
+            <label htmlFor="planta">Selecciona una planta:</label>
+            <select
+              id="planta"
+              value={plantaSeleccionada}
+              onChange={(e) => {
+                // Cambiar de planta y reiniciar selección y animación
+                setPlantaSeleccionada(e.target.value);
+                setAulaActiva(null);
+                setFlechaPosicion(null);
+                clearInterval(animationInterval.current);
+              }}
+            >
+              {Object.keys(planos).map((planta) => (
+                <option key={planta} value={planta}>
+                  {planta}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </header>
 
-      {/*ImageOverlay: muestra el plano correspondiente.
-
-        Rectangle: dibuja las aulas (colores y bordes).
-
-        Tooltip: muestra el nombre del aula al pasar el ratón.
-
-        Marker (zonas comunes): muestra etiquetas con nombres de espacios compartidos.
-
-        Flechas: indican el recorrido hacia la salida.
-
-        Monje: se mueve siguiendo la ruta.
-
-        ClickHandler: detecta clics en el plano. 
-        
-      Contenedor del mapa interactivo */}
-      <div style={{ width: '100%', height: 'calc(100vh - 100px)', overflow: 'hidden', margin: 0 }}>
+      {/* Mapa interactivo */}
+      <div className="map-container">
         <MapContainer
           crs={CRS.Simple}
           bounds={imageBounds}
@@ -204,7 +206,7 @@ function App() {
           maxZoom={1}
           maxBounds={imageBounds}
           maxBoundsViscosity={1.0}
-          style={{ width: '100%', height: 'calc(100vh - 100px)' }}
+          style={{ width: '100%', height: '100%' }}
           whenCreated={(map) => map.fitBounds(imageBounds)}
         >
           {/* Imagen del plano */}
@@ -257,23 +259,51 @@ function App() {
               );
             })}
 
-          {/* Mostrar el monje animado moviéndose por la ruta */}
-          {flechaPosicion &&
-            aulaActiva?.ruta && (
-              <Marker
-                position={flechaPosicion}
-                icon={divIcon({
-                  html: `<img src="${monjeFrames[monjeFrame]}" class="monje-animado" />`,
-                  className: '',
-                  iconSize: [40, 40],
-                  iconAnchor: [20, 20]
-                })}
-              />
-            )}
+          {/* Mostrar el monje animado, solo si "Imprimible" no está activado */}
+          {!imprimible && flechaPosicion && aulaActiva?.ruta && (
+            <Marker
+              position={flechaPosicion}
+              icon={divIcon({
+                html: `<img src="${monjeFrames[monjeFrame]}" class="monje-animado" />`,
+                className: '',
+                iconSize: [40, 40],
+                iconAnchor: [20, 20]
+              })}
+            />
+          )}
 
-          {/* Activar handler para clics en el mapa */}
+          {/* Handler de clics en el mapa */}
           <ClickHandler aulas={aulas} />
         </MapContainer>
+
+        {/* Panel de información en la esquina inferior derecha */}
+        {aulaActiva && (
+          <div className="info-panel">
+            <table>
+              <tbody>
+                <tr>
+                  <td className="qr-cell">
+                    {/* Se genera el QR usando el id del aula (o cualquier otro dato representativo) */}
+                    <QRCodeCanvas value={aulaActiva.id} size={80} />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div className="location-info">
+                      <span className="purple-circle"></span>
+                      <span>Usted está aquí</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="aula-info">
+                    {`ID: ${aulaActiva.id} - ${aulaActiva.nombre}`}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   );
