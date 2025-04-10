@@ -3,7 +3,7 @@
       {
         "id": "B105",
         "nombre": "Museo",
-        "sector": "amarillo",
+        "sector": "sector 1",
         "color": "orange",
         "coordenadas": {
           "supIzq": [1604, 3920],
@@ -26,7 +26,7 @@
       {
         "id": "B15",
         "nombre": "CAPILLA",
-        "sector": "amarillo",
+        "sector": "sector 1",
         "color": "orange",
         "coordenadas": {
           "supIzq": [2358, 1192],
@@ -45,7 +45,7 @@
       {
         "id": "B11",
         "nombre": "IGLESIA",
-        "sector": "amarillo",
+        "sector": "sector 1",
         "color": "orange",
         "coordenadas": {
           "supIzq": [2555, 1704],
@@ -64,7 +64,7 @@
       {
         "id": "B104",
         "nombre": "AULA INFORMÁTICA DERECHA",
-        "sector": "amarillo",
+        "sector": "sector 1",
         "color": "orange",
         "coordenadas": {
           "supIzq": [1078, 3902],
@@ -89,7 +89,7 @@
       {
         "id": "B18",
         "nombre": "SACRISTÍA",
-        "sector": "amarillo",
+        "sector": "sector 1",
         "color": "orange",
         "coordenadas": {
           "supIzq": [3160, 2224],
@@ -109,7 +109,7 @@
       {
         "id": "B21",
         "nombre": "ASEO FRENTE CAFETERÍA",
-        "sector": "green",
+        "sector": "sector 2",
         "color": "green",
         "coordenadas": {
           "supIzq": [3171, 2630],
@@ -132,7 +132,7 @@
       {
         "id": "B24",
         "nombre": "CAFETERÍA",
-        "sector": "green",
+        "sector": "sector 2",
         "color": "green",
         "coordenadas": {
           "supIzq": [3174, 3308],
@@ -155,7 +155,7 @@
       {
         "id": "B2",
         "nombre": "SALA DE VISITAS",
-        "sector": "amarillo",
+        "sector": "sector 1",
         "color": "orange",
         "coordenadas": {
           "supIzq": [1048, 2687],
@@ -175,7 +175,7 @@
       {
         "id": "B95",
         "nombre": "TIENDA",
-        "sector": "amarillo",
+        "sector": "sector 1",
         "color": "orange",
         "coordenadas": {
           "supIzq": [1025, 4997],
@@ -199,7 +199,7 @@
       {
         "id": "B93",
         "nombre": "AULA DE MÚSICA",
-        "sector": "amarillo",
+        "sector": "sector 1",
         "color": "orange",
         "coordenadas": {
           "supIzq": [1020, 5467],
@@ -229,7 +229,7 @@
       {
         "id": "B106",
         "nombre": "SECRETARÍA",
-        "sector": "amrillo",
+        "sector": "sector 1",
         "color": "orange",
         "coordenadas": {
           "supIzq": [1034, 3588],
@@ -252,7 +252,7 @@
       {
         "id": "B109",
         "nombre": "ASEO FRENTE A SECRETARÍA",
-        "sector": "amrillo",
+        "sector": "sector 1",
         "color": "orange",
         "coordenadas": {
           "supIzq": [1033, 3318],
@@ -274,7 +274,7 @@
       {
         "id": "B80",
         "nombre": "GIMNASIO (PATIO UNIVERSIDAD)",
-        "sector": "amrillo",
+        "sector": "sector 1",
         "color": "orange",
         "coordenadas": {
           "supIzq": [2692, 5604],
@@ -302,7 +302,7 @@
       {
         "id": "B94",
         "nombre": "Biblioteca",
-        "sector": "amrillo",
+        "sector": "sector 1",
         "color": "orange",
         "coordenadas": {
           "supIzq": [2007, 5596],
@@ -328,7 +328,7 @@
       {
         "id": "B89",
         "nombre": "AULAS NUEVAS 1",
-        "sector": "amarillo",
+        "sector": "sector 1",
         "color": "orange",
         "coordenadas": {
           "supIzq": [2277, 3935],
@@ -353,7 +353,7 @@
       {
         "id": "B92",
         "nombre": "AULAS NUEVAS 2",
-        "sector": "amarillo",
+        "sector": "sector 1",
         "color": "orange",
         "coordenadas": {
           "supIzq": [2379, 3938],
@@ -378,7 +378,7 @@
       {
         "id": "B100",
         "nombre": "PASTORAL",
-        "sector": "amarillo",
+        "sector": "sector 1",
         "color": "orange",
         "coordenadas": {
           "supIzq": [1023, 4216],
@@ -399,7 +399,7 @@
       {
         "id": "B100A",
         "nombre": "ALMACÉN",
-        "sector": "amarillo",
+        "sector": "sector 1",
         "color": "orange",
         "coordenadas": {
           "supIzq": [1023, 4548],
@@ -420,7 +420,7 @@
       {
         "id": "B76",
         "nombre": "SALON DE ACTOS",
-        "sector": "amrillo",
+        "sector": "sector 1",
         "color": "orange",
         "coordenadas": {
           "supIzq": [2689, 3933],
@@ -447,7 +447,7 @@
       {
         "id": "B57",
         "nombre": "AULA B57  (PATIO JUAN XXIII)",
-        "sector": "green",
+        "sector": "sector 2",
         "color": "green",
         "coordenadas": {
           "supIzq": [4039, 3539],
@@ -469,7 +469,7 @@
       {
         "id": "B34",
         "nombre": "ASEOS JUAN XXIII CHICOS",
-        "sector": "green",
+        "sector": "sector 2",
         "color": "green",
         "coordenadas": {
           "supIzq": [4053, 2494],
@@ -486,7 +486,7 @@
       {
         "id": "B32",
         "nombre": "ASEOS JUAN XXIII CHICAS",
-        "sector": "green",
+        "sector": "sector 2",
         "color": "green",
         "coordenadas": {
           "supIzq": [4053, 2280],
@@ -506,7 +506,7 @@
       {
         "id": "B55",
         "nombre": "AULA B55  (PATIO JUAN XXIII)",
-        "sector": "green",
+        "sector": "sector 2",
         "color": "green",
         "coordenadas": {
           "supIzq": [4045, 3269],
@@ -528,7 +528,7 @@
       {
         "id": "B36",
         "nombre": "AULA APOYO  HORNO Y SALA MEDIA PENSION",
-        "sector": "green",
+        "sector": "sector 2",
         "color": "green",
         "coordenadas": {
           "supIzq": [4301, 2948],
@@ -545,7 +545,7 @@
       {
         "id": "B27",
         "nombre": "AULA B27 (PATIO JUAN XXIII)",
-        "sector": "green",
+        "sector": "sector 2",
         "color": "green",
         "coordenadas": {
           "supIzq": [4043, 1832],
@@ -567,7 +567,7 @@
       {
         "id": "B26",
         "nombre": "AULA B26 (PATIO JUAN XXIII)",
-        "sector": "green",
+        "sector": "sector 2",
         "color": "green",
         "coordenadas": {
           "supIzq": [3633, 1792],
@@ -589,7 +589,7 @@
       {
         "id": "B73",
         "nombre": "COCINA",
-        "sector": "green",
+        "sector": "sector 2",
         "color": "green",
         "coordenadas": {
           "supIzq": [3128, 3888],
@@ -617,7 +617,7 @@
       {
         "id": "B75",
         "nombre": "COMEDOR",
-        "sector": "green",
+        "sector": "sector 2",
         "color": "green",
         "coordenadas": {
           "supIzq": [4025, 4268],
@@ -645,7 +645,7 @@
       {
         "id": "B53",
         "nombre": "AULA B53  (PATIO JUAN XXIII)",
-        "sector": "green",
+        "sector": "sector 2",
         "color": "green",
         "coordenadas": {
           "supIzq": [4044, 2966],

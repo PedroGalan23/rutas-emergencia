@@ -13,6 +13,7 @@ import { CRS, divIcon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { QRCodeCanvas } from 'qrcode.react';
 
+import monjeEscalera from './assets/monje-escalera.png';
 import monjeBombero from './assets/monjeBombero.png';
 import salidasEmergencia from './data/salidasEmergencia.json';
 import planoBaja from './assets/PG1-PlantaBaja.jpg';
@@ -282,6 +283,102 @@ function App() {
   });
   // **********************************************************************
 
+  // **********************************************************************
+  // COMPONENTE LeyendaOverlay:
+  // Se posiciona de forma similar al QrOverlay, usando las coordenadas fijas:
+  // Arriba Izquierda [1775, 128], Arriba Derecha [1775, 1280],
+  // Abajo Izquierda [327, 160] y Abajo Derecha [327, 1224].
+  // Se muestra una leyenda con:
+  // - Los sectores únicos de las aulas (con su color asignado y nombre del sector).
+  // - La imagen monjeBombero que indica "Salidas".
+  // - La imagen monjeEscalera que indica "Escaleras".
+  // **********************************************************************
+  const LeyendaOverlay = React.memo(function LeyendaOverlay({ plantaSeleccionada }) {
+    const map = useMap();
+    const overlayRef = useRef(null);
+    const prevPointRef = useRef({ x: 0, y: 0 });
+    // Coordenadas fijas para la leyenda:
+    // Arriba Izquierda [1775, 128] y Abajo Derecha [327, 1224]
+    const leyendaCoords = { supIzq: [1775, 128], infDer: [327, 1224] };
+    const leyendaCenter = {
+      lat: (leyendaCoords.supIzq[0] + leyendaCoords.infDer[0]) / 2,
+      lng: (leyendaCoords.supIzq[1] + leyendaCoords.infDer[1]) / 2
+    };
+
+    useLayoutEffect(() => {
+      function updatePosition() {
+        if (overlayRef.current) {
+          const point = map.latLngToContainerPoint(leyendaCenter);
+          if (
+            Math.abs(point.x - prevPointRef.current.x) < 1 &&
+            Math.abs(point.y - prevPointRef.current.y) < 1
+          ) {
+            return;
+          }
+          overlayRef.current.style.left = `${point.x}px`;
+          overlayRef.current.style.top = `${point.y}px`;
+          prevPointRef.current = { x: point.x, y: point.y };
+        }
+      }
+      map.on('zoomend moveend', updatePosition);
+      updatePosition();
+      return () => {
+        map.off('zoomend moveend', updatePosition);
+      };
+    }, [map, leyendaCenter]);
+
+    // Obtener los sectores únicos de las aulas de la planta actual
+    const currentAulas = aulasData[plantaSeleccionada] || [];
+    const uniqueSectors = [];
+    currentAulas.forEach((aula) => {
+      if (!uniqueSectors.some(item => item.sector === aula.sector)) {
+        uniqueSectors.push({ sector: aula.sector, color: aula.color });
+      }
+    });
+
+    return (
+      <div
+        ref={overlayRef}
+        style={{
+          position: 'absolute',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 1000,
+          padding: '10px',
+          border: '2px solid black',
+          backgroundColor: 'white',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '8px',
+          maxWidth: '200px'
+        }}
+      >
+        <div style={{ fontWeight: 'bold', marginBottom: '4px', textAlign: 'center' }}>Leyenda</div>
+        {uniqueSectors.map((item, index) => (
+          <div key={index} style={{ display: 'flex', alignItems: 'center' }}>
+            <span style={{
+                display: 'inline-block',
+                width: '15px',
+                height: '15px',
+                borderRadius: '50%',
+                backgroundColor: item.color,
+                marginRight: '6px'
+              }}></span>
+            <span>{item.sector}</span>
+          </div>
+        ))}
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <img src={monjeBombero} alt="Salidas" style={{ height: '30px', marginRight: '6px' }} />
+          <span>Salidas</span>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <img src={monjeEscalera} alt="Escaleras" style={{ height: '30px', marginRight: '6px' }} />
+          <span>Escaleras</span>
+        </div>
+      </div>
+    );
+  });
+  // **********************************************************************
+
   const aulas = aulasData[plantaSeleccionada];
   const zonasComunes = zonasComunesData[plantaSeleccionada] || [];
 
@@ -292,22 +389,31 @@ function App() {
           <img
             src={monje2}
             alt="Monje"
-            style={{ height: '1.5em', verticalAlign: 'middle', marginRight: '0.5em' }}
+            style={{ height: '1.8em', verticalAlign: 'middle', marginRight: '0.5em' }}
           />
           PLAN DE INCENDIO
         </h1>
+        <img
+      src={monjeBombero}
+      alt="Salida Emergencia"
+      style={{ height: '3.4em', verticalAlign: 'middle', marginLeft: '-55.2em' }}
+    />
         <div className="controls">
-          <div className="imprimible-container">
-            <label htmlFor="imprimible">
+        <div className="imprimible-container">
+          <div className="switch-wrapper">
+            <label className="switch">
               <input
                 type="checkbox"
                 id="imprimible"
                 checked={imprimible}
                 onChange={(e) => setImprimible(e.target.checked)}
               />
-              Imprimible
+              <span className="slider round"></span>
             </label>
+            <span className="switch-label">Modo de impresión</span>
           </div>
+        </div>
+
           <div className="planta-container">
             <label htmlFor="planta">Selecciona una planta:</label>
             <select
@@ -427,6 +533,8 @@ function App() {
 
           {/* Se agrega el componente QrOverlay para mostrar el QR en las coordenadas deseadas */}
           <QrOverlay aulaActiva={aulaActiva} plantaSeleccionada={plantaSeleccionada} />
+          {/* Se agrega el componente LeyendaOverlay para mostrar la leyenda en las coordenadas indicadas */}
+          <LeyendaOverlay plantaSeleccionada={plantaSeleccionada} />
         </MapContainer>
 
         {/*
