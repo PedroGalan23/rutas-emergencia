@@ -357,11 +357,6 @@ function App() {
           />
           PLAN DE INCENDIO
         </h1>
-        <img
-          src={monjeBombero}
-          alt="Salida Emergencia"
-          style={{ height: '3.4em', verticalAlign: 'middle', marginLeft: '-55.2em' }}
-        />
         <div className="controls">
           <div className="imprimible-container">
             <div className="switch-wrapper">
@@ -472,7 +467,7 @@ function App() {
                   if (plantaSeleccionada !== "Planta Baja") {
                     // Si no estás en la planta baja, cambia a Planta Baja sin mostrar ruta.
                     setPlantaSeleccionada("Planta Baja");
-                    setAulaActiva(null);
+                    setAulaActiva(escalera);
                   } else {
                     // En la planta baja, al pulsar la escalera se muestra la ruta como aula normal.
                     setAulaActiva(escalera);
