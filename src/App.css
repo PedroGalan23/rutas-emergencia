@@ -225,16 +225,45 @@ body {
 
 /* Header aún más compacto para pantallas muy pequeñas */
 @media (max-width: 480px) {
+  /* El header ocupa el 100% en vertical y el título se centra */
+  .app-header {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+  }
+  
+  /* El Título se muestra en una línea completa arriba */
   .app-header h1 {
-    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Contenedor de controles: 
+     el switch (Modo de impresión) a la izquierda, 
+     y el selector de planta a la derecha */
+  .controls {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
+  /* Ajustamos el tamaño de la fuente para que quepa bien en pantallas pequeñas */
+  .imprimible-container label,
   .planta-container label {
     font-size: 0.8rem;
   }
-
+  
+  /* Disminuye un poco el tamaño del select en móvil */
   .planta-container select {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.5rem;
+  }
+  
+  /* Ajusta el tamaño del texto de "Modo de impresión" si deseas hacerlo más pequeño */
+  .switch-label {
+    font-size: 0.85rem; 
   }
 }
 /* Estilos para el switch */
