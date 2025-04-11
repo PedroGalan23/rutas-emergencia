@@ -150,7 +150,27 @@ function App() {
       iconAnchor: [0, 0]
     });
   }
-  
+  // Efecto para actualizar la planta seleccionada
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const plantaParam = searchParams.get('planta');
+    if (plantaParam) {
+      setPlantaSeleccionada(plantaParam);
+    }
+  }, []);
+
+  // Efecto para actualizar el aula activa, en función de la planta seleccionada
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const aulaParam = searchParams.get('id');
+    if (aulaParam) {
+      const aulaPreseleccionada = aulasData[plantaSeleccionada]?.find(aula => aula.id === aulaParam);
+      if (aulaPreseleccionada) {
+        setAulaActiva(aulaPreseleccionada);
+      }
+    }
+  }, [plantaSeleccionada]);
+
   // Animación del monje.
   useEffect(() => {
     const interval = setInterval(() => {
