@@ -372,25 +372,29 @@ function App() {
               <span className="switch-label">Modo de impresión</span>
             </div>
           </div>
-          <div className="planta-container">
-            <label htmlFor="planta">Selecciona una planta:</label>
-            <select
-              id="planta"
-              value={plantaSeleccionada}
-              onChange={(e) => {
-                setPlantaSeleccionada(e.target.value);
-                setAulaActiva(null);
-                setFlechaPosicion(null);
-                clearInterval(animationInterval.current);
-              }}
-            >
-              {Object.keys(planos).map((planta) => (
-                <option key={planta} value={planta}>
-                  {planta}
-                </option>
-              ))}
-            </select>
+          <div className="selector-wrapper">
+            <label htmlFor="planta" className="selector-label">Selecciona una planta:</label>
+            <div className="custom-select">
+              <select
+                id="planta"
+                value={plantaSeleccionada}
+                onChange={(e) => {
+                  setPlantaSeleccionada(e.target.value);
+                  setAulaActiva(null);
+                  setFlechaPosicion(null);
+                  clearInterval(animationInterval.current);
+                }}
+              >
+                {Object.keys(planos).map((planta) => (
+                  <option key={planta} value={planta}>
+                    {planta}
+                  </option>
+                ))}
+              </select>
+              <span className="custom-arrow"></span>
+            </div>
           </div>
+
         </div>
       </header>
       <div className="map-container">

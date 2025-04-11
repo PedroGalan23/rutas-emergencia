@@ -310,3 +310,60 @@ input:checked + .slider:before {
   font-weight: 500;
   color: #ffffff;
 }
+
+/* Contenedor del selector y etiqueta */
+.selector-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 1em;
+}
+
+.selector-label {
+  margin-bottom: 4px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+/* Contenedor personalizado para el select */
+.custom-select {
+  position: relative;
+  width: 200px; /* Ajusta el ancho si es necesario */
+}
+
+/* Estilos del select */
+.custom-select select {
+  width: 100%;
+  padding: 8px 40px 8px 12px; /* Se deja espacio a la derecha para la flecha */
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background: #fff;
+  color: #333;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estado de foco */
+.custom-select select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+}
+
+/* Flecha decorativa */
+.custom-select .custom-arrow {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #333;
+  transform: translateY(-50%);
+}
