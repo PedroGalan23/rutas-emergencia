@@ -389,7 +389,7 @@ function App() {
                 />
                 <span className="slider round"></span>
               </label>
-              <span className="switch-label">Modo de impresión</span>
+              <span className="switch-label">Modo Impresión</span>
             </div>
           </div>
           <div className="selector-wrapper">
