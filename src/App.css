@@ -223,20 +223,49 @@ body {
   }
 }
 
-/* Header aún más compacto para pantallas muy pequeñas */
 @media (max-width: 480px) {
+  /* El header ocupa el 100% en vertical y el título se centra */
+  .app-header {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+  }
+  
+  /* El Título se muestra en una línea completa arriba */
   .app-header h1 {
-    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Contenedor de controles: 
+     el switch (Modo de impresión) a la izquierda, 
+     y el selector de planta a la derecha */
+  .controls {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
+  /* Ajustamos el tamaño de la fuente para que quepa bien en pantallas pequeñas */
+  .imprimible-container label,
   .planta-container label {
     font-size: 0.8rem;
   }
-
+  
+  /* Disminuye un poco el tamaño del select en móvil */
   .planta-container select {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.5rem;
+  }
+  
+  /* Ajusta el tamaño del texto de "Modo de impresión" si deseas hacerlo más pequeño */
+  .switch-label {
+    font-size: 0.85rem; 
   }
 }
+
 /* Estilos para el switch */
 /* Contenedor para centrar el switch y el texto */
 .switch-wrapper {
@@ -250,8 +279,8 @@ body {
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 45px;   /* antes 60px */
+  height: 25px;  /* antes 34px */
 }
 
 .switch input { 
@@ -269,29 +298,32 @@ body {
   bottom: 0;
   background-color: #ccc;
   transition: 0.4s;
+  border-radius: 34px;
 }
 
 .slider:before {
-  position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
+  position: absolute;
+  height: 19px;  /* antes 26px */
+  width: 19px;   /* antes 26px */
+  left: 3px;
+  bottom: 3px;
+  background-color: #fff;
   transition: 0.4s;
+  border-radius: 50%;
 }
 
+/* Cuando está activo (checked) */
 input:checked + .slider {
   background-color: #2196F3;
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+input:checked + .slider:before {
+  transform: translateX(20px); /* ajusta para que coincida con el nuevo ancho */
 }
 
-input:checked + .slider:before {
-  transform: translateX(26px);
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
 }
 
 /* Slider redondeado */
@@ -309,61 +341,4 @@ input:checked + .slider:before {
   font-size: 16px;
   font-weight: 500;
   color: #ffffff;
-}
-
-/* Contenedor del selector y etiqueta */
-.selector-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 0 1em;
-}
-
-.selector-label {
-  margin-bottom: 4px;
-  font-weight: bold;
-  font-size: 14px;
-  color: #ffffff;
-}
-
-/* Contenedor personalizado para el select */
-.custom-select {
-  position: relative;
-  width: 200px; /* Ajusta el ancho si es necesario */
-}
-
-/* Estilos del select */
-.custom-select select {
-  width: 100%;
-  padding: 8px 40px 8px 12px; /* Se deja espacio a la derecha para la flecha */
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-  background: #fff;
-  color: #333;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Estado de foco */
-.custom-select select:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
-}
-
-/* Flecha decorativa */
-.custom-select .custom-arrow {
-  position: absolute;
-  top: 50%;
-  right: 12px;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 6px solid #333;
-  transform: translateY(-50%);
 }
