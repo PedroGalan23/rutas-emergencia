@@ -48,6 +48,39 @@ body {
   flex-direction: column;
 }
 
+/* Ejemplo de reglas globales para imprimir en toda la aplicación */
+@media print {
+  /* Ocultar la barra de cabecera y otros controles de la app */
+  .app-header,
+  .controls,
+  .someSidebar,
+  .someFooter {
+    display: none !important;
+  }
+  
+  /* El contenedor del mapa debe ocupar todo el ancho disponible */
+  .map-container {
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    break-inside: avoid;
+  }
+  
+  /* Para Leaflet (ajusta la altura mínima a tu gusto) */
+  .leaflet-container {
+    width: 100% !important;
+    min-height: 800px !important;
+    height: auto !important;
+  }
+  
+  /* Si deseas una página A4 apaisada (no todos los navegadores lo respetan) */
+  @page {
+    size: A4 landscape;
+    margin: 10mm;
+  }
+}
+
+
 .planta-container label {
   font-size: 0.95rem;
   margin-bottom: 0.25rem;

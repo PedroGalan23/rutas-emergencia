@@ -460,7 +460,7 @@ const LeyendaOverlay = React.memo(function LeyendaOverlay({ plantaSeleccionada }
                 key={`salida-${index}`}
                 position={salida.coordenadas}
                 icon={divIcon({
-                  html: `<img src="${imageSrc}" alt="${salida.nombre}" style="width:35px; height:35px;" />`,
+                  html: `<img src="${imageSrc}" alt="${salida.nombre}" style="width:45px; height:45px;" />`,
                   className: '',
                   iconSize: [25, 25],
                   iconAnchor: [10, 10]

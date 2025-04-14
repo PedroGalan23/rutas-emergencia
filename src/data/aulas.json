@@ -6,6 +6,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [1604, 3920],
           "infDer": [1296, 4164]
@@ -30,6 +31,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2358, 1192],
           "infDer": [1882, 1652]
@@ -50,6 +52,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2555, 1704],
           "infDer": [770, 2320]
@@ -70,6 +73,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [1078, 3902],
           "infDer": [770, 4170]
@@ -96,6 +100,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3160, 2224],
           "infDer": [2816, 2566]
@@ -117,6 +122,7 @@
         "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3171, 2630],
           "infDer": [2704, 2994]
@@ -141,6 +147,7 @@
         "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3174, 3308],
           "infDer": [2702, 3662]
@@ -165,6 +172,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [1048, 2687],
           "infDer": [771, 3302]
@@ -185,6 +193,8 @@
         "nombre": "TIENDA",
         "sector": "Salida Conserjería",
         "color": "orange",
+        "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [1025, 4997],
           "infDer": [770, 5451]
@@ -210,6 +220,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [1020, 5467],
           "infDer": [769, 5845]
@@ -241,6 +252,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [1034, 3588],
           "infDer": [786, 3840]
@@ -265,6 +277,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [1033, 3318],
           "infDer": [961, 3500]
@@ -288,6 +301,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2692, 5604],
           "infDer": [2046, 5844]
@@ -317,6 +331,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2007, 5596],
           "infDer": [1063, 5841]
@@ -344,6 +359,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2277, 3935],
           "infDer": [2167, 4201]
@@ -370,6 +386,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2379, 3938],
           "infDer": [2277, 4201]
@@ -396,6 +413,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [1023, 4216],
           "infDer": [769, 4548]
@@ -418,6 +436,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [1023, 4548],
           "infDer": [771, 4758]
@@ -440,6 +459,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2689, 3933],
           "infDer": [2421, 5541]
@@ -468,6 +488,7 @@
         "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"3INFC",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [4039, 3539],
           "infDer": [3781, 3912]
@@ -491,6 +512,7 @@
         "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [4053, 2494],
           "infDer": [3771, 2696]
@@ -509,6 +531,7 @@
         "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [4053, 2280],
           "infDer": [3819, 2496]
@@ -530,6 +553,7 @@
         "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"3INFB",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [4045, 3269],
           "infDer": [3780, 3521]
@@ -553,6 +577,7 @@
         "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [4301, 2948],
           "infDer": [4099, 3214]
@@ -571,6 +596,7 @@
         "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"5INFC",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [4043, 1832],
           "infDer": [3641, 2118]
@@ -594,6 +620,7 @@
         "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"5INFD",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3633, 1792],
           "infDer": [3117, 2066]
@@ -617,6 +644,7 @@
         "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3128, 3888],
           "infDer": [2959, 4221]
@@ -646,6 +674,7 @@
         "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [4025, 4268],
           "infDer": [2753, 4656]
@@ -675,6 +704,7 @@
         "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"3INFA",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [4044, 2966],
           "infDer": [3784, 3265]
@@ -699,6 +729,7 @@
         "sector": "pink",
         "color": "pink",
         "grupo":"1PRIB",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [4015, 1976],
           "infDer": [3711, 2158]
@@ -710,6 +741,7 @@
         "sector": "pink",
         "color": "pink",
         "grupo":"1PRIC",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3699, 1944],
           "infDer": [3375, 2134]
@@ -721,6 +753,7 @@
         "sector": "pink",
         "color": "pink",
         "grupo":"1PRID",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3369, 1910],
           "infDer": [3101, 2170]
@@ -732,6 +765,7 @@
         "sector": "pink",
         "color": "pink",
         "grupo":"2PRIA",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3961, 2398],
           "infDer": [3753, 2716]
@@ -743,6 +777,7 @@
         "sector": "yellow",
         "color": "yellow",
         "grupo":"1PRIA",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3961, 2736],
           "infDer": [3783, 3036]
@@ -754,6 +789,7 @@
         "sector": "yellow",
         "color": "yellow",
         "grupo":"4INFB",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3961, 3046],
           "infDer": [3761, 3418]
@@ -765,6 +801,7 @@
         "sector": "orange",
         "color": "orange",
         "grupo":"5INFB",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [4407, 3066],
           "infDer": [4079, 3268]
@@ -776,6 +813,7 @@
         "sector": "yellow",
         "color": "yellow",
         "grupo":"4INFD",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3961, 3438],
           "infDer": [3763, 3776]
@@ -787,6 +825,7 @@
         "sector": "yellow",
         "color": "yellow",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [4017, 3796],
           "infDer": [3763, 4026]
@@ -798,6 +837,7 @@
         "sector": "orange",
         "color": "orange",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [4725, 3388],
           "infDer": [4231, 4022]
@@ -810,6 +850,7 @@
         "sector": "orange",
         "color": "orange",
         "grupo":"5INFA",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [4555, 3386],
           "infDer": [4079, 3870]
@@ -823,6 +864,7 @@
         "sector": "#95A472",
         "color": "#95A472",
         "grupo":"2PRIB",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [930, 2271],
           "infDer": [751, 2590]
@@ -843,6 +885,7 @@
         "sector": "#95A472",
         "color": "#95A472",
         "grupo":"2PRIC",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [926, 2612],
           "infDer": [748, 2966]
@@ -862,6 +905,7 @@
         "sector": "#95A472",
         "color": "#95A472",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [932, 2978],
           "infDer": [748, 3238]
@@ -879,6 +923,7 @@
         "sector": "#95A472",
         "color": "#95A472",
         "grupo":"6PRIC",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [1262, 3270],
           "infDer": [1074, 3802]
@@ -895,6 +940,7 @@
         "sector": "#95A472",
         "color": "#95A472",
         "grupo":"2PRID",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [932, 3453],
           "infDer": [740, 3805]
@@ -912,6 +958,7 @@
         "sector": "#95A472",
         "color": "#95A472",
         "grupo":"5PRIC",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [1264, 2670],
           "infDer": [1072, 3260]
@@ -931,6 +978,7 @@
         "sector": "blue",
         "color": "blue",
         "grupo":"6PRID",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2450, 3654],
           "infDer": [2038, 3818]
@@ -952,6 +1000,7 @@
         "sector": "blue",
         "color": "blue",
         "grupo":"6PRIB",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2038, 3638],
           "infDer": [1704, 3812]
@@ -969,6 +1018,7 @@
         "sector": "blue",
         "color": "blue",
         "grupo":"6PRIA",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [1698, 3632],
           "infDer": [1276, 3804]
@@ -986,6 +1036,7 @@
         "sector": "blue",
         "color": "blue",
         "grupo":"5PRID",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [916, 4168],
           "infDer": [741, 4567]
@@ -1008,6 +1059,7 @@
         "sector": "blue",
         "color": "blue",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [911, 4589],
           "infDer": [741, 4746]
@@ -1030,6 +1082,7 @@
         "sector": "blue",
         "color": "blue",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [915, 5035],
           "infDer": [742, 5423]
@@ -1054,6 +1107,7 @@
         "sector": "blue",
         "color": "blue",
         "grupo":"2BACC",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [1490, 5586],
           "infDer": [1058, 5788]
@@ -1080,6 +1134,7 @@
         "sector": "blue",
         "color": "blue",
         "grupo":"2BAHB",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [1844, 5598],
           "infDer": [1512, 5778]
@@ -1106,6 +1161,7 @@
         "sector": "blue",
         "color": "blue",
         "grupo":"2BAHA",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2286, 5606],
           "infDer": [1874, 5776]
@@ -1134,6 +1190,7 @@
         "sector": "blue",
         "color": "blue",
         "grupo":"2BACD",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2709, 5550],
           "infDer": [2301, 5774]
@@ -1163,6 +1220,7 @@
         "sector": "blue",
         "color": "blue",
         "grupo":"4ESOA",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2680, 5133],
           "infDer": [2402, 5510]
@@ -1184,6 +1242,7 @@
         "sector": "blue",
         "color": "blue",
         "grupo":"4ESOB",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2681, 4853],
           "infDer": [2464, 5115]
@@ -1205,6 +1264,7 @@
         "sector": "blue",
         "color": "blue",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2679, 4489],
           "infDer": [2499, 4706]
@@ -1225,6 +1285,7 @@
         "sector": "gold",
         "color": "gold",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3110, 3893],
           "infDer": [2943, 4063]
@@ -1243,6 +1304,7 @@
         "sector": "gold",
         "color": "gold",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3309, 3898],
           "infDer": [3152, 4070]
@@ -1262,6 +1324,7 @@
         "sector": "gold",
         "color": "gold",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3510, 3899],
           "infDer": [3354, 4072]
@@ -1281,6 +1344,7 @@
         "sector": "gold",
         "color": "gold",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3713, 3905],
           "infDer": [3554, 4075]
@@ -1302,6 +1366,7 @@
         "sector": "#F86624",
         "color": "#F86624",
         "grupo":"3ESOA",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3941, 3464],
           "infDer": [3767, 3852]
@@ -1322,6 +1387,7 @@
         "sector": "#F86624",
         "color": "#F86624",
         "grupo":"3ESOB",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3943, 3035],
           "infDer": [3766, 3452]
@@ -1343,6 +1409,7 @@
         "sector": "#F86624",
         "color": "#F86624",
         "grupo":"4ESOC",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3949, 2606],
           "infDer": [3762, 3023]
@@ -1366,6 +1433,7 @@
         "sector": "#F86624",
         "color": "#F86624",
         "grupo":"1BACD",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3947, 2213],
           "infDer": [3758, 2592]
@@ -1391,6 +1459,7 @@
         "sector": "#F86624",
         "color": "#F86624",
         "grupo":"1BACC",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [4030, 1768],
           "infDer": [3632, 1984]
@@ -1419,6 +1488,7 @@
         "sector": "#F86624",
         "color": "#F86624",
         "grupo":"1BAHA",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3627, 1730],
           "infDer": [3132, 1950]
@@ -1448,6 +1518,7 @@
         "sector": "#F86624",
         "color": "#F86624",
         "grupo":"1BAHB",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3120, 1679],
           "infDer": [2824, 1975]
@@ -1480,6 +1551,7 @@
         "sector": "yellow",
         "color": "yellow",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3179, 1826],
           "infDer": [2845, 2088]
@@ -1510,6 +1582,7 @@
         "sector": "yellow",
         "color": "yellow",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3633, 1868],
           "infDer": [3181, 2058]
@@ -1540,6 +1613,7 @@
         "sector": "yellow",
         "color": "yellow",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [4042, 1912],
           "infDer": [3638, 2096]
@@ -1568,6 +1642,7 @@
         "sector": "yellow",
         "color": "yellow",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3950, 2352],
           "infDer": [3778, 2708]
@@ -1593,6 +1668,7 @@
         "sector": "yellow",
         "color": "yellow",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3950, 2704],
           "infDer": [3770, 3136]
@@ -1616,6 +1692,7 @@
         "sector": "yellow",
         "color": "yellow",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3950, 3128],
           "infDer": [3786, 3560]
@@ -1637,6 +1714,7 @@
         "sector": "yellow",
         "color": "yellow",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3950, 3552],
           "infDer": [3782, 3956]
@@ -1656,6 +1734,7 @@
         "sector": "yellow",
         "color": "yellow",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [3946, 4048],
           "infDer": [3782, 4248]
@@ -1674,6 +1753,7 @@
         "sector": "green",
         "color": "green",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2691, 4620],
           "infDer": [2475, 4948]
@@ -1685,6 +1765,7 @@
         "sector": "green",
         "color": "green",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2691, 4942],
           "infDer": [2473, 5238]
@@ -1696,6 +1777,7 @@
         "sector": "green",
         "color": "green",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2691, 5238],
           "infDer": [2471, 5632]
@@ -1707,6 +1789,7 @@
         "sector": "green",
         "color": "green",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2691, 5670],
           "infDer": [2415, 5904]
@@ -1718,6 +1801,7 @@
         "sector": "green",
         "color": "green",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2415, 5742],
           "infDer": [2151, 5906]
@@ -1729,6 +1813,7 @@
         "sector": "green",
         "color": "green",
         "grupo":"4PRID",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [2151, 5741],
           "infDer": [1984, 5904]
@@ -1740,6 +1825,7 @@
         "sector": "green",
         "color": "green",
         "grupo":"4PRIC",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [1890, 5730],
           "infDer": [1679, 5906]
@@ -1751,6 +1837,7 @@
         "sector": "green",
         "color": "green",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [1677, 5717],
           "infDer": [1482, 5904]
@@ -1762,6 +1849,7 @@
         "sector": "green",
         "color": "green",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [1483, 5717],
           "infDer": [1291, 5901]
@@ -1773,6 +1861,7 @@
         "sector": "green",
         "color": "green",
         "grupo":"4PRIB",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [1292, 5641],
           "infDer": [1059, 5908]
@@ -1793,6 +1882,7 @@
         "sector": "green",
         "color": "green",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [955, 5638],
           "infDer": [756, 5917]
@@ -1813,6 +1903,7 @@
         "sector": "green",
         "color": "green",
         "grupo":"4PRIA",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [962, 5295],
           "infDer": [761, 5641]
@@ -1831,6 +1922,7 @@
         "sector": "green",
         "color": "green",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [961, 5003],
           "infDer": [762, 5296]
@@ -1847,6 +1939,7 @@
         "sector": "green",
         "color": "green",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [959, 4703],
           "infDer": [750, 4871]
@@ -1863,6 +1956,7 @@
         "sector": "green",
         "color": "green",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [960, 4282],
           "infDer": [755, 4702]
@@ -1880,6 +1974,7 @@
         "sector": "blue",
         "color": "blue",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [947, 3571],
           "infDer": [752, 3923]
@@ -1897,6 +1992,7 @@
         "sector": "blue",
         "color": "blue",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [945, 3093],
           "infDer": [754, 3366]
@@ -1914,6 +2010,7 @@
         "sector": "blue",
         "color": "blue",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [943, 2725],
           "infDer": [761, 3095]
@@ -1934,6 +2031,7 @@
         "sector": "blue",
         "color": "blue",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [941, 2387],
           "infDer": [764, 2725]
@@ -1956,6 +2054,7 @@
         "sector": "yellow",
         "color": "yellow",
         "grupo":"",
+        "coordinadora": false,
         "coordenadas": {
           "supIzq": [4433, 3008],
           "infDer": [4101, 3272]
