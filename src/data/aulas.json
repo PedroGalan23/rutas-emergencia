@@ -1548,8 +1548,8 @@
       {
         "id": "S1",
         "nombre": "S1",
-        "sector": "yellow",
-        "color": "yellow",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -1579,8 +1579,8 @@
       {
         "id": "S2",
         "nombre": "S2",
-        "sector": "yellow",
-        "color": "yellow",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -1610,8 +1610,8 @@
       {
         "id": "S3",
         "nombre": "S3",
-        "sector": "yellow",
-        "color": "yellow",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -1639,8 +1639,8 @@
       {
         "id": "S4",
         "nombre": "S4",
-        "sector": "yellow",
-        "color": "yellow",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -1665,8 +1665,8 @@
       {
         "id": "S5",
         "nombre": "S5",
-        "sector": "yellow",
-        "color": "yellow",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -1689,8 +1689,8 @@
       {
         "id": "S6",
         "nombre": "S6",
-        "sector": "yellow",
-        "color": "yellow",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -1711,8 +1711,8 @@
       {
         "id": "S7",
         "nombre": "S7",
-        "sector": "yellow",
-        "color": "yellow",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -1731,8 +1731,8 @@
       {
         "id": "S8",
         "nombre": "S8",
-        "sector": "yellow",
-        "color": "yellow",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -1750,8 +1750,8 @@
       {
         "id": "S9",
         "nombre": "S9",
-        "sector": "green",
-        "color": "green",
+        "sector": "Salida Conserjería",
+        "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -1790,8 +1790,8 @@
       {
         "id": "S10",
         "nombre": "S10",
-        "sector": "green",
-        "color": "green",
+        "sector": "Salida Conserjería",
+        "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -1828,8 +1828,8 @@
       {
         "id": "S11",
         "nombre": "S11",
-        "sector": "green",
-        "color": "green",
+        "sector": "Salida Conserjería",
+        "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -1864,8 +1864,8 @@
       {
         "id": "S12",
         "nombre": "S12",
-        "sector": "green",
-        "color": "green",
+        "sector": "Salida Conserjería",
+        "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -1897,8 +1897,8 @@
       {
         "id": "S13",
         "nombre": "S13",
-        "sector": "green",
-        "color": "green",
+        "sector": "Salida Conserjería",
+        "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -1928,8 +1928,8 @@
       {
         "id": "S14",
         "nombre": "S14",
-        "sector": "green",
-        "color": "green",
+        "sector": "Salida Conserjería",
+        "color": "orange",
         "grupo":"4PRID",
         "coordinadora": false,
         "coordenadas": {
@@ -1958,8 +1958,8 @@
       {
         "id": "S15",
         "nombre": "S15",
-        "sector": "green",
-        "color": "green",
+        "sector": "Salida Conserjería",
+        "color": "orange",
         "grupo":"4PRIC",
         "coordinadora": false,
         "coordenadas": {
@@ -1985,8 +1985,8 @@
       {
         "id": "S16",
         "nombre": "S16",
-        "sector": "green",
-        "color": "green",
+        "sector": "Salida Conserjería",
+        "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -2010,8 +2010,8 @@
       {
         "id": "S17",
         "nombre": "S17",
-        "sector": "green",
-        "color": "green",
+        "sector": "Salida Conserjería",
+        "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -2034,8 +2034,8 @@
       {
         "id": "S18",
         "nombre": "S18",
-        "sector": "green",
-        "color": "green",
+        "sector": "Salida Conserjería",
+        "color": "orange",
         "grupo":"4PRIB",
         "coordinadora": false,
         "coordenadas": {
@@ -2055,8 +2055,8 @@
       {
         "id": "S19",
         "nombre": "S19",
-        "sector": "green",
-        "color": "green",
+        "sector": "Salida Conserjería",
+        "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -2076,8 +2076,8 @@
       {
         "id": "S20",
         "nombre": "S20",
-        "sector": "green",
-        "color": "green",
+        "sector": "Salida Conserjería",
+        "color": "orange",
         "grupo":"4PRIA",
         "coordinadora": false,
         "coordenadas": {
@@ -2095,8 +2095,8 @@
       {
         "id": "S21",
         "nombre": "S21",
-        "sector": "green",
-        "color": "green",
+        "sector": "Salida Conserjería",
+        "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -2112,8 +2112,8 @@
       {
         "id": "S22",
         "nombre": "S22",
-        "sector": "green",
-        "color": "green",
+        "sector": "Salida Conserjería",
+        "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -2129,8 +2129,8 @@
       {
         "id": "S23",
         "nombre": "S23",
-        "sector": "green",
-        "color": "green",
+        "sector": "Salida Conserjería",
+        "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -2147,8 +2147,8 @@
       {
         "id": "S24",
         "nombre": "S24",
-        "sector": "blue",
-        "color": "blue",
+        "sector": "Salida Conserjería",
+        "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -2165,8 +2165,8 @@
       {
         "id": "S25",
         "nombre": "S25",
-        "sector": "blue",
-        "color": "blue",
+        "sector": "Salida Conserjería",
+        "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -2183,8 +2183,8 @@
       {
         "id": "S26",
         "nombre": "S26",
-        "sector": "blue",
-        "color": "blue",
+        "sector": "Salida Conserjería",
+        "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -2204,8 +2204,8 @@
       {
         "id": "S27",
         "nombre": "S27",
-        "sector": "blue",
-        "color": "blue",
+        "sector": "Salida Conserjería",
+        "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -2227,8 +2227,8 @@
       {
         "id": "S28",
         "nombre": "S28",
-        "sector": "yellow",
-        "color": "yellow",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
