@@ -726,135 +726,210 @@
       {
         "id": "E10",
         "nombre": "AULA E10 (ENTREPLANTA MIGUEL HERNÁNDEZ)",
-        "sector": "pink",
-        "color": "pink",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"1PRIB",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [4015, 1976],
           "infDer": [3711, 2158]
-        }
+        },
+        "ruta": [
+          [3784, 2160],
+          [3936, 2240],
+          [3952, 2404],
+          [4020, 2692],
+          [4016, 2928],
+          [4016, 3272],
+          [4012, 3468],
+          [4016, 3700],
+          [4004, 3816]
+        ]
       },
       {
         "id": "E11",
         "nombre": "AULA E11 (ENTREPLANTA MIGUEL HERNÁNDEZ)",
-        "sector": "pink",
-        "color": "pink",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"1PRIC",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [3699, 1944],
           "infDer": [3375, 2134]
-        }
+        },
+        "ruta": [
+          [3468, 2136],
+          [3784, 2160],
+          [3936, 2240],
+          [3952, 2404],
+          [4020, 2692],
+          [4016, 2928],
+          [4016, 3272],
+          [4012, 3468],
+          [4016, 3700],
+          [4004, 3816]
+        ]
       },
       {
         "id": "E12",
         "nombre": "AULA E12 (ENTREPLANTA MIGUEL HERNÁNDEZ)",
-        "sector": "pink",
-        "color": "pink",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"1PRID",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [3369, 1910],
           "infDer": [3101, 2170]
-        }
+        },
+        "ruta": [
+          [3468, 2136],
+          [3784, 2160],
+          [3936, 2240],
+          [3952, 2404],
+          [4020, 2692],
+          [4016, 2928],
+          [4016, 3272],
+          [4012, 3468],
+          [4016, 3700],
+          [4004, 3816]
+        ]
       },
       {
         "id": "E14",
         "nombre": "AULA E14 (ENTREPLANTA MONJAS)",
-        "sector": "pink",
-        "color": "pink",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"2PRIA",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [3961, 2398],
           "infDer": [3753, 2716]
-        }
+        },
+        "ruta": [
+          [4020, 2692],
+          [4016, 2928],
+          [4016, 3272],
+          [4012, 3468],
+          [4016, 3700],
+          [4004, 3816]
+        ]
       },
       {
         "id": "E15",
         "nombre": "AULA E15 (ENTREPLANTA MONJAS)",
-        "sector": "yellow",
-        "color": "yellow",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"1PRIA",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [3961, 2736],
           "infDer": [3783, 3036]
-        }
+        },
+        "ruta": [
+          [4016, 2928],
+          [4016, 3272],
+          [4012, 3468],
+          [4016, 3700],
+          [4004, 3816]
+        ]
       },
       {
         "id": "E16",
         "nombre": "AULA E16 (ENTREPLANTA MONJAS)",
-        "sector": "yellow",
-        "color": "yellow",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"4INFB",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [3961, 3046],
           "infDer": [3761, 3418]
-        }
+        },
+        "ruta": [
+          [4016, 3272],
+          [4012, 3468],
+          [4016, 3700],
+          [4004, 3816]
+        ]
       },
       {
         "id": "E18",
         "nombre": "AULA E18 (ENTREPLANTA MONJAS)",
-        "sector": "orange",
-        "color": "orange",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"5INFB",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [4407, 3066],
           "infDer": [4079, 3268]
-        }
+        },
+        "ruta": [
+          [4128, 3324],
+          [4012, 3468],
+          [4016, 3700],
+          [4004, 3816]
+        ]
       },
       {
         "id": "E19",
         "nombre": "AULA E19 (ENTREPLANTA MONJAS)",
-        "sector": "yellow",
-        "color": "yellow",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"4INFD",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [3961, 3438],
           "infDer": [3763, 3776]
-        }
+        },
+        "ruta": [
+          [4016, 3700],
+          [4004, 3816]
+        ]
       },
       {
         "id": "E20",
         "nombre": "AULA E20 (ENTREPLANTA MONJAS)",
-        "sector": "yellow",
-        "color": "yellow",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [4017, 3796],
           "infDer": [3763, 4026]
-        }
+        },
+        "ruta": [
+          [4064, 3980]
+        ]
       },
       {
         "id": "E21",
         "nombre": "LABORATORIO DE FÍSICA  (BUNKER)",
-        "sector": "orange",
-        "color": "orange",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [4725, 3388],
           "infDer": [4231, 4022]
-        }
+        },
+        "ruta": [
+          [4192, 3864]
+        ]
       },
       {
         "id": "E22",
         "nombre": "AULA DE AUDICIÓN Y LENGUAJE (ENTREPLANTA MONJAS)",
         "nivel": "AULAS CURSOS",
-        "sector": "orange",
-        "color": "orange",
+        "sector": "Salida pistas",
+        "color": "blue",
         "grupo":"5INFA",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [4555, 3386],
           "infDer": [4079, 3870]
-        }
+        },
+        "ruta": [
+          [4192, 3864]
+        ]
       }
     ],
     "Planta Primera": [
