@@ -375,7 +375,7 @@ function App() {
             alt="Monje"
             style={{ height: '1.8em', verticalAlign: 'middle', marginRight: '0.5em' }}
           />
-          PLAN DE INCENDIO
+          PLAN DE EVACUACIÓN
         </h1>
         <div className="controls">
           <div className="imprimible-container">
