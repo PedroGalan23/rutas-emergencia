@@ -132,13 +132,14 @@ body {
   background: white;
   border: 1px solid #ccc;
   font-size: 12px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;       /* Permite que el texto se envuelva */
+  word-break: break-word;    /* Corta la palabra si es necesario */
   transform: translate(-50%, -50%);
-  min-width: 40px;   /* Añadido */
-  text-align: center; /* Centrado del texto */
+  min-width: 40px;
+  max-width: 200px;          /* Ancho máximo para no ocupar toda la pantalla */
+  text-align: center;
 }
+
 
 .zona-tooltip {
   background: none;

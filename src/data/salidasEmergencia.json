@@ -1,14 +1,23 @@
 {
   "Planta Baja": [
     {
-      "id": "salidaEmergencia1",
-      "nombre": "SALIDA EMERGENCIA",
-      "coordenadas": [4175, 1847]
+      "id": "salidaMiguelHernandez",
+      "nombre": "SALIDA MIGUEL HERNÁNDEZ",
+      "coordenadas": [4188, 1758],
+      "imagen": "src/assets/salidaVerde.png"
     },
     {
-      "id": "salidaEmergencia2Conserjeria",
-      "nombre": "SALIDA CONSERJERÍA",
-      "coordenadas": [727, 2468]
+      
+      "id": "salidaConserjeria",
+      "nombre": "SALIDA CONSERJERíA",
+      "coordenadas": [740, 2468],
+      "imagen": "src/assets/salidaAmarillo.png"
+    },
+    {
+      "id": "salidaPistas",
+      "nombre": "SALIDA PISTAS",
+      "coordenadas": [4140, 5104],
+      "imagen": "src/assets/salidaAzul.png"
     }
   ]
 }

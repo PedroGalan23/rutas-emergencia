@@ -3,7 +3,7 @@
       {
         "id": "B105",
         "nombre": "Museo",
-        "sector": "sector 1",
+        "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordenadas": {
@@ -27,7 +27,7 @@
       {
         "id": "B15",
         "nombre": "CAPILLA",
-        "sector": "sector 1",
+        "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordenadas": {
@@ -47,7 +47,7 @@
       {
         "id": "B11",
         "nombre": "IGLESIA",
-        "sector": "sector 1",
+        "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordenadas": {
@@ -67,7 +67,7 @@
       {
         "id": "B104",
         "nombre": "AULA INFORMÁTICA DERECHA",
-        "sector": "sector 1",
+        "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordenadas": {
@@ -93,7 +93,7 @@
       {
         "id": "B18",
         "nombre": "SACRISTÍA",
-        "sector": "sector 1",
+        "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordenadas": {
@@ -114,7 +114,7 @@
       {
         "id": "B21",
         "nombre": "ASEO FRENTE CAFETERÍA",
-        "sector": "sector 2",
+        "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"",
         "coordenadas": {
@@ -138,7 +138,7 @@
       {
         "id": "B24",
         "nombre": "CAFETERÍA",
-        "sector": "sector 2",
+        "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"",
         "coordenadas": {
@@ -162,7 +162,7 @@
       {
         "id": "B2",
         "nombre": "SALA DE VISITAS",
-        "sector": "sector 1",
+        "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordenadas": {
@@ -183,7 +183,7 @@
       {
         "id": "B95",
         "nombre": "TIENDA",
-        "sector": "sector 1",
+        "sector": "Salida Conserjería",
         "color": "orange",
         "coordenadas": {
           "supIzq": [1025, 4997],
@@ -207,7 +207,7 @@
       {
         "id": "B93",
         "nombre": "AULA DE MÚSICA",
-        "sector": "sector 1",
+        "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordenadas": {
@@ -238,7 +238,7 @@
       {
         "id": "B106",
         "nombre": "SECRETARÍA",
-        "sector": "sector 1",
+        "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordenadas": {
@@ -262,7 +262,7 @@
       {
         "id": "B109",
         "nombre": "ASEO FRENTE A SECRETARÍA",
-        "sector": "sector 1",
+        "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordenadas": {
@@ -285,7 +285,7 @@
       {
         "id": "B80",
         "nombre": "GIMNASIO (PATIO UNIVERSIDAD)",
-        "sector": "sector 1",
+        "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordenadas": {
@@ -314,7 +314,7 @@
       {
         "id": "B94",
         "nombre": "Biblioteca",
-        "sector": "sector 1",
+        "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordenadas": {
@@ -341,7 +341,7 @@
       {
         "id": "B89",
         "nombre": "AULAS NUEVAS 1",
-        "sector": "sector 1",
+        "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordenadas": {
@@ -367,7 +367,7 @@
       {
         "id": "B92",
         "nombre": "AULAS NUEVAS 2",
-        "sector": "sector 1",
+        "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordenadas": {
@@ -393,7 +393,7 @@
       {
         "id": "B100",
         "nombre": "PASTORAL",
-        "sector": "sector 1",
+        "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordenadas": {
@@ -415,7 +415,7 @@
       {
         "id": "B100A",
         "nombre": "ALMACÉN",
-        "sector": "sector 1",
+        "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordenadas": {
@@ -437,7 +437,7 @@
       {
         "id": "B76",
         "nombre": "SALON DE ACTOS",
-        "sector": "sector 1",
+        "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordenadas": {
@@ -465,9 +465,9 @@
       {
         "id": "B57",
         "nombre": "AULA B57  (PATIO JUAN XXIII)",
-        "sector": "sector 2",
+        "sector": "Salida M.Hernández",
         "color": "green",
-        "grupo":"",
+        "grupo":"3INFC",
         "coordenadas": {
           "supIzq": [4039, 3539],
           "infDer": [3781, 3912]
@@ -488,7 +488,7 @@
       {
         "id": "B34",
         "nombre": "ASEOS JUAN XXIII CHICOS",
-        "sector": "sector 2",
+        "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"",
         "coordenadas": {
@@ -506,7 +506,7 @@
       {
         "id": "B32",
         "nombre": "ASEOS JUAN XXIII CHICAS",
-        "sector": "sector 2",
+        "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"",
         "coordenadas": {
@@ -527,9 +527,9 @@
       {
         "id": "B55",
         "nombre": "AULA B55  (PATIO JUAN XXIII)",
-        "sector": "sector 2",
+        "sector": "Salida M.Hernández",
         "color": "green",
-        "grupo":"",
+        "grupo":"3INFB",
         "coordenadas": {
           "supIzq": [4045, 3269],
           "infDer": [3780, 3521]
@@ -550,7 +550,7 @@
       {
         "id": "B36",
         "nombre": "AULA APOYO  HORNO Y SALA MEDIA PENSION",
-        "sector": "sector 2",
+        "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"",
         "coordenadas": {
@@ -568,9 +568,9 @@
       {
         "id": "B27",
         "nombre": "AULA B27 (PATIO JUAN XXIII)",
-        "sector": "sector 2",
+        "sector": "Salida M.Hernández",
         "color": "green",
-        "grupo":"",
+        "grupo":"5INFC",
         "coordenadas": {
           "supIzq": [4043, 1832],
           "infDer": [3641, 2118]
@@ -591,9 +591,9 @@
       {
         "id": "B26",
         "nombre": "AULA B26 (PATIO JUAN XXIII)",
-        "sector": "sector 2",
+        "sector": "Salida M.Hernández",
         "color": "green",
-        "grupo":"",
+        "grupo":"5INFD",
         "coordenadas": {
           "supIzq": [3633, 1792],
           "infDer": [3117, 2066]
@@ -614,7 +614,7 @@
       {
         "id": "B73",
         "nombre": "COCINA",
-        "sector": "sector 2",
+        "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"",
         "coordenadas": {
@@ -643,7 +643,7 @@
       {
         "id": "B75",
         "nombre": "COMEDOR",
-        "sector": "sector 2",
+        "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"",
         "coordenadas": {
@@ -672,9 +672,9 @@
       {
         "id": "B53",
         "nombre": "AULA B53  (PATIO JUAN XXIII)",
-        "sector": "sector 2",
+        "sector": "Salida M.Hernández",
         "color": "green",
-        "grupo":"",
+        "grupo":"3INFA",
         "coordenadas": {
           "supIzq": [4044, 2966],
           "infDer": [3784, 3265]
@@ -698,7 +698,7 @@
         "nombre": "AULA E10 (ENTREPLANTA MIGUEL HERNÁNDEZ)",
         "sector": "pink",
         "color": "pink",
-        "grupo":"",
+        "grupo":"1PRIB",
         "coordenadas": {
           "supIzq": [4015, 1976],
           "infDer": [3711, 2158]
@@ -709,7 +709,7 @@
         "nombre": "AULA E11 (ENTREPLANTA MIGUEL HERNÁNDEZ)",
         "sector": "pink",
         "color": "pink",
-        "grupo":"",
+        "grupo":"1PRIC",
         "coordenadas": {
           "supIzq": [3699, 1944],
           "infDer": [3375, 2134]
@@ -720,7 +720,7 @@
         "nombre": "AULA E12 (ENTREPLANTA MIGUEL HERNÁNDEZ)",
         "sector": "pink",
         "color": "pink",
-        "grupo":"",
+        "grupo":"1PRID",
         "coordenadas": {
           "supIzq": [3369, 1910],
           "infDer": [3101, 2170]
@@ -731,7 +731,7 @@
         "nombre": "AULA E14 (ENTREPLANTA MONJAS)",
         "sector": "pink",
         "color": "pink",
-        "grupo":"",
+        "grupo":"2PRIA",
         "coordenadas": {
           "supIzq": [3961, 2398],
           "infDer": [3753, 2716]
@@ -742,7 +742,7 @@
         "nombre": "AULA E15 (ENTREPLANTA MONJAS)",
         "sector": "yellow",
         "color": "yellow",
-        "grupo":"",
+        "grupo":"1PRIA",
         "coordenadas": {
           "supIzq": [3961, 2736],
           "infDer": [3783, 3036]
@@ -753,7 +753,7 @@
         "nombre": "AULA E16 (ENTREPLANTA MONJAS)",
         "sector": "yellow",
         "color": "yellow",
-        "grupo":"",
+        "grupo":"4INFB",
         "coordenadas": {
           "supIzq": [3961, 3046],
           "infDer": [3761, 3418]
@@ -764,7 +764,7 @@
         "nombre": "AULA E18 (ENTREPLANTA MONJAS)",
         "sector": "orange",
         "color": "orange",
-        "grupo":"",
+        "grupo":"5INFB",
         "coordenadas": {
           "supIzq": [4407, 3066],
           "infDer": [4079, 3268]
@@ -775,7 +775,7 @@
         "nombre": "AULA E19 (ENTREPLANTA MONJAS)",
         "sector": "yellow",
         "color": "yellow",
-        "grupo":"",
+        "grupo":"4INFD",
         "coordenadas": {
           "supIzq": [3961, 3438],
           "infDer": [3763, 3776]
@@ -809,7 +809,7 @@
         "nivel": "AULAS CURSOS",
         "sector": "orange",
         "color": "orange",
-        "grupo":"",
+        "grupo":"5INFA",
         "coordenadas": {
           "supIzq": [4555, 3386],
           "infDer": [4079, 3870]
@@ -822,7 +822,7 @@
         "nombre": "AULA P4 (PASILLO CORO  PRIMERA PLANTA)",
         "sector": "#95A472",
         "color": "#95A472",
-        "grupo":"",
+        "grupo":"2PRIB",
         "coordenadas": {
           "supIzq": [930, 2271],
           "infDer": [751, 2590]
@@ -842,7 +842,7 @@
         "nombre": "AULA P6 (PASILLO CORO  PRIMERA PLANTA)",
         "sector": "#95A472",
         "color": "#95A472",
-        "grupo":"",
+        "grupo":"2PRIC",
         "coordenadas": {
           "supIzq": [926, 2612],
           "infDer": [748, 2966]
@@ -878,7 +878,7 @@
         "nombre": "AULA P10 (PASILLO CORO PRIMERA PLANTA)",
         "sector": "#95A472",
         "color": "#95A472",
-        "grupo":"",
+        "grupo":"6PRIC",
         "coordenadas": {
           "supIzq": [1262, 3270],
           "infDer": [1074, 3802]
@@ -894,7 +894,7 @@
         "nombre": "AULA P13 (PASILLO CORO PRIMERA PLANTA)",
         "sector": "#95A472",
         "color": "#95A472",
-        "grupo":"",
+        "grupo":"2PRID",
         "coordenadas": {
           "supIzq": [932, 3453],
           "infDer": [740, 3805]
@@ -911,7 +911,7 @@
         "nombre": "AULA P14 (PASILLO CORO PRIMERA PLANTA)",
         "sector": "#95A472",
         "color": "#95A472",
-        "grupo":"",
+        "grupo":"5PRIC",
         "coordenadas": {
           "supIzq": [1264, 2670],
           "infDer": [1072, 3260]
@@ -930,7 +930,7 @@
         "nombre": "AULA P24 (JUNTO ESCALERA PRINCIPAL PRIMERA PLANTA)",
         "sector": "blue",
         "color": "blue",
-        "grupo":"",
+        "grupo":"6PRID",
         "coordenadas": {
           "supIzq": [2450, 3654],
           "infDer": [2038, 3818]
@@ -951,7 +951,7 @@
         "nombre": "AULA P28 (JUNTO ESCALERA PRINCIPAL PRIMERA PLANTA)",
         "sector": "blue",
         "color": "blue",
-        "grupo":"",
+        "grupo":"6PRIB",
         "coordenadas": {
           "supIzq": [2038, 3638],
           "infDer": [1704, 3812]
@@ -968,7 +968,7 @@
         "nombre": "AULA P30 (JUNTO ESCALERA PRINCIPAL PRIMERA PLANTA)",
         "sector": "blue",
         "color": "blue",
-        "grupo":"",
+        "grupo":"6PRIA",
         "coordenadas": {
           "supIzq": [1698, 3632],
           "infDer": [1276, 3804]
@@ -985,7 +985,7 @@
         "nombre": "AULA P35 (PASILLO OLMA PRIMERA PLANTA)",
         "sector": "blue",
         "color": "blue",
-        "grupo":"",
+        "grupo":"5PRID",
         "coordenadas": {
           "supIzq": [916, 4168],
           "infDer": [741, 4567]
@@ -1053,7 +1053,7 @@
         "nombre": "AULA P45 (PASILLO PISCINA PRIMERA PLANTA)",
         "sector": "blue",
         "color": "blue",
-        "grupo":"",
+        "grupo":"2BACC",
         "coordenadas": {
           "supIzq": [1490, 5586],
           "infDer": [1058, 5788]
@@ -1079,7 +1079,7 @@
         "nombre": "AULA P46 (PASILLO PISCINA PRIMERA PLANTA)",
         "sector": "blue",
         "color": "blue",
-        "grupo":"",
+        "grupo":"2BAHB",
         "coordenadas": {
           "supIzq": [1844, 5598],
           "infDer": [1512, 5778]
@@ -1105,7 +1105,7 @@
         "nombre": "AULA P48 (PASILLO PISCINA PRIMERA PLANTA)",
         "sector": "blue",
         "color": "blue",
-        "grupo":"",
+        "grupo":"2BAHA",
         "coordenadas": {
           "supIzq": [2286, 5606],
           "infDer": [1874, 5776]
@@ -1133,7 +1133,7 @@
         "nombre": "AULA P49 (PASILLO PISCINA PRIMERA PLANTA)",
         "sector": "blue",
         "color": "blue",
-        "grupo":"",
+        "grupo":"2BACD",
         "coordenadas": {
           "supIzq": [2709, 5550],
           "infDer": [2301, 5774]
@@ -1162,7 +1162,7 @@
         "nombre": "AULA P51 (PASILLO UNIVERSIDAD PRIMERA PLANTA)",
         "sector": "blue",
         "color": "blue",
-        "grupo":"",
+        "grupo":"4ESOA",
         "coordenadas": {
           "supIzq": [2680, 5133],
           "infDer": [2402, 5510]
@@ -1183,7 +1183,7 @@
         "nombre": "AULA P52 (PASILLO UNIVERSIDAD PRIMERA PLANTA)",
         "sector": "blue",
         "color": "blue",
-        "grupo":"",
+        "grupo":"4ESOB",
         "coordenadas": {
           "supIzq": [2681, 4853],
           "infDer": [2464, 5115]
@@ -1301,7 +1301,7 @@
         "nombre": "AULA P72 (PASILLO BACH  PRIMERA PLANTA)",
         "sector": "#F86624",
         "color": "#F86624",
-        "grupo":"",
+        "grupo":"3ESOA",
         "coordenadas": {
           "supIzq": [3941, 3464],
           "infDer": [3767, 3852]
@@ -1321,7 +1321,7 @@
         "nombre": "AULA P77 (PASILLO BACH  PRIMERA PLANTA)",
         "sector": "#F86624",
         "color": "#F86624",
-        "grupo":"",
+        "grupo":"3ESOB",
         "coordenadas": {
           "supIzq": [3943, 3035],
           "infDer": [3766, 3452]
@@ -1342,7 +1342,7 @@
         "nombre": "AULA P78 (PASILLO BACH  PRIMERA PLANTA)",
         "sector": "#F86624",
         "color": "#F86624",
-        "grupo":"",
+        "grupo":"4ESOC",
         "coordenadas": {
           "supIzq": [3949, 2606],
           "infDer": [3762, 3023]
@@ -1365,7 +1365,7 @@
         "nombre": "AULA P79 (PASILLO BACH  PRIMERA PLANTA)",
         "sector": "#F86624",
         "color": "#F86624",
-        "grupo":"",
+        "grupo":"1BACD",
         "coordenadas": {
           "supIzq": [3947, 2213],
           "infDer": [3758, 2592]
@@ -1390,7 +1390,7 @@
         "nombre": "AULA P82 (MIGUEL HERNÁNDEZ PRIMERA PLANTA)",
         "sector": "#F86624",
         "color": "#F86624",
-        "grupo":"",
+        "grupo":"1BACC",
         "coordenadas": {
           "supIzq": [4030, 1768],
           "infDer": [3632, 1984]
@@ -1418,7 +1418,7 @@
         "nombre": "AULA P83 (MIGUEL HERNÁNDEZ PRIMERA PLANTA)",
         "sector": "#F86624",
         "color": "#F86624",
-        "grupo":"",
+        "grupo":"1BAHA",
         "coordenadas": {
           "supIzq": [3627, 1730],
           "infDer": [3132, 1950]
@@ -1447,7 +1447,7 @@
         "nombre": "AULA P84 (PASILLO BACH  PRIMERA PLANTA)",
         "sector": "#F86624",
         "color": "#F86624",
-        "grupo":"",
+        "grupo":"1BAHB",
         "coordenadas": {
           "supIzq": [3120, 1679],
           "infDer": [2824, 1975]
@@ -1728,7 +1728,7 @@
         "nombre": "S14",
         "sector": "green",
         "color": "green",
-        "grupo":"",
+        "grupo":"4PRID",
         "coordenadas": {
           "supIzq": [2151, 5741],
           "infDer": [1984, 5904]
@@ -1739,7 +1739,7 @@
         "nombre": "S15",
         "sector": "green",
         "color": "green",
-        "grupo":"",
+        "grupo":"4PRIC",
         "coordenadas": {
           "supIzq": [1890, 5730],
           "infDer": [1679, 5906]
@@ -1772,7 +1772,7 @@
         "nombre": "S18",
         "sector": "green",
         "color": "green",
-        "grupo":"",
+        "grupo":"4PRIB",
         "coordenadas": {
           "supIzq": [1292, 5641],
           "infDer": [1059, 5908]
@@ -1812,7 +1812,7 @@
         "nombre": "S20",
         "sector": "green",
         "color": "green",
-        "grupo":"",
+        "grupo":"4PRIA",
         "coordenadas": {
           "supIzq": [962, 5295],
           "infDer": [761, 5641]
