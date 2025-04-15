@@ -15,7 +15,6 @@ import { QRCodeCanvas } from 'qrcode.react';
 
 import monjeEscalera from './assets/monje-escalera.png';
 import escaleras2 from './assets/escaleras2.png';
-import monjeBombero from './assets/monjeBombero.png';
 import salidasEmergencia from './data/salidasEmergencia.json';
 import planoBaja from './assets/PG1-PlantaBaja.jpg';
 import planoIntermedia from './assets/PG2-Planta Intermedia.jpg';
@@ -32,8 +31,6 @@ import salidaVerde from './assets/salidaVerde.png';
 import salidaAzul from './assets/salidaAzul.png';
 import salidaLeyenda from './assets/salidaLeyenda.png';
 
-
-
 import './App.css';
 
 function App() {
@@ -48,14 +45,11 @@ function App() {
   const [monjeFrame, setMonjeFrame] = useState(0);
   const [imprimible, setImprimible] = useState(false);
 
-
   const imagesSalida = {
     "src/assets/salidaAmarillo.png": salidaAmarillo,
     "src/assets/salidaVerde.png": salidaVerde,
     "src/assets/salidaAzul.png": salidaAzul
   };
-
-
 
   const flechaIndex = useRef(0);
   const animationInterval = useRef(null);
@@ -107,7 +101,6 @@ function App() {
     );
   }
 
-
   function calcularCentro(coordenadas) {
     const centroY = (coordenadas.supIzq[0] + coordenadas.infDer[0]) / 2;
     const centroX = (coordenadas.supIzq[1] + coordenadas.infDer[1]) / 2;
@@ -134,7 +127,7 @@ function App() {
     `;
   }
 
-  // Función para crear el icono del marcador de escalera utilizando la imagen monjeEscalera.
+  // Función para crear el icono del marcador de escalera utilizando la imagen escaleras2.
   function createEscaleraMarkerIcon() {
     return divIcon({
       html: `<img src="${escaleras2}" alt="Escalera" style="width:30px; height:30px;" />`,
@@ -171,6 +164,7 @@ function App() {
       iconAnchor: [0, 0]
     });
   }
+
   // Efecto para actualizar la planta seleccionada
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -240,6 +234,7 @@ function App() {
       lat: (qrCoords.supIzq[0] + qrCoords.infDer[0]) / 2,
       lng: (qrCoords.supIzq[1] + qrCoords.infDer[1]) / 2
     };
+
     useLayoutEffect(() => {
       function updatePosition() {
         if (overlayRef.current) {
@@ -261,11 +256,14 @@ function App() {
         map.off('zoomend moveend', updatePosition);
       };
     }, [map, fixedCenter]);
+
     if (!aulaActiva) return null;
+
     const url =
       window.location.origin +
       `?planta=${encodeURIComponent(plantaSeleccionada)}` +
       (aulaActiva ? `&id=${encodeURIComponent(aulaActiva.id)}` : '');
+
     return (
       <div
         ref={overlayRef}
@@ -286,6 +284,13 @@ function App() {
           <strong>{aulaActiva.nombre}</strong>
           <br />
           ID: {aulaActiva.id}
+          {/* MOSTRAMOS LA INFO DE COORDINACIÓN SI ES TRUE */}
+          {aulaActiva.coordinadora && (
+            <>
+              <br />
+              <strong style={{ color: 'red' }}>Aula Coordinadora</strong>
+            </>
+          )}
           <br />
           <span style={{ display: 'inline-flex', alignItems: 'center' }}>
             <span
@@ -305,87 +310,88 @@ function App() {
   });
 
   // Componente LeyendaOverlay para mostrar la leyenda en las coordenadas indicadas.
- // Componente LeyendaOverlay para mostrar la leyenda en las coordenadas indicadas.
-const LeyendaOverlay = React.memo(function LeyendaOverlay({ plantaSeleccionada }) {
-  const map = useMap();
-  const overlayRef = useRef(null);
-  const prevPointRef = useRef({ x: 0, y: 0 });
-  const leyendaCoords = { supIzq: [1775, 128], infDer: [327, 1224] };
-  const leyendaCenter = {
-    lat: (leyendaCoords.supIzq[0] + leyendaCoords.infDer[0]) / 2,
-    lng: (leyendaCoords.supIzq[1] + leyendaCoords.infDer[1]) / 2
-  };
-  useLayoutEffect(() => {
-    function updatePosition() {
-      if (overlayRef.current) {
-        const point = map.latLngToContainerPoint(leyendaCenter);
-        if (
-          Math.abs(point.x - prevPointRef.current.x) < 1 &&
-          Math.abs(point.y - prevPointRef.current.y) < 1
-        ) {
-          return;
-        }
-        overlayRef.current.style.left = `${point.x}px`;
-        overlayRef.current.style.top = `${point.y}px`;
-        prevPointRef.current = { x: point.x, y: point.y };
-      }
-    }
-    map.on('zoomend moveend', updatePosition);
-    updatePosition();
-    return () => {
-      map.off('zoomend moveend', updatePosition);
+  const LeyendaOverlay = React.memo(function LeyendaOverlay({ plantaSeleccionada }) {
+    const map = useMap();
+    const overlayRef = useRef(null);
+    const prevPointRef = useRef({ x: 0, y: 0 });
+    const leyendaCoords = { supIzq: [1775, 128], infDer: [327, 1224] };
+    const leyendaCenter = {
+      lat: (leyendaCoords.supIzq[0] + leyendaCoords.infDer[0]) / 2,
+      lng: (leyendaCoords.supIzq[1] + leyendaCoords.infDer[1]) / 2
     };
-  }, [map, leyendaCenter]);
-  const currentAulas = aulasData[plantaSeleccionada] || [];
-  const uniqueSectors = [];
-  currentAulas.forEach((aula) => {
-    if (!uniqueSectors.some(item => item.sector === aula.sector)) {
-      uniqueSectors.push({ sector: aula.sector, color: aula.color });
-    }
-  });
-  return (
-    <div
-      ref={overlayRef}
-      style={{
-        position: 'absolute',
-        transform: 'translate(-50%, -50%)',
-        zIndex: 1000,
-        padding: '10px',
-        border: '2px solid black',
-        backgroundColor: 'white',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '8px',
-        maxWidth: '200px'
-      }}
-    >
-      <div style={{ fontWeight: 'bold', marginBottom: '4px', textAlign: 'center' }}>Leyenda</div>
-      {uniqueSectors.map((item, index) => (
-        <div key={index} style={{ display: 'flex', alignItems: 'center' }}>
-          <span style={{
-            display: 'inline-block',
-            width: '15px',
-            height: '15px',
-            borderRadius: '50%',
-            backgroundColor: item.color,
-            marginRight: '6px'
-          }}></span>
-          <span>{item.sector}</span>
-        </div>
-      ))}
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        {/* Reemplazamos monjeBombero por la imagen de salidaLeyenda importada */}
-        <img src={salidaLeyenda} alt="Salidas" style={{ height: '30px', marginRight: '6px' }} />
-        <span>Salidas</span>
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <img src={escaleras2} alt="Escaleras" style={{ height: '30px', marginRight: '6px' }} />
-        <span>Escaleras</span>
-      </div>
-    </div>
-  );
-});
 
+    useLayoutEffect(() => {
+      function updatePosition() {
+        if (overlayRef.current) {
+          const point = map.latLngToContainerPoint(leyendaCenter);
+          if (
+            Math.abs(point.x - prevPointRef.current.x) < 1 &&
+            Math.abs(point.y - prevPointRef.current.y) < 1
+          ) {
+            return;
+          }
+          overlayRef.current.style.left = `${point.x}px`;
+          overlayRef.current.style.top = `${point.y}px`;
+          prevPointRef.current = { x: point.x, y: point.y };
+        }
+      }
+      map.on('zoomend moveend', updatePosition);
+      updatePosition();
+      return () => {
+        map.off('zoomend moveend', updatePosition);
+      };
+    }, [map, leyendaCenter]);
+
+    const currentAulas = aulasData[plantaSeleccionada] || [];
+    const uniqueSectors = [];
+
+    currentAulas.forEach((aula) => {
+      if (!uniqueSectors.some(item => item.sector === aula.sector)) {
+        uniqueSectors.push({ sector: aula.sector, color: aula.color });
+      }
+    });
+
+    return (
+      <div
+        ref={overlayRef}
+        style={{
+          position: 'absolute',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 1000,
+          padding: '10px',
+          border: '2px solid black',
+          backgroundColor: 'white',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '8px',
+          maxWidth: '200px'
+        }}
+      >
+        <div style={{ fontWeight: 'bold', marginBottom: '4px', textAlign: 'center' }}>Leyenda</div>
+        {uniqueSectors.map((item, index) => (
+          <div key={index} style={{ display: 'flex', alignItems: 'center' }}>
+            <span style={{
+              display: 'inline-block',
+              width: '15px',
+              height: '15px',
+              borderRadius: '50%',
+              backgroundColor: item.color,
+              marginRight: '6px'
+            }}></span>
+            <span>{item.sector}</span>
+          </div>
+        ))}
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <img src={salidaLeyenda} alt="Salidas" style={{ height: '30px', marginRight: '6px' }} />
+          <span>Salidas</span>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <img src={escaleras2} alt="Escaleras" style={{ height: '30px', marginRight: '6px' }} />
+          <span>Escaleras</span>
+        </div>
+      </div>
+    );
+  });
 
   const aulas = aulasData[plantaSeleccionada];
   const zonasComunes = zonasComunesData[plantaSeleccionada] || [];
@@ -450,9 +456,14 @@ const LeyendaOverlay = React.memo(function LeyendaOverlay({ plantaSeleccionada }
           maxBounds={imageBounds}
           maxBoundsViscosity={1.0}
           style={{ width: '100%', height: '100%' }}
-          whenCreated={(map) => map.fitBounds(imageBounds)}
+          whenCreated={(map) => {
+            map.fitBounds(imageBounds);
+            map.dragging.disable(); // Desactiva el movimiento del mapa
+          }}
         >
           <ImageOverlay url={planos[plantaSeleccionada]} bounds={imageBounds} />
+
+          {/* Marcadores de salidas de emergencia */}
           {(salidasEmergencia[plantaSeleccionada] || []).map((salida, index) => {
             const imageSrc = imagesSalida[salida.imagen];
             return (
@@ -470,6 +481,7 @@ const LeyendaOverlay = React.memo(function LeyendaOverlay({ plantaSeleccionada }
             );
           })}
 
+          {/* Aulas */}
           {aulas.map((aula) => {
             const { coordenadas, color, id, nombre } = aula;
             const bounds = [coordenadas.infDer, coordenadas.supIzq];
@@ -494,6 +506,8 @@ const LeyendaOverlay = React.memo(function LeyendaOverlay({ plantaSeleccionada }
               </React.Fragment>
             );
           })}
+
+          {/* Zonas comunes */}
           {zonasComunes.map((zona, index) => (
             <Marker
               key={zona.id || `zona-${index}`}
@@ -508,6 +522,7 @@ const LeyendaOverlay = React.memo(function LeyendaOverlay({ plantaSeleccionada }
               </Tooltip>
             </Marker>
           ))}
+
           {/* Marcadores de las Escaleras */}
           {escaleras.map((escalera) => (
             <Marker
@@ -528,6 +543,8 @@ const LeyendaOverlay = React.memo(function LeyendaOverlay({ plantaSeleccionada }
               }}
             />
           ))}
+
+          {/* Flechas de la ruta si existe */}
           {aulaActiva?.ruta &&
             aulaActiva.ruta.slice(0, -1).map((p, i) => {
               const siguiente = aulaActiva.ruta[i + 1];
@@ -540,6 +557,8 @@ const LeyendaOverlay = React.memo(function LeyendaOverlay({ plantaSeleccionada }
                 />
               );
             })}
+
+          {/* Monje animado (flechaPosicion) */}
           {!imprimible && flechaPosicion && aulaActiva?.ruta && (
             <Marker
               position={flechaPosicion}
@@ -551,7 +570,10 @@ const LeyendaOverlay = React.memo(function LeyendaOverlay({ plantaSeleccionada }
               })}
             />
           )}
+
           <ClickHandler aulas={aulas} />
+
+          {/* Mostramos el QR y la Leyenda */}
           <QrOverlay aulaActiva={aulaActiva} plantaSeleccionada={plantaSeleccionada} />
           <LeyendaOverlay plantaSeleccionada={plantaSeleccionada} />
         </MapContainer>

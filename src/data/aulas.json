@@ -252,7 +252,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
-        "coordinadora": false,
+        "coordinadora": true,
         "coordenadas": {
           "supIzq": [1034, 3588],
           "infDer": [786, 3840]
@@ -553,7 +553,7 @@
         "sector": "Salida M.Hernández",
         "color": "green",
         "grupo":"3INFB",
-        "coordinadora": false,
+        "coordinadora": true,
         "coordenadas": {
           "supIzq": [4045, 3269],
           "infDer": [3780, 3521]
@@ -1182,7 +1182,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"2BACC",
-        "coordinadora": false,
+        "coordinadora": true,
         "coordenadas": {
           "supIzq": [1490, 5586],
           "infDer": [1058, 5788]
@@ -1317,7 +1317,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"4ESOB",
-        "coordinadora": false,
+        "coordinadora": true,
         "coordenadas": {
           "supIzq": [2681, 4853],
           "infDer": [2464, 5115]
@@ -1441,7 +1441,7 @@
         "sector": "Salida pistas",
         "color": "blue",
         "grupo":"3ESOA",
-        "coordinadora": false,
+        "coordinadora": true,
         "coordenadas": {
           "supIzq": [3941, 3464],
           "infDer": [3767, 3852]
@@ -1615,6 +1615,26 @@
           [3984, 4125],
           [4101, 4127],
           [4106, 3974]
+        ]
+      },
+      {
+        "id": "P140",
+        "nombre": "CAPILLA - SALA DE PROFESORES",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [2638, 2359],
+          "infDer": [2457, 3612]
+        },
+        "ruta": [
+          [2550, 3592],
+          [2540, 3852],
+          [2530, 4112],
+          [2260, 4100],
+          [1964, 4100],
+          [1886, 3998]
         ]
       }
 

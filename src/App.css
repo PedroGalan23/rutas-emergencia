@@ -48,6 +48,7 @@ body {
   flex-direction: column;
 }
 
+
 /* Ejemplo de reglas globales para imprimir en toda la aplicación */
 @media print {
   /* Ocultar la barra de cabecera y otros controles de la app */
