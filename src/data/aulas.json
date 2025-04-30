@@ -1809,7 +1809,7 @@
         "sector": "Salida pistas",
         "color": "blue",
         "grupo":"",
-        "coordinadora": false,
+        "coordinadora": true,
         "coordenadas": {
           "supIzq": [3950, 3552],
           "infDer": [3782, 3956]
@@ -1848,7 +1848,7 @@
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
-        "coordinadora": false,
+        "coordinadora": true,
         "coordenadas": {
           "supIzq": [2691, 4620],
           "infDer": [2475, 4948]
