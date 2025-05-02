@@ -13,7 +13,6 @@ import { CRS, divIcon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { QRCodeCanvas } from 'qrcode.react';
 
-import monjeEscalera from './assets/monje-escalera.png';
 import escaleras2 from './assets/escaleras2.png';
 import salidasEmergencia from './data/salidasEmergencia.json';
 import planoBaja from './assets/PG1-PlantaBaja.jpg';
@@ -107,30 +106,12 @@ function App() {
     return [centroY, centroX];
   }
 
-  // Configuración de estilo según tamaño.
-  function obtenerEstilosEtiqueta(coordenadas) {
-    const ancho = Math.abs(coordenadas.infDer[1] - coordenadas.supIzq[1]);
-    const alto = Math.abs(coordenadas.infDer[0] - coordenadas.supIzq[0]);
-    const anchoMinimo = 50;
-    const altoMinimo = 20;
-    if (ancho < anchoMinimo || alto < altoMinimo) {
-      return `
-        font-size: 8px;
-        padding: 1px 3px;
-        white-space: normal;
-      `;
-    }
-    return `
-      font-size: 12px;
-      padding: 2px 5px;
-      white-space: normal;
-    `;
-  }
+
 
   // Función para crear el icono del marcador de escalera utilizando la imagen escaleras2.
   function createEscaleraMarkerIcon() {
     return divIcon({
-      html: `<img src="${escaleras2}" alt="Escalera" style="width:30px; height:30px;" />`,
+      html: `<img src="${escaleras2}" alt="Escalera" style="width:35px; height:35px;" />`,
       className: '',
       iconAnchor: [15, 15]
     });
@@ -156,14 +137,6 @@ function App() {
     });
   }
 
-  function createTextIcon(text) {
-    const formattedText = text.replace(/\n/g, '<br>');
-    return divIcon({
-      html: `<div class="zona-label">${formattedText}</div>`,
-      className: '',
-      iconAnchor: [0, 0]
-    });
-  }
 
   // Efecto para actualizar la planta seleccionada
   useEffect(() => {
@@ -192,7 +165,7 @@ function App() {
       setMonjeFrame((prev) => (prev + 1) % monjeFrames.length);
     }, 500);
     return () => clearInterval(interval);
-  }, []);
+  }, [monjeFrames.length]);
 
   // Animación de la flecha siguiendo la ruta activa.
   useEffect(() => {
@@ -225,89 +198,101 @@ function App() {
   }
 
   // Componente QrOverlay para mostrar el QR en coordenadas fijas.
-  const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada }) {
-    const map = useMap();
-    const overlayRef = useRef(null);
-    const prevPointRef = useRef({ x: 0, y: 0 });
-    const qrCoords = { supIzq: [719, 3556], infDer: [3, 5896] };
-    const fixedCenter = {
-      lat: (qrCoords.supIzq[0] + qrCoords.infDer[0]) / 2,
-      lng: (qrCoords.supIzq[1] + qrCoords.infDer[1]) / 2
-    };
+  // App.js (solo el QrOverlay)
+const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada }) {
+  const map = useMap();
+  const overlayRef = useRef(null);
+  const prevPointRef = useRef({ x: 0, y: 0 });
+  const qrCoords = { supIzq: [652, 3011], infDer: [182, 4541] };
+  // calculamos centro una vez
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const fixedCenter = {
+    lat: (qrCoords.supIzq[0] + qrCoords.infDer[0]) / 2,
+    lng: (qrCoords.supIzq[1] + qrCoords.infDer[1]) / 2
+  };
 
-    useLayoutEffect(() => {
-      function updatePosition() {
-        if (overlayRef.current) {
-          const point = map.latLngToContainerPoint(fixedCenter);
-          if (
-            Math.abs(point.x - prevPointRef.current.x) < 1 &&
-            Math.abs(point.y - prevPointRef.current.y) < 1
-          ) {
-            return;
-          }
-          overlayRef.current.style.left = `${point.x}px`;
-          overlayRef.current.style.top = `${point.y}px`;
-          prevPointRef.current = { x: point.x, y: point.y };
-        }
+  useLayoutEffect(() => {
+    function updatePosition() {
+      if (!overlayRef.current) return;
+      const point = map.latLngToContainerPoint(fixedCenter);
+
+      // evita updates insignificantes
+      if (
+        Math.abs(point.x - prevPointRef.current.x) < 1 &&
+        Math.abs(point.y - prevPointRef.current.y) < 1
+      ) {
+        return;
       }
-      map.on('zoomend moveend', updatePosition);
-      updatePosition();
-      return () => {
-        map.off('zoomend moveend', updatePosition);
-      };
-    }, [map, fixedCenter]);
 
-    if (!aulaActiva) return null;
+      const el = overlayRef.current;
+      const w = el.offsetWidth;
+      const h = el.offsetHeight;
+      const offsetX = -w / 2;
+      const offsetY = -h / 2;
 
-    const url =
-      window.location.origin +
-      `?planta=${encodeURIComponent(plantaSeleccionada)}` +
-      (aulaActiva ? `&id=${encodeURIComponent(aulaActiva.id)}` : '');
+      // SOLO cambias transform, NO left/top
+      el.style.transform = `translate3d(${point.x + offsetX}px, ${point.y + offsetY}px, 0)`;
 
-    return (
-      <div
-        ref={overlayRef}
-        style={{
-          position: 'absolute',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 1000,
-          padding: '5px',
-          border: '2px solid black',
-          backgroundColor: 'white',
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center'
-        }}
-      >
-        <QRCodeCanvas value={url} size={60} style={{ marginRight: '8px' }} />
-        <div style={{ fontSize: '12px', lineHeight: '1.2' }}>
-          <strong>{aulaActiva.nombre}</strong>
-          <br />
-          ID: {aulaActiva.id}
-          {/* MOSTRAMOS LA INFO DE COORDINACIÓN SI ES TRUE */}
-          {aulaActiva.coordinadora && (
-            <>
-              <br />
-              <strong style={{ color: 'red' }}>Aula Coordinadora</strong>
-            </>
-          )}
-          <br />
-          <span style={{ display: 'inline-flex', alignItems: 'center' }}>
-            <span
-              style={{
-                width: '8px',
-                height: '8px',
-                backgroundColor: 'purple',
-                borderRadius: '50%',
-                marginRight: '4px'
-              }}
-            ></span>
-            Usted está aquí
-          </span>
-        </div>
+      prevPointRef.current = { x: point.x, y: point.y };
+    }
+
+    map.on('zoomend moveend', updatePosition);
+    updatePosition();
+    return () => map.off('zoomend moveend', updatePosition);
+  }, [map, fixedCenter]);
+
+  if (!aulaActiva) return null;
+
+  const url =
+    window.location.origin +
+    `?planta=${encodeURIComponent(plantaSeleccionada)}` +
+    `&id=${encodeURIComponent(aulaActiva.id)}`;
+
+  return (
+    <div
+      ref={overlayRef}
+      className="qr-overlay"
+      style={{
+        position: 'absolute',
+        zIndex: 1000,
+        padding: '5px',
+        border: '2px solid black',
+        backgroundColor: 'white',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center'
+      }}
+    >
+      <QRCodeCanvas value={url} size={60} style={{ marginRight: '8px' }} />
+      <div style={{ fontSize: '12px', lineHeight: '1.2' }}>
+        <strong>{aulaActiva.nombre}</strong>
+        <br />
+        ID: {aulaActiva.id}
+        {aulaActiva.coordinadora && (
+          <>
+            <br />
+            <strong style={{ color: 'red' }}>Aula Coordinadora</strong>
+          </>
+        )}
+        <br />
+        <span style={{ display: 'inline-flex', alignItems: 'center' }}>
+          <span
+            className="legend-circleQR"
+            style={{
+              width: '8px',
+              height: '8px',
+              backgroundColor: 'purple',
+              borderRadius: '50%',
+              marginRight: '4px'
+            }}
+          />
+          Usted está aquí
+        </span>
       </div>
-    );
-  });
+    </div>
+  );
+});
+
 
   // Componente LeyendaOverlay para mostrar la leyenda en las coordenadas indicadas.
   const LeyendaOverlay = React.memo(function LeyendaOverlay({ plantaSeleccionada }) {
@@ -315,6 +300,7 @@ function App() {
     const overlayRef = useRef(null);
     const prevPointRef = useRef({ x: 0, y: 0 });
     const leyendaCoords = { supIzq: [1775, 128], infDer: [327, 1224] };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const leyendaCenter = {
       lat: (leyendaCoords.supIzq[0] + leyendaCoords.infDer[0]) / 2,
       lng: (leyendaCoords.supIzq[1] + leyendaCoords.infDer[1]) / 2
@@ -370,14 +356,18 @@ function App() {
         <div style={{ fontWeight: 'bold', marginBottom: '4px', textAlign: 'center' }}>Leyenda</div>
         {uniqueSectors.map((item, index) => (
           <div key={index} style={{ display: 'flex', alignItems: 'center' }}>
-            <span style={{
-              display: 'inline-block',
-              width: '15px',
-              height: '15px',
-              borderRadius: '50%',
-              backgroundColor: item.color,
-              marginRight: '6px'
-            }}></span>
+            {/* en tu componente LeyendaOverlay */}
+            <span
+              className="legend-circle"
+              style={{
+                width: '15px',
+                height: '15px',
+                borderRadius: '50%',
+                backgroundColor: item.color,
+                marginRight: '6px'
+              }}
+            ></span>
+
             <span>{item.sector}</span>
           </div>
         ))}

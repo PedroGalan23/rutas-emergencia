@@ -48,39 +48,70 @@ body {
   flex-direction: column;
 }
 
-
-/* Ejemplo de reglas globales para imprimir en toda la aplicación */
-@media print {
-  /* Ocultar la barra de cabecera y otros controles de la app */
-  .app-header,
-  .controls,
-  .someSidebar,
-  .someFooter {
-    display: none !important;
-  }
-  
-  /* El contenedor del mapa debe ocupar todo el ancho disponible */
-  .map-container {
-    width: 100% !important;
-    height: auto !important;
-    overflow: visible !important;
-    break-inside: avoid;
-  }
-  
-  /* Para Leaflet (ajusta la altura mínima a tu gusto) */
-  .leaflet-container {
-    width: 100% !important;
-    min-height: 800px !important;
-    height: auto !important;
-  }
-  
-  /* Si deseas una página A4 apaisada (no todos los navegadores lo respetan) */
-  @page {
-    size: A4 landscape;
-    margin: 10mm;
-  }
+.qr-overlay {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
+
+@media print {
+  /* 0) Quitar TODO el padding/margin por defecto */
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100% !important;
+    overflow: hidden !important;
+  }
+
+  /* 1) Ocultar todo menos el mapa */
+  body * {
+    visibility: hidden !important;
+  }
+  .map-container,
+  .map-container * {
+    visibility: visible !important;
+  }
+
+  /* 2) Hacer que el .map-container llene la página */
+  @media print {
+    /* Empuja el mapa 5 mm fuera de cada borde */
+    .map-container {
+      position: fixed !important;
+      top:    -5mm !important;
+      left:   -5mm !important;
+      width:  calc(100% + 10mm) !important;
+      height: calc(100% + 10mm) !important;
+    }
+    .leaflet-container {
+      width: 100%  !important;
+      height: 100% !important;
+    }
+  }
+  
+
+  /* 3) Página A4 apaisada y SIN márgenes */
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+
+
+  .legend-circle {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .legend-circleQR {
+    background-color: purple !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+}
+
+
+  
 
 .planta-container label {
   font-size: 0.95rem;
