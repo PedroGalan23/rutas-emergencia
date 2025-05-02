@@ -330,7 +330,6 @@ const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada
 
     const currentAulas = aulasData[plantaSeleccionada] || [];
     const uniqueSectors = [];
-
     currentAulas.forEach((aula) => {
       if (!uniqueSectors.some(item => item.sector === aula.sector)) {
         uniqueSectors.push({ sector: aula.sector, color: aula.color });
@@ -371,6 +370,18 @@ const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada
             <span>{item.sector}</span>
           </div>
         ))}
+        {/* Nueva indicación para aulas coordinadoras */}
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <span style={{
+            display: 'inline-block',
+            width: '15px',
+            height: '15px',
+            borderRadius: '50%',
+            backgroundColor: 'red',
+            marginRight: '6px'
+          }}></span>
+          <span>Aula Coordinadora</span>
+        </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <img src={salidaLeyenda} alt="Salidas" style={{ height: '30px', marginRight: '6px' }} />
           <span>Salidas</span>
@@ -383,7 +394,27 @@ const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada
     );
   });
 
-  const aulas = aulasData[plantaSeleccionada];
+// UNIFICACIÓN DE FILTRADO: coordinadoras + (opcional) aula seleccionada
+const aulas = aulasData[plantaSeleccionada] || [];
+let aulasToDisplay = aulas;
+
+if (aulaActiva) {
+  const sector = aulaActiva.sector;
+  // obtenemos todas las coordinadoras de ese sector
+  const coordinadoras = aulas.filter(a => a.sector === sector && a.coordinadora);
+
+  if (aulaActiva.coordinadora) {
+    // si el aula activa es coordinadora, mostramos todas las coordinadoras
+    aulasToDisplay = coordinadoras;
+  } else {
+    // si no es coordinadora, mostramos todas las coordinadoras + el aula activa
+    aulasToDisplay = coordinadoras.length > 0
+      ? [...coordinadoras, aulaActiva]
+      : [aulaActiva];
+  }
+}
+
+
   const zonasComunes = zonasComunesData[plantaSeleccionada] || [];
 
   return (
@@ -426,15 +457,12 @@ const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada
                 }}
               >
                 {Object.keys(planos).map((planta) => (
-                  <option key={planta} value={planta}>
-                    {planta}
-                  </option>
+                  <option key={planta} value={planta}>{planta}</option>
                 ))}
               </select>
               <span className="custom-arrow"></span>
             </div>
           </div>
-
         </div>
       </header>
       <div className="map-container">
@@ -453,7 +481,7 @@ const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada
         >
           <ImageOverlay url={planos[plantaSeleccionada]} bounds={imageBounds} />
 
-          {/* Marcadores de salidas de emergencia */}
+          {/* Salidas de emergencia */}
           {(salidasEmergencia[plantaSeleccionada] || []).map((salida, index) => {
             const imageSrc = imagesSalida[salida.imagen];
             return (
@@ -471,8 +499,8 @@ const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada
             );
           })}
 
-          {/* Aulas */}
-          {aulas.map((aula) => {
+          {/* Aulas filtradas */}
+          {aulasToDisplay.map((aula) => {
             const { coordenadas, color, id, nombre } = aula;
             const bounds = [coordenadas.infDer, coordenadas.supIzq];
             const centro = calcularCentro(coordenadas);
@@ -481,12 +509,12 @@ const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada
                 <Rectangle
                   bounds={bounds}
                   pathOptions={{
-                    color: aulaActiva?.id === id ? 'purple' : color,
-                    fillColor: aulaActiva?.id === id ? 'purple' : color,
+                    color: aula.coordinadora ? 'red' : color,
+                    fillColor: color,
                     fillOpacity: 0.5,
-                    weight: aulaActiva?.id === id ? 4 : 2
+                    weight: 4
                   }}
-                  interactive={true}
+                  interactive
                 >
                   <Tooltip direction="top" offset={[0, -8]} opacity={1} sticky interactive>
                     {nombre}
@@ -513,7 +541,7 @@ const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada
             </Marker>
           ))}
 
-          {/* Marcadores de las Escaleras */}
+          {/* Escaleras */}
           {escaleras.map((escalera) => (
             <Marker
               key={escalera.id}
@@ -522,11 +550,9 @@ const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada
               eventHandlers={{
                 click: () => {
                   if (plantaSeleccionada !== "Planta Baja") {
-                    // Si no estás en la planta baja, cambia a Planta Baja sin mostrar ruta.
                     setPlantaSeleccionada("Planta Baja");
                     setAulaActiva(escalera);
                   } else {
-                    // En la planta baja, al pulsar la escalera se muestra la ruta como aula normal.
                     setAulaActiva(escalera);
                   }
                 }
@@ -534,7 +560,7 @@ const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada
             />
           ))}
 
-          {/* Flechas de la ruta si existe */}
+          {/* Flechas de ruta */}
           {aulaActiva?.ruta &&
             aulaActiva.ruta.slice(0, -1).map((p, i) => {
               const siguiente = aulaActiva.ruta[i + 1];
@@ -548,7 +574,7 @@ const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada
               );
             })}
 
-          {/* Monje animado (flechaPosicion) */}
+          {/* Monje animado */}
           {!imprimible && flechaPosicion && aulaActiva?.ruta && (
             <Marker
               position={flechaPosicion}
@@ -563,7 +589,7 @@ const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada
 
           <ClickHandler aulas={aulas} />
 
-          {/* Mostramos el QR y la Leyenda */}
+          {/* QR y Leyenda */}
           <QrOverlay aulaActiva={aulaActiva} plantaSeleccionada={plantaSeleccionada} />
           <LeyendaOverlay plantaSeleccionada={plantaSeleccionada} />
         </MapContainer>

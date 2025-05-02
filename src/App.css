@@ -462,3 +462,35 @@ input:checked + .slider:before {
   border-top: 6px solid #333;
   transform: translateY(-50%);
 }
+/* Badge para el aula coordinadora */
+.coordinadora-badge {
+  display: inline-block;      /* for padding y min-width efectivos */
+  white-space: nowrap;        /* evita que el texto se parta */
+  padding: 4px 12px;          /* más espacio lateral */
+  min-width: 80px;            /* aseguras un ancho mínimo */
+  text-align: center;         /* centrar el texto */
+  background-color: #e74c3c;  
+  color: white;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1);   opacity: 1; }
+  50%  { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+/* Etiqueta profesional para aula coordinadora */
+.coordinadora-label {
+  background: transparent !important;
+  border: none !important;
+  color: #2c3e50 !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4) !important;
+  pointer-events: none;
+}
