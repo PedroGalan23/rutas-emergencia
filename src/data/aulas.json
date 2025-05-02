@@ -555,7 +555,7 @@
         "grupo":"3INFB",
         "coordinadora": true,
         "coordenadas": {
-          "supIzq": [4039, 3274],
+          "supIzq": [4042, 3278],
           "infDer": [3780, 3521]
         },
         "ruta": [
@@ -707,7 +707,7 @@
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [4044, 2966],
-          "infDer": [3784, 3265]
+          "infDer": [3785, 3262]
         },
         "ruta": [
           [3807, 3227],
@@ -1443,7 +1443,7 @@
         "grupo":"3ESOA",
         "coordinadora": true,
         "coordenadas": {
-          "supIzq": [3941, 3464],
+          "supIzq": [3942, 3468],
           "infDer": [3767, 3852]
         },
         "ruta": [
@@ -1465,7 +1465,7 @@
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [3943, 3035],
-          "infDer": [3766, 3452]
+          "infDer": [3766, 3447]
         },
         "ruta": [
           [3933, 3048],
@@ -1641,8 +1641,8 @@
     ],
     "Planta Segunda": [
       {
-        "id": "S1",
-        "nombre": "S1",
+        "id": "S79",
+        "nombre": "AULA S79 (PASILLO MIGUEL HERNÁNDEZ SEGUNDA PLANTA)",
         "sector": "Salida pistas",
         "color": "blue",
         "grupo":"",
@@ -1672,11 +1672,11 @@
         ]
       },
       {
-        "id": "S2",
-        "nombre": "S2",
+        "id": "S78",
+        "nombre": "AULA S78 (PASILLO MIGUEL HERNÁNDEZ SEGUNDA PLANTA)",
         "sector": "Salida pistas",
         "color": "blue",
-        "grupo":"",
+        "grupo":"3ESOD",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [3633, 1868],
@@ -1703,14 +1703,14 @@
         ]
       },
       {
-        "id": "S3",
-        "nombre": "S3",
+        "id": "S77",
+        "nombre": "AULA S77 (PASILLO MIGUEL HERNÁNDEZ SEGUNDA PLANTA)",
         "sector": "Salida pistas",
         "color": "blue",
-        "grupo":"",
+        "grupo":"3ESOC",
         "coordinadora": false,
         "coordenadas": {
-          "supIzq": [4042, 1912],
+          "supIzq": [4038, 1900],
           "infDer": [3638, 2096]
         },
         "ruta": [
@@ -1732,11 +1732,11 @@
         ]
       },
       {
-        "id": "S4",
-        "nombre": "S4",
+        "id": "S74",
+        "nombre": "AULA S74 (PASILLO ESO SEGUNDA PLANTA)",
         "sector": "Salida pistas",
         "color": "blue",
-        "grupo":"",
+        "grupo":"2ESOD",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [3950, 2352],
@@ -1758,11 +1758,11 @@
         ]
       },
       {
-        "id": "S5",
-        "nombre": "S5",
+        "id": "S71",
+        "nombre": "AULA S71 (PASILLO ESO SEGUNDA PLANTA)",
         "sector": "Salida pistas",
         "color": "blue",
-        "grupo":"",
+        "grupo":"2ESOC",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [3950, 2704],
@@ -1782,11 +1782,11 @@
         ]
       },
       {
-        "id": "S6",
-        "nombre": "S6",
+        "id": "S70",
+        "nombre": "AULA S70 (PASILLO ESO SEGUNDA PLANTA)",
         "sector": "Salida pistas",
         "color": "blue",
-        "grupo":"",
+        "grupo":"2ESOB",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [3950, 3128],
@@ -1804,14 +1804,14 @@
         ]
       },
       {
-        "id": "S7",
-        "nombre": "S7",
+        "id": "S68",
+        "nombre": "AULA S68 (PASILLO ESO SEGUNDA PLANTA)",
         "sector": "Salida pistas",
         "color": "blue",
-        "grupo":"",
+        "grupo":"2ESOA",
         "coordinadora": true,
         "coordenadas": {
-          "supIzq": [3950, 3552],
+          "supIzq": [3950, 3586],
           "infDer": [3782, 3956]
         },
         "ruta": [
@@ -1824,15 +1824,15 @@
         ]
       },
       {
-        "id": "S8",
-        "nombre": "S8",
+        "id": "S57",
+        "nombre": "HABITACIÓN",
         "sector": "Salida pistas",
         "color": "blue",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
-          "supIzq": [3946, 4048],
-          "infDer": [3782, 4248]
+          "supIzq": [3950, 4027],
+          "infDer": [3776, 4236]
         },
         "ruta": [
           [3854, 4273],
@@ -1843,15 +1843,15 @@
         ]
       },
       {
-        "id": "S9",
-        "nombre": "S9",
+        "id": "S38",
+        "nombre": "AULA S38 (PASILLO DIRECTOR SEGUNDA PLANTA)",
         "sector": "Salida Conserjería",
         "color": "orange",
-        "grupo":"",
+        "grupo":"1ESOA",
         "coordinadora": true,
         "coordenadas": {
           "supIzq": [2691, 4620],
-          "infDer": [2475, 4948]
+          "infDer": [2472, 4940]
         },
         "ruta": [
           [2436, 4742],
@@ -1883,14 +1883,14 @@
         ]
       },
       {
-        "id": "S10",
-        "nombre": "S10",
+        "id": "S37",
+        "nombre": "AULA S37 (PASILLO DIRECTOR SEGUNDA PLANTA)",
         "sector": "Salida Conserjería",
         "color": "orange",
-        "grupo":"",
+        "grupo":"1ESOB",
         "coordinadora": false,
         "coordenadas": {
-          "supIzq": [2691, 4942],
+          "supIzq": [2692, 4962],
           "infDer": [2473, 5238]
         },
         "ruta": [
@@ -1921,11 +1921,11 @@
         ]
       },
       {
-        "id": "S11",
-        "nombre": "S11",
+        "id": "S36",
+        "nombre": "AULA S36 (PASILLO DIRECTOR SEGUNDA PLANTA)",
         "sector": "Salida Conserjería",
         "color": "orange",
-        "grupo":"",
+        "grupo":"1ESOC",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [2691, 5238],
@@ -1957,8 +1957,8 @@
         ]
       },
       {
-        "id": "S12",
-        "nombre": "S12",
+        "id": "S35",
+        "nombre": "ASEOS ALUMNOS",
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
@@ -1990,11 +1990,11 @@
         ]
       },
       {
-        "id": "S13",
-        "nombre": "S13",
+        "id": "S31",
+        "nombre": "AULA S31",
         "sector": "Salida Conserjería",
         "color": "orange",
-        "grupo":"",
+        "grupo":"1ESOD",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [2415, 5742],
@@ -2021,11 +2021,11 @@
         ]
       },
       {
-        "id": "S14",
-        "nombre": "S14",
+        "id": "S311",
+        "nombre": "S311",
         "sector": "Salida Conserjería",
         "color": "orange",
-        "grupo":"4PRID",
+        "grupo":"",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [2151, 5741],
@@ -2051,11 +2051,29 @@
         ]
       },
       {
-        "id": "S15",
-        "nombre": "S15",
+        "id": "S14",
+        "nombre": "S14",
         "sector": "Salida Conserjería",
         "color": "orange",
-        "grupo":"4PRIC",
+        "grupo":"4PRID",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [960, 4282],
+          "infDer": [755, 4702]
+        },
+        "ruta": [
+          [998, 4692],
+          [996, 4836],
+          [948, 4936],
+          [870, 4940]
+        ]
+      },
+      {
+        "id": "S555",
+        "nombre": "S555",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [1890, 5730],
@@ -2127,11 +2145,11 @@
         ]
       },
       {
-        "id": "S18",
-        "nombre": "S18",
+        "id": "S25",
+        "nombre": "AULA DE DEREK (PASILLO PISCINA SEGUNDA PLANTA)",
         "sector": "Salida Conserjería",
         "color": "orange",
-        "grupo":"4PRIB",
+        "grupo":"",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [1292, 5641],
@@ -2144,7 +2162,7 @@
           [1000, 5138],
           [998, 5020],
           [964, 4932],
-          [872, 4926]
+          [2000, 4926]
         ]
       },
       {
@@ -2188,11 +2206,11 @@
         ]
       },
       {
-        "id": "S21",
-        "nombre": "S21",
+        "id": "S18",
+        "nombre": "AULA S18 (PASILLO OLMA SEGUNDA PLANTA)",
         "sector": "Salida Conserjería",
         "color": "orange",
-        "grupo":"",
+        "grupo":"4PRIB",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [961, 5003],
@@ -2205,11 +2223,11 @@
         ]
       },
       {
-        "id": "S22",
-        "nombre": "S22",
+        "id": "S15",
+        "nombre": "AULA S15 (PASILLO OLMA SEGUNDA PLANTA)",
         "sector": "Salida Conserjería",
         "color": "orange",
-        "grupo":"",
+        "grupo":"4PRIC",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [959, 4703],
@@ -2222,50 +2240,50 @@
         ]
       },
       {
-        "id": "S23",
-        "nombre": "S23",
-        "sector": "Salida Conserjería",
-        "color": "orange",
-        "grupo":"",
-        "coordinadora": false,
-        "coordenadas": {
-          "supIzq": [960, 4282],
-          "infDer": [755, 4702]
-        },
-        "ruta": [
-          [998, 4692],
-          [996, 4836],
-          [948, 4936],
-          [870, 4940]
-        ]
-      },
-      {
-        "id": "S24",
-        "nombre": "S24",
+        "id": "S11",
+        "nombre": "ASEOS INFORMÁTICOS",
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [947, 3571],
-          "infDer": [752, 3923]
+          "infDer": [755, 3753]
         },
         "ruta": [
           [988, 3758],
-          [978, 3616],
+          [988, 3618],
           [942, 3524],
           [834, 3510]
         ]
       },
       {
-        "id": "S25",
-        "nombre": "S25",
+        "id": "S13",
+        "nombre": "DORMITORIO",
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
-          "supIzq": [945, 3093],
+          "supIzq": [942, 3760],
+          "infDer": [755, 3922]
+        },
+        "ruta": [
+          [988, 3758],
+          [988, 3618],
+          [942, 3524],
+          [834, 3510]
+        ]
+      },
+      {
+        "id": "S9",
+        "nombre": "SALA DE INFORMÁTICA Y DISEÑO (PASILLO INFORMÁTICOS)",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [945, 3186],
           "infDer": [754, 3366]
         },
         "ruta": [
@@ -2276,15 +2294,15 @@
         ]
       },
       {
-        "id": "S26",
-        "nombre": "S26",
+        "id": "S5",
+        "nombre": "DESPACHO DE IINVENTI",
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [943, 2725],
-          "infDer": [761, 3095]
+          "infDer": [760, 2994]
         },
         "ruta": [
           [982, 2864],
@@ -2297,15 +2315,15 @@
         ]
       },
       {
-        "id": "S27",
-        "nombre": "S27",
+        "id": "S4",
+        "nombre": "2ª DEPARTEMENTO (PASILLO INFORMÁTICOS)",
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
-          "supIzq": [941, 2387],
-          "infDer": [764, 2725]
+          "supIzq": [943, 2532],
+          "infDer": [758, 2712]
         },
         "ruta": [
           [978, 2554],
@@ -2319,6 +2337,73 @@
           [840, 3512]
         ]
       },
+      {
+        "id": "S3",
+        "nombre": "1ª DEPARTAMENTO (PASILLO INFORMÁTICOS)",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [939, 2392],
+          "infDer": [762, 2529]
+        },
+        "ruta": [
+          [978, 2554],
+          [986, 2714],
+          [982, 2864],
+          [978, 3046],
+          [978, 3130],
+          [982, 3316],
+          [990, 3464],
+          [916, 3520],
+          [840, 3512]
+        ]
+      },
+
+      {
+        "id": "S2",
+        "nombre": "ARCHIVOS (PASILLO INFORMÁTICOS)",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [1039, 2262],
+          "infDer": [762, 2357]
+        },
+        "ruta": [
+          [978, 2554],
+          [986, 2714],
+          [982, 2864],
+          [978, 3046],
+          [978, 3130],
+          [982, 3316],
+          [990, 3464],
+          [916, 3520],
+          [840, 3512]
+        ]
+      },
+      {
+        "id": "S7",
+        "nombre": "RADIO (PASILLO INFORMÁTICOS)",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [941, 3001],
+          "infDer": [756, 3184]
+        },
+        "ruta": [
+          [986, 3138],
+          [982, 3316],
+          [990, 3464],
+          [916, 3520],
+          [840, 3512]
+        ]
+      },
+    
       {
         "id": "S28",
         "nombre": "S28",
