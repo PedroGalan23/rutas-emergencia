@@ -55,73 +55,42 @@ body {
 }
 
 
+/* IMPRESIÓN */
 @media print {
-  /* 0) Quitar TODO el padding/margin por defecto */
-  html, body {
-    margin: 0 !important;
-    padding: 0 !important;
-    height: 100% !important;
-    overflow: hidden !important;
-  }
-
-  /* 1) Ocultar todo menos el mapa */
-  body * {
-    visibility: hidden !important;
-  }
-  .map-container,
-  .map-container * {
-    visibility: visible !important;
-  }
-
-  /* 2) Hacer que el .map-container llene la página */
-  @media print {
-    /* Empuja el mapa 5 mm fuera de cada borde */
-    .map-container {
-      position: fixed !important;
-      top:    -5mm !important;
-      left:   -5mm !important;
-      width:  calc(100% + 10mm) !important;
-      height: calc(100% + 10mm) !important;
-    }
-    .leaflet-container {
-      width: 100%  !important;
-      height: 100% !important;
-    }
-  }
-  
-
-  /* 3) Página A4 apaisada y SIN márgenes */
   @page {
     size: A4 landscape;
     margin: 0;
   }
 
-
-  .legend-circle {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    margin-right: 6px;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-  
-  .legend-circle-coordinadora {
-    background-color: red !important;
-  }
-  
-
-  .legend-circleQR {
-    background-color: purple !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
   }
 
+  .app {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    transform: scale(0.80);
+    transform-origin: top left;
+
+    page-break-inside: avoid;
+  }
+
+  header, .controls, .selector-wrapper, .switch-wrapper, button {
+    display: none !important;
+  }
+
+  .leaflet-container {
+    z-index: 0 !important;
+  }
 }
 
-
-  
 
 .planta-container label {
   font-size: 0.95rem;
