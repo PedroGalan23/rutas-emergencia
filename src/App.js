@@ -372,7 +372,8 @@ const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada
         ))}
         {/* Nueva indicación para aulas coordinadoras */}
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <span style={{
+          <span  className="legend-circle legend-circle-coordinadora"
+           style={{
             display: 'inline-block',
             width: '15px',
             height: '15px',

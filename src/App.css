@@ -98,9 +98,19 @@ body {
 
 
   .legend-circle {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 6px;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
+  
+  .legend-circle-coordinadora {
+    background-color: red !important;
+  }
+  
 
   .legend-circleQR {
     background-color: purple !important;
