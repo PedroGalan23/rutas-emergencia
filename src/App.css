@@ -73,22 +73,20 @@ body {
     visibility: visible !important;
   }
 
-  /* 2) Hacer que el .map-container llene la página */
-  @media print {
-    /* Empuja el mapa 5 mm fuera de cada borde */
-    .map-container {
-      position: fixed !important;
-      top:    -5mm !important;
-      left:   -5mm !important;
-      width:  calc(100% + 10mm) !important;
-      height: calc(100% + 10mm) !important;
-    }
-    .leaflet-container {
-      width: 100%  !important;
-      height: 100% !important;
-    }
+  /* 2) Hacer que el .map-container llene la página y se empuje hacia abajo */
+  .map-container {
+    position: fixed !important;
+    top: 10mm !important;              /* Cambia -5mm por 0 para empujar hacia abajo */
+    left: -50mm !important;
+    width: calc(100% + 10mm) !important;
+    height: calc(100% + 0mm) !important; /* Elimina el aumento de altura si genera margen inferior */
+    transform: translateY(5mm);       /* Desplaza hacia abajo visualmente */
   }
-  
+
+  .leaflet-container {
+    width: 100% !important;
+    height: 100% !important;
+  }
 
   /* 3) Página A4 apaisada y SIN márgenes */
   @page {
@@ -96,7 +94,7 @@ body {
     margin: 0;
   }
 
-
+  /* 4) Estilos de leyenda */
   .legend-circle {
     display: inline-block;
     width: 15px;
@@ -106,19 +104,25 @@ body {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
-  
-  .legend-circle-coordinadora {
-    background-color: red !important;
+
+  .legend-square-coordinadora {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-color: white !important;
+    border: 2px solid red !important;
+    margin-right: 6px;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
-  
 
   .legend-circleQR {
     background-color: purple !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
-
 }
+
 
 
   
@@ -335,6 +339,12 @@ body {
   .planta-container select {
     font-size: 0.85rem;
     padding: 0.3rem 0.5rem;
+  }
+
+  .map-container {
+    /* Antes: height: calc(100vh - 100px);
+       Ahora descontamos unos 140px (ajusta a tu header real) */
+    height: calc(100vh - 140px);
   }
   
   /* Ajusta el tamaño del texto de "Modo de impresión" si deseas hacerlo más pequeño */

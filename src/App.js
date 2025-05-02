@@ -199,99 +199,94 @@ function App() {
 
   // Componente QrOverlay para mostrar el QR en coordenadas fijas.
   // App.js (solo el QrOverlay)
-const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada }) {
-  const map = useMap();
-  const overlayRef = useRef(null);
-  const prevPointRef = useRef({ x: 0, y: 0 });
-  const qrCoords = { supIzq: [652, 3011], infDer: [182, 4541] };
-  // calculamos centro una vez
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const fixedCenter = {
-    lat: (qrCoords.supIzq[0] + qrCoords.infDer[0]) / 2,
-    lng: (qrCoords.supIzq[1] + qrCoords.infDer[1]) / 2
-  };
+  const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada }) {
+    const map = useMap();
+    const overlayRef = useRef(null);
+    const prevPointRef = useRef({ x: 0, y: 0 });
+    const qrCoords = { supIzq: [652, 3011], infDer: [182, 4541] };
+    const fixedCenter = {
+      lat: (qrCoords.supIzq[0] + qrCoords.infDer[0]) / 2,
+      lng: (qrCoords.supIzq[1] + qrCoords.infDer[1]) / 2
+    };
 
-  useLayoutEffect(() => {
-    function updatePosition() {
-      if (!overlayRef.current) return;
-      const point = map.latLngToContainerPoint(fixedCenter);
+    useLayoutEffect(() => {
+      function updatePosition() {
+        if (!overlayRef.current) return;
+        const point = map.latLngToContainerPoint(fixedCenter);
+        if (
+          Math.abs(point.x - prevPointRef.current.x) < 1 &&
+          Math.abs(point.y - prevPointRef.current.y) < 1
+        ) {
+          return;
+        }
 
-      // evita updates insignificantes
-      if (
-        Math.abs(point.x - prevPointRef.current.x) < 1 &&
-        Math.abs(point.y - prevPointRef.current.y) < 1
-      ) {
-        return;
+        const el = overlayRef.current;
+        const w = el.offsetWidth;
+        const h = el.offsetHeight;
+        const offsetX = -w / 2;
+        const offsetY = -h / 2;
+
+        el.style.transform = `translate3d(${point.x + offsetX}px, ${point.y + offsetY}px, 0)`;
+        prevPointRef.current = { x: point.x, y: point.y };
       }
 
-      const el = overlayRef.current;
-      const w = el.offsetWidth;
-      const h = el.offsetHeight;
-      const offsetX = -w / 2;
-      const offsetY = -h / 2;
+      map.on('zoomend moveend', updatePosition);
+      updatePosition();
+      return () => map.off('zoomend moveend', updatePosition);
+    }, [map, fixedCenter]);
 
-      // SOLO cambias transform, NO left/top
-      el.style.transform = `translate3d(${point.x + offsetX}px, ${point.y + offsetY}px, 0)`;
+    if (!aulaActiva) return null;
 
-      prevPointRef.current = { x: point.x, y: point.y };
-    }
+    const url =
+      window.location.origin +
+      `?planta=${encodeURIComponent(plantaSeleccionada)}` +
+      `&id=${encodeURIComponent(aulaActiva.id)}`;
 
-    map.on('zoomend moveend', updatePosition);
-    updatePosition();
-    return () => map.off('zoomend moveend', updatePosition);
-  }, [map, fixedCenter]);
-
-  if (!aulaActiva) return null;
-
-  const url =
-    window.location.origin +
-    `?planta=${encodeURIComponent(plantaSeleccionada)}` +
-    `&id=${encodeURIComponent(aulaActiva.id)}`;
-
-  return (
-    <div
-      ref={overlayRef}
-      className="qr-overlay"
-      style={{
-        position: 'absolute',
-        zIndex: 1000,
-        padding: '5px',
-        border: '2px solid black',
-        backgroundColor: 'white',
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center'
-      }}
-    >
-      <QRCodeCanvas value={url} size={60} style={{ marginRight: '8px' }} />
-      <div style={{ fontSize: '12px', lineHeight: '1.2' }}>
-        <strong>{aulaActiva.nombre}</strong>
-        <br />
-        ID: {aulaActiva.id}
-        {aulaActiva.coordinadora && (
-          <>
-            <br />
-            <strong style={{ color: 'red' }}>Aula Coordinadora</strong>
-          </>
-        )}
-        <br />
-        <span style={{ display: 'inline-flex', alignItems: 'center' }}>
-          <span
-            className="legend-circleQR"
-            style={{
-              width: '8px',
-              height: '8px',
-              backgroundColor: 'purple',
-              borderRadius: '50%',
-              marginRight: '4px'
-            }}
-          />
-          Usted está aquí
-        </span>
+    return (
+      <div
+        ref={overlayRef}
+        className="qr-overlay"
+        style={{
+          position: 'absolute',
+          zIndex: 1000,
+          padding: '5px',
+          border: '2px solid black',
+          backgroundColor: 'white',
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center'
+        }}
+      >
+        <QRCodeCanvas value={url} size={60} style={{ marginRight: '8px' }} />
+        <div style={{ fontSize: '12px', lineHeight: '1.2' }}>
+          <strong>{aulaActiva.grupo || aulaActiva.nombre}</strong>
+          <br />
+          ID: {aulaActiva.id}
+          {aulaActiva.coordinadora && (
+            <>
+              <br />
+              <strong style={{ color: 'red' }}>Aula Coordinadora</strong>
+            </>
+          )}
+          <br />
+          <span style={{ display: 'inline-flex', alignItems: 'center' }}>
+            <span
+              className="legend-circleQR"
+              style={{
+                width: '8px',
+                height: '8px',
+                backgroundColor: 'purple',
+                borderRadius: '50%',
+                marginRight: '4px'
+              }}
+            />
+            Usted está aquí
+          </span>
+        </div>
       </div>
-    </div>
-  );
-});
+    );
+  });
+
 
 
   // Componente LeyendaOverlay para mostrar la leyenda en las coordenadas indicadas.
@@ -372,15 +367,16 @@ const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada
         ))}
         {/* Nueva indicación para aulas coordinadoras */}
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <span  className="legend-circle legend-circle-coordinadora"
-           style={{
-            display: 'inline-block',
-            width: '15px',
-            height: '15px',
-            borderRadius: '50%',
-            backgroundColor: 'red',
-            marginRight: '6px'
-          }}></span>
+          <span className="legend-square-coordinadora"
+            style={{
+              display: 'inline-block',
+              width: '15px',
+              height: '15px',
+              backgroundColor: 'white',
+              border: '2px solid red',
+              marginRight: '6px'
+            }}></span>
+
           <span>Aula Coordinadora</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -395,70 +391,57 @@ const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada
     );
   });
 
-// UNIFICACIÓN DE FILTRADO: coordinadoras + (opcional) aula seleccionada
-const aulas = aulasData[plantaSeleccionada] || [];
-let aulasToDisplay = aulas;
 
-if (aulaActiva) {
-  const sector = aulaActiva.sector;
-  // obtenemos todas las coordinadoras de ese sector
-  const coordinadoras = aulas.filter(a => a.sector === sector && a.coordinadora);
-
-  if (aulaActiva.coordinadora) {
-    // si el aula activa es coordinadora, mostramos todas las coordinadoras
-    aulasToDisplay = coordinadoras;
-  } else {
-    // si no es coordinadora, mostramos todas las coordinadoras + el aula activa
-    aulasToDisplay = coordinadoras.length > 0
-      ? [...coordinadoras, aulaActiva]
-      : [aulaActiva];
+  // Filtrado de aulas
+  const todas = aulasData[plantaSeleccionada] || [];
+  let destacadas = todas;
+  if (aulaActiva) {
+    const sector = aulaActiva.sector;
+    const coord = todas.filter(a => a.sector === sector && a.coordinadora);
+    destacadas = aulaActiva.coordinadora
+      ? coord
+      : (coord.length > 0 ? [...coord, aulaActiva] : [aulaActiva]);
   }
-}
-
-
+  const otras = todas.filter(a => !destacadas.some(d => d.id === a.id));
   const zonasComunes = zonasComunesData[plantaSeleccionada] || [];
 
   return (
     <div className="app">
       <header className="app-header">
         <h1>
-          <img
-            src={monje2}
-            alt="Monje"
-            style={{ height: '1.8em', verticalAlign: 'middle', marginRight: '0.5em' }}
-          />
+          <img src={monje2} alt="Monje" style={{ height: '1.8em', verticalAlign: 'middle', marginRight: '0.5em' }} />
           PLAN DE EVACUACIÓN
         </h1>
         <div className="controls">
-          <div className="imprimible-container">
-            <div className="switch-wrapper">
-              <label className="switch">
-                <input
-                  type="checkbox"
-                  id="imprimible"
-                  checked={imprimible}
-                  onChange={(e) => setImprimible(e.target.checked)}
-                />
-                <span className="slider round"></span>
-              </label>
-              <span className="switch-label">Modo Impresión</span>
-            </div>
+          {/* Switch y texto alineados */}
+          <div className="switch-wrapper">
+            <label className="switch">
+              <input
+                type="checkbox"
+                checked={imprimible}
+                onChange={e => setImprimible(e.target.checked)}
+              />
+              <span className="slider round"></span>
+            </label>
+            <span className="switch-label">Modo Impresión</span>
           </div>
+
+          {/* Selector de planta */}
           <div className="selector-wrapper">
             <label htmlFor="planta" className="selector-label">Selecciona una planta:</label>
             <div className="custom-select">
               <select
                 id="planta"
                 value={plantaSeleccionada}
-                onChange={(e) => {
+                onChange={e => {
                   setPlantaSeleccionada(e.target.value);
                   setAulaActiva(null);
                   setFlechaPosicion(null);
                   clearInterval(animationInterval.current);
                 }}
               >
-                {Object.keys(planos).map((planta) => (
-                  <option key={planta} value={planta}>{planta}</option>
+                {Object.keys(planos).map(p => (
+                  <option key={p} value={p}>{p}</option>
                 ))}
               </select>
               <span className="custom-arrow"></span>
@@ -466,6 +449,7 @@ if (aulaActiva) {
           </div>
         </div>
       </header>
+
       <div className="map-container">
         <MapContainer
           crs={CRS.Simple}
@@ -473,124 +457,112 @@ if (aulaActiva) {
           minZoom={-2.6}
           maxZoom={1}
           maxBounds={imageBounds}
-          maxBoundsViscosity={1.0}
+          maxBoundsViscosity={1}
           style={{ width: '100%', height: '100%' }}
-          whenCreated={(map) => {
+          whenCreated={map => {
             map.fitBounds(imageBounds);
-            map.dragging.disable(); // Desactiva el movimiento del mapa
+            map.dragging.disable();
           }}
         >
           <ImageOverlay url={planos[plantaSeleccionada]} bounds={imageBounds} />
 
           {/* Salidas de emergencia */}
-          {(salidasEmergencia[plantaSeleccionada] || []).map((salida, index) => {
-            const imageSrc = imagesSalida[salida.imagen];
-            return (
-              <Marker
-                key={`salida-${index}`}
-                position={salida.coordenadas}
-                icon={divIcon({
-                  html: `<img src="${imageSrc}" alt="${salida.nombre}" style="width:45px; height:45px;" />`,
-                  className: '',
-                  iconSize: [25, 25],
-                  iconAnchor: [10, 10]
-                })}
-                interactive={false}
-              />
-            );
-          })}
+          {salidasEmergencia[plantaSeleccionada]?.map((salida, i) => (
+            <Marker
+              key={i}
+              position={salida.coordenadas}
+              interactive={false}
+              icon={divIcon({
+                html: `<img src="${imagesSalida[salida.imagen]}" style="width:45px;height:45px" alt="Salida"/>`,
+                className: '', iconSize: [25, 25], iconAnchor: [10, 10]
+              })}
+            />
+          ))}
 
-          {/* Aulas filtradas */}
-          {aulasToDisplay.map((aula) => {
-            const { coordenadas, color, id, nombre } = aula;
-            const bounds = [coordenadas.infDer, coordenadas.supIzq];
-            const centro = calcularCentro(coordenadas);
+          {/* Aulas destacadas */}
+          {destacadas.map(a => {
+            const bounds = [a.coordenadas.infDer, a.coordenadas.supIzq];
+            const centro = calcularCentro(a.coordenadas);
             return (
-              <React.Fragment key={id}>
+              <React.Fragment key={a.id}>
                 <Rectangle
                   bounds={bounds}
                   pathOptions={{
-                    color: aula.coordinadora ? 'red' : color,
-                    fillColor: color,
+                    color: a.coordinadora ? 'red' : a.color,
+                    fillColor: a.color,
                     fillOpacity: 0.5,
                     weight: 4
                   }}
                   interactive
                 >
-                  <Tooltip direction="top" offset={[0, -8]} opacity={1} sticky interactive>
-                    {nombre}
+                  <Tooltip direction="top" offset={[0, -8]} sticky interactive>
+                    {a.nombre}
                   </Tooltip>
                 </Rectangle>
-                <EtiquetaAula position={centro} id={id} grupo={aula.grupo} />
+                <EtiquetaAula position={centro} id={a.id} grupo={a.grupo} />
+              </React.Fragment>
+            );
+          })}
+
+          {/* Otras aulas */}
+          {otras.map(a => {
+            const bounds = [a.coordenadas.infDer, a.coordenadas.supIzq];
+            const centro = calcularCentro(a.coordenadas);
+            return (
+              <React.Fragment key={`oth-${a.id}`}>
+                <Rectangle
+                  bounds={bounds}
+                  pathOptions={{
+                    color: a.coordinadora ? 'red' : a.color,
+                    fillOpacity: 0,
+                    weight: 2
+                  }}
+                  interactive={false}
+                />
+                <EtiquetaAula position={centro} id={a.id} grupo={a.grupo} />
               </React.Fragment>
             );
           })}
 
           {/* Zonas comunes */}
-          {zonasComunes.map((zona, index) => (
-            <Marker
-              key={zona.id || `zona-${index}`}
-              position={zona.coordenadas}
-              icon={divIcon({ html: '', className: '' })}
-              interactive={false}
-            >
-              <Tooltip permanent direction="center" className="zona-tooltip" opacity={1}>
-                <span style={{ display: 'inline-block', whiteSpace: 'pre-line' }}>
-                  {zona.nombre}
-                </span>
+          {zonasComunes.map((z, i) => (
+            <Marker key={i} position={z.coordenadas} interactive={false} icon={divIcon({ html: '', className: '' })}>
+              <Tooltip permanent direction="center" className="zona-tooltip">
+                <span style={{ whiteSpace: 'pre-line' }}>{z.nombre}</span>
               </Tooltip>
             </Marker>
           ))}
 
           {/* Escaleras */}
-          {escaleras.map((escalera) => (
-            <Marker
-              key={escalera.id}
-              position={escalera.coordenadas}
+          {escaleras.map(e => (
+            <Marker key={e.id} position={e.coordenadas}
               icon={createEscaleraMarkerIcon()}
               eventHandlers={{
                 click: () => {
-                  if (plantaSeleccionada !== "Planta Baja") {
-                    setPlantaSeleccionada("Planta Baja");
-                    setAulaActiva(escalera);
-                  } else {
-                    setAulaActiva(escalera);
-                  }
+                  if (plantaSeleccionada !== 'Planta Baja') {
+                    setPlantaSeleccionada('Planta Baja');
+                    setAulaActiva(e);
+                  } else setAulaActiva(e);
                 }
               }}
             />
           ))}
 
-          {/* Flechas de ruta */}
-          {aulaActiva?.ruta &&
-            aulaActiva.ruta.slice(0, -1).map((p, i) => {
-              const siguiente = aulaActiva.ruta[i + 1];
-              const angulo = calcularAngulo(p, siguiente);
-              return (
-                <Marker
-                  key={i}
-                  position={p}
-                  icon={crearIconoFlecha(angulo, aulaActiva.color || 'blue')}
-                />
-              );
-            })}
+          {/* Ruta de flechas */}
+          {aulaActiva?.ruta?.slice(0, -1).map((p, i) => {
+            const next = aulaActiva.ruta[i + 1];
+            return <Marker key={i} position={p} icon={crearIconoFlecha(calcularAngulo(p, next), aulaActiva.color)} />
+          })}
 
           {/* Monje animado */}
           {!imprimible && flechaPosicion && aulaActiva?.ruta && (
-            <Marker
-              position={flechaPosicion}
-              icon={divIcon({
-                html: `<img src="${monjeFrames[monjeFrame]}" class="monje-animado" alt="Monje animado" />`,
-                className: '',
-                iconSize: [40, 40],
-                iconAnchor: [20, 20]
-              })}
-            />
+            <Marker position={flechaPosicion} icon={divIcon({
+              html: `<img src="${monjeFrames[monjeFrame]}" class="monje-animado"/>`,
+              className: '', iconSize: [40, 40], iconAnchor: [20, 20]
+            })} />
           )}
 
-          <ClickHandler aulas={aulas} />
-
-          {/* QR y Leyenda */}
+          <ClickHandler aulas={todas} />
           <QrOverlay aulaActiva={aulaActiva} plantaSeleccionada={plantaSeleccionada} />
           <LeyendaOverlay plantaSeleccionada={plantaSeleccionada} />
         </MapContainer>
