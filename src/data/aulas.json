@@ -117,6 +117,28 @@
         ]
       },
       {
+        "id": "B19",
+        "nombre": "ASEO EVENTOS",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [3173, 2634],
+          "infDer": [2705, 2860]
+        },
+        "ruta": [
+          [2650, 2830],
+          [2533, 2529],
+          [2201, 2509],
+          [1825, 2489],
+          [1493, 2465],
+          [1169, 2465],
+          [901, 2465],
+          [741, 2469]
+        ]
+      },
+      {
         "id": "B21",
         "nombre": "ASEO FRENTE CAFETERÍA",
         "sector": "Salida M.Hernández",
@@ -124,8 +146,8 @@
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
-          "supIzq": [3171, 2630],
-          "infDer": [2704, 2994]
+          "supIzq": [3173, 2864],
+          "infDer": [2705, 2990]
         },
         "ruta": [
           [2937, 2984],
@@ -213,6 +235,50 @@
         [898, 2464],
         [716, 2466]
       ]
+      },
+      {
+        "id": "B51",
+        "nombre": "VESTUARIO IZQUIERDA BUNKER",
+        "sector": "Salida M.Hernández",
+        "color": "green",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [4458, 3765],
+          "infDer": [4244, 3846]
+        },
+        "ruta": [
+          [4209, 3764],
+          [4277, 3672],
+          [4351, 3492],
+          [4349, 3236],
+          [4377, 2928],
+          [4265, 2344],
+          [4171, 1850],
+          [4175, 1606]
+        ]
+      },
+      {
+        "id": "B52",
+        "nombre": "VESTUARIO DERECHA BUNKER",
+        "sector": "Salida M.Hernández",
+        "color": "green",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [4458, 3854],
+          "infDer": [4244, 3910]
+        },
+        "ruta": [
+          [4209, 3764],
+          [4277, 3672],
+          [4351, 3492],
+          [4349, 3236],
+          [4377, 2928],
+          [4265, 2344],
+          [4171, 1850],
+          [4175, 1606]
+        ]
       },
       {
         "id": "B93",
@@ -724,6 +790,77 @@
     ],
     "Planta Intermedia": [
       {
+        "id": "E1",
+        "nombre": "DESPACHO DIRECTOR",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [2360, 4055],
+          "infDer": [2150, 4312]
+        },
+        "ruta": [
+          [2114, 4252],
+          [2054, 4058]
+        ]
+      },
+      {
+        "id": "E2",
+        "nombre": "DESPACHO J. GABRIEL",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [3103, 4069],
+          "infDer": [2935, 4247]
+        },
+        "ruta": [
+          [2921, 4296],
+          [2851, 4110]
+        ]
+      },
+      {
+        "id": "E5",
+        "nombre": "VESTUARIO PERSONAL",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [3508, 4116],
+          "infDer": [3345, 4332]
+        },
+        "ruta": [
+          [3373, 4096],
+          [3225, 4112],
+          [3215, 4277],
+          [2921, 4296],
+          [2851, 4110]
+        ]
+      },
+      {
+        "id": "E6",
+        "nombre": "ALMACÉN",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [3717, 4116],
+          "infDer": [3546, 4335]
+        },
+        "ruta": [
+          [3649, 4096],
+          [3373, 4096],
+          [3225, 4096],
+          [3215, 4277],
+          [2921, 4296],
+          [2851, 4110]
+        ]
+      },
+      {
         "id": "E10",
         "nombre": "AULA E10 (ENTREPLANTA MIGUEL HERNÁNDEZ)",
         "sector": "Salida pistas",
@@ -930,6 +1067,22 @@
         "ruta": [
           [4192, 3864]
         ]
+      },
+      {
+        "id": "E23",
+        "nombre": "DESPACHO DE TOMAS",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [1025, 3431],
+          "infDer": [933, 3611]
+        },
+        "ruta": [
+          [922, 3584],
+          [860, 3466]
+        ]
       }
     ],
     "Planta Primera": [
@@ -1048,6 +1201,46 @@
         ]
       },
       {
+        "id": "P15",
+        "nombre": "AULA APOYO APOINFT",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [1273, 2512],
+          "infDer": [1066, 2664]
+        },
+        "ruta": [
+          [1081, 2737],
+          [981, 2739],
+          [982, 2984],
+          [980, 3245],
+          [980, 3402],
+          [879, 3409]
+        ]
+      },
+      {
+        "id": "P15A",
+        "nombre": "AULA P15A (PASILLO CORO PRIMERA PLANTA)",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"5PRIB",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [1631, 2301],
+          "infDer": [1071, 2493]
+        },
+        "ruta": [
+          [1081, 2737],
+          [981, 2739],
+          [982, 2984],
+          [980, 3245],
+          [980, 3402],
+          [879, 3409]
+        ]
+      },
+      {
         "id": "P24",
         "nombre": "AULA P24 (JUNTO ESCALERA PRINCIPAL PRIMERA PLANTA)",
         "sector": "Salida Conserjería",
@@ -1103,6 +1296,24 @@
           [1671, 4007],
           [1792, 4097],
           [1875, 4016]
+        ]
+      },
+      {
+        "id": "P32",
+        "nombre": "SALA VILLANUEVA",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [1610, 3832],
+          "infDer": [742, 4133]
+        },
+        "ruta": [
+          [984, 3809],
+          [984, 3582],
+          [984, 3405],
+          [846, 3403]
         ]
       },
       {
