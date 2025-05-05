@@ -483,13 +483,15 @@ function App() {
           {destacadas.map(a => {
             const bounds = [a.coordenadas.infDer, a.coordenadas.supIzq];
             const centro = calcularCentro(a.coordenadas);
+            const isActive = a.id === aulaActiva?.id;
+
             return (
               <React.Fragment key={a.id}>
                 <Rectangle
                   bounds={bounds}
                   pathOptions={{
-                    color: a.coordinadora ? 'red' : a.color,
-                    fillColor: a.color,
+                    color: isActive ? 'purple' : (a.coordinadora ? 'red' : a.color),
+                    fillColor: isActive ? 'purple' : a.color,
                     fillOpacity: 0.5,
                     weight: 4
                   }}
@@ -503,7 +505,6 @@ function App() {
               </React.Fragment>
             );
           })}
-
           {/* Otras aulas */}
           {otras.map(a => {
             const bounds = [a.coordenadas.infDer, a.coordenadas.supIzq];
@@ -515,7 +516,7 @@ function App() {
                   pathOptions={{
                     color: a.coordinadora ? 'red' : a.color,
                     fillOpacity: 0,
-                    weight: 2
+                    weight: 4
                   }}
                   interactive={false}
                 />
@@ -533,20 +534,28 @@ function App() {
             </Marker>
           ))}
 
-          {/* Escaleras */}
-          {escaleras.map(e => (
-            <Marker key={e.id} position={e.coordenadas}
+          {/* Marcadores de las Escaleras */}
+          {escaleras.map(escalera => (
+            <Marker
+              key={escalera.id}
+              position={escalera.coordenadas}
               icon={createEscaleraMarkerIcon()}
               eventHandlers={{
                 click: () => {
+                  // Si no estás en Planta Baja, cámbiate sin ruta
                   if (plantaSeleccionada !== 'Planta Baja') {
                     setPlantaSeleccionada('Planta Baja');
-                    setAulaActiva(e);
-                  } else setAulaActiva(e);
+                  }
+                  // Resetea la animación de la flecha y selecciona la escalera
+                  setFlechaPosicion(null);
+                  setAulaActiva(escalera);
                 }
               }}
             />
           ))}
+
+
+
 
           {/* Ruta de flechas */}
           {aulaActiva?.ruta?.slice(0, -1).map((p, i) => {
