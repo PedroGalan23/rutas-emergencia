@@ -394,15 +394,19 @@ function App() {
 
   // Filtrado de aulas
   const todas = aulasData[plantaSeleccionada] || [];
-  let destacadas = todas;
-  if (aulaActiva) {
+  let destacadas = [];
+
+  // Sólo si aulaActiva viene de aulasData (no de escalera), calculamos destacadas
+  if (aulaActiva && todas.some(a => a.id === aulaActiva.id)) {
     const sector = aulaActiva.sector;
     const coord = todas.filter(a => a.sector === sector && a.coordinadora);
     destacadas = aulaActiva.coordinadora
       ? coord
       : (coord.length > 0 ? [...coord, aulaActiva] : [aulaActiva]);
   }
+
   const otras = todas.filter(a => !destacadas.some(d => d.id === a.id));
+
   const zonasComunes = zonasComunesData[plantaSeleccionada] || [];
 
   return (
@@ -479,51 +483,58 @@ function App() {
             />
           ))}
 
-          {/* Aulas destacadas */}
-          {destacadas.map(a => {
+          {todas.map(a => {
+            const isActive = a.id === aulaActiva?.id;
+            const isCoordinator = a.coordinadora && (!aulaActiva || a.sector === aulaActiva.sector);
+
+            // Estado de relleno: si no hay selección, todas al 0.5; si hay, sólo activa y coordinadoras
+            const fillOpacity = aulaActiva
+              ? (isActive || isCoordinator ? 0.5 : 0)
+              : 0.5;
+
+            // Color de borde: morado si activa, rojo si coordinadora, sector otherwise
+            const borderColor = isActive
+              ? 'purple'
+              : isCoordinator
+                ? 'red'
+                : a.color;
+
+            // Color de relleno: morado si activa, sector otherwise
+            const fillColor = isActive
+              ? 'purple'
+              : a.color;
+
+            // Grosor: 4 para activas y coordinadoras, 2 para el resto tras clic, 4 al inicio
+            const weight = aulaActiva
+              ? (isActive || isCoordinator ? 4 : 4)
+              : 4;
+
             const bounds = [a.coordenadas.infDer, a.coordenadas.supIzq];
             const centro = calcularCentro(a.coordenadas);
-            const isActive = a.id === aulaActiva?.id;
 
             return (
               <React.Fragment key={a.id}>
                 <Rectangle
                   bounds={bounds}
                   pathOptions={{
-                    color: isActive ? 'purple' : (a.coordinadora ? 'red' : a.color),
-                    fillColor: isActive ? 'purple' : a.color,
-                    fillOpacity: 0.5,
-                    weight: 4
+                    color: borderColor,
+                    fillColor,
+                    fillOpacity,
+                    weight
                   }}
-                  interactive
+                  interactive={isActive || isCoordinator}
                 >
-                  <Tooltip direction="top" offset={[0, -8]} sticky interactive>
-                    {a.nombre}
-                  </Tooltip>
+                  {(isActive || isCoordinator) && (
+                    <Tooltip direction="top" offset={[0, -8]} sticky interactive>
+                      {a.nombre}
+                    </Tooltip>
+                  )}
                 </Rectangle>
                 <EtiquetaAula position={centro} id={a.id} grupo={a.grupo} />
               </React.Fragment>
             );
           })}
-          {/* Otras aulas */}
-          {otras.map(a => {
-            const bounds = [a.coordenadas.infDer, a.coordenadas.supIzq];
-            const centro = calcularCentro(a.coordenadas);
-            return (
-              <React.Fragment key={`oth-${a.id}`}>
-                <Rectangle
-                  bounds={bounds}
-                  pathOptions={{
-                    color: a.coordinadora ? 'red' : a.color,
-                    fillOpacity: 0,
-                    weight: 4
-                  }}
-                  interactive={false}
-                />
-                <EtiquetaAula position={centro} id={a.id} grupo={a.grupo} />
-              </React.Fragment>
-            );
-          })}
+
 
           {/* Zonas comunes */}
           {zonasComunes.map((z, i) => (
