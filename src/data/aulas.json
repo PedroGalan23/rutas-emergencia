@@ -2036,7 +2036,7 @@
       },
       {
         "id": "S57",
-        "nombre": "HABITACIÓN",
+        "nombre": "HABITACIÓN LIMPIEZA",
         "sector": "Salida pistas",
         "color": "blue",
         "grupo":"",
@@ -2168,6 +2168,138 @@
         ]
       },
       {
+        "id": "S28",
+        "nombre": "AULA DE APOYO SEAM  (PASILLO PISCINA SEGUNDA PLANTA)",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [1679, 5711],
+          "infDer": [1299, 5911]
+        },
+        "ruta": [
+          [2336, 5696],
+          [2236, 5692],
+          [2126, 5690],
+          [2018, 5686],
+          [1926, 5686],
+          [1786, 5682],
+          [1660, 5674],
+          [1568, 5676],
+          [1444, 5674],
+          [1330, 5670],
+          [1222, 5666],
+          [1056, 5672],
+          [994, 5602],
+          [994, 5460],
+          [1000, 5278],
+          [1000, 5138],
+          [998, 5020],
+          [964, 4932],
+          [872, 4926]
+        ]
+      },
+      {
+        "id": "S29",
+        "nombre": "AULA (MAC) (PASILLO PISCINA SEGUNDA PLANTA)",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [1887, 5717],
+          "infDer": [1678, 5906]
+        },
+        "ruta": [
+          [2336, 5696],
+          [2236, 5692],
+          [2126, 5690],
+          [2018, 5686],
+          [1926, 5686],
+          [1786, 5682],
+          [1660, 5674],
+          [1568, 5676],
+          [1444, 5674],
+          [1330, 5670],
+          [1222, 5666],
+          [1056, 5672],
+          [994, 5602],
+          [994, 5460],
+          [1000, 5278],
+          [1000, 5138],
+          [998, 5020],
+          [964, 4932],
+          [872, 4926]
+        ]
+      },
+      {
+        "id": "S30",
+        "nombre": "FALSAS",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [2374, 3983],
+          "infDer": [2160, 4262]
+        },
+        "ruta": [
+          [2336, 5696],
+          [2236, 5692],
+          [2126, 5690],
+          [2018, 5686],
+          [1926, 5686],
+          [1786, 5682],
+          [1660, 5674],
+          [1568, 5676],
+          [1444, 5674],
+          [1330, 5670],
+          [1222, 5666],
+          [1056, 5672],
+          [994, 5602],
+          [994, 5460],
+          [1000, 5278],
+          [1000, 5138],
+          [998, 5020],
+          [964, 4932],
+          [872, 4926]
+        ]
+      },
+      {
+        "id": "S34",
+        "nombre": "DORMITORIO DIRECTOR",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [2415, 5742],
+          "infDer": [2151, 5906]
+        },
+        "ruta": [
+          [2336, 5696],
+          [2236, 5692],
+          [2126, 5690],
+          [2018, 5686],
+          [1926, 5686],
+          [1786, 5682],
+          [1660, 5674],
+          [1568, 5676],
+          [1444, 5674],
+          [1330, 5670],
+          [1222, 5666],
+          [1056, 5672],
+          [994, 5602],
+          [994, 5460],
+          [1000, 5278],
+          [1000, 5138],
+          [998, 5020],
+          [964, 4932],
+          [872, 4926]
+        ]
+      },
+      {
         "id": "S35",
         "nombre": "ASEOS ALUMNOS",
         "sector": "Salida Conserjería",
@@ -2176,7 +2308,7 @@
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [2691, 5670],
-          "infDer": [2415, 5904]
+          "infDer": [2507, 5910]
         },
         "ruta": [
           [2336, 5696],
@@ -2208,41 +2340,11 @@
         "grupo":"1ESOD",
         "coordinadora": false,
         "coordenadas": {
-          "supIzq": [2415, 5742],
-          "infDer": [2151, 5906]
+          "supIzq": [2147, 5726],
+          "infDer": [1885, 5905]
         },
         "ruta": [
           [2126, 5690],
-          [2018, 5686],
-          [1926, 5686],
-          [1786, 5682],
-          [1660, 5674],
-          [1568, 5676],
-          [1444, 5674],
-          [1330, 5670],
-          [1222, 5666],
-          [1056, 5672],
-          [994, 5602],
-          [994, 5460],
-          [1000, 5278],
-          [1000, 5138],
-          [998, 5020],
-          [964, 4932],
-          [872, 4926]
-        ]
-      },
-      {
-        "id": "S311",
-        "nombre": "S311",
-        "sector": "Salida Conserjería",
-        "color": "orange",
-        "grupo":"",
-        "coordinadora": false,
-        "coordenadas": {
-          "supIzq": [2151, 5741],
-          "infDer": [1984, 5904]
-        },
-        "ruta": [
           [2018, 5686],
           [1926, 5686],
           [1786, 5682],
@@ -2278,83 +2380,7 @@
           [948, 4936],
           [870, 4940]
         ]
-      },
-      {
-        "id": "S555",
-        "nombre": "S555",
-        "sector": "Salida Conserjería",
-        "color": "orange",
-        "grupo":"",
-        "coordinadora": false,
-        "coordenadas": {
-          "supIzq": [1890, 5730],
-          "infDer": [1679, 5906]
-        },
-        "ruta": [
-          [1660, 5674],
-          [1568, 5676],
-          [1444, 5674],
-          [1330, 5670],
-          [1222, 5666],
-          [1056, 5672],
-          [994, 5602],
-          [994, 5460],
-          [1000, 5278],
-          [1000, 5138],
-          [998, 5020],
-          [964, 4932],
-          [872, 4926]
-        ]
-      },
-      {
-        "id": "S16",
-        "nombre": "S16",
-        "sector": "Salida Conserjería",
-        "color": "orange",
-        "grupo":"",
-        "coordinadora": false,
-        "coordenadas": {
-          "supIzq": [1677, 5717],
-          "infDer": [1482, 5904]
-        },
-        "ruta": [
-          [1444, 5674],
-          [1330, 5670],
-          [1222, 5666],
-          [1056, 5672],
-          [994, 5602],
-          [994, 5460],
-          [1000, 5278],
-          [1000, 5138],
-          [998, 5020],
-          [964, 4932],
-          [872, 4926]
-        ]
-      },
-      {
-        "id": "S17",
-        "nombre": "S17",
-        "sector": "Salida Conserjería",
-        "color": "orange",
-        "grupo":"",
-        "coordinadora": false,
-        "coordenadas": {
-          "supIzq": [1483, 5717],
-          "infDer": [1291, 5901]
-        },
-        "ruta": [
-          [1330, 5670],
-          [1222, 5666],
-          [1056, 5672],
-          [994, 5602],
-          [994, 5460],
-          [1000, 5278],
-          [1000, 5138],
-          [998, 5020],
-          [964, 4932],
-          [872, 4926]
-        ]
-      },
+      }, 
       {
         "id": "S25",
         "nombre": "AULA DE DEREK (PASILLO PISCINA SEGUNDA PLANTA)",
@@ -2377,14 +2403,14 @@
         ]
       },
       {
-        "id": "S19",
-        "nombre": "S19",
+        "id": "S23",
+        "nombre": "ASEOS ALUMNOS (PASILLO OLMA SEGUNDA PLANTA) ",
         "sector": "Salida Conserjería",
         "color": "orange",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
-          "supIzq": [955, 5638],
+          "supIzq": [929, 5636],
           "infDer": [756, 5917]
         },
         "ruta": [
@@ -2411,6 +2437,23 @@
         "ruta": [
           [1000, 5278],
           [1000, 5138],
+          [998, 5020],
+          [964, 4932],
+          [872, 4926]
+        ]
+      },
+      {
+        "id": "S24",
+        "nombre": "DORMITORIO (PASILLO PISCINA SEGUNDA PLANTA)",
+        "sector": "Salida Conserjería",
+        "color": "orange",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [1030, 5729],
+          "infDer": [931, 5934]
+        },
+        "ruta": [
           [998, 5020],
           [964, 4932],
           [872, 4926]
@@ -2614,17 +2657,214 @@
           [840, 3512]
         ]
       },
-    
       {
-        "id": "S28",
-        "nombre": "S28",
+        "id": "S58",
+        "nombre": "ASEOS ALUMNOS",
         "sector": "Salida pistas",
         "color": "blue",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
-          "supIzq": [4433, 3008],
-          "infDer": [4101, 3272]
+          "supIzq": [3772, 4006],
+          "infDer": [3724, 4204]
+        },
+        "ruta": [
+          [4007, 3252],
+          [4011, 3440],
+          [4010, 3640],
+          [4011, 3827],
+          [4013, 4017],
+          [4008, 4204],
+          [4123, 4250],
+          [4179, 4142]
+        ]
+      },
+      {
+        "id": "S66",
+        "nombre": "AULA DE APOYO PAS2 (PASILLO ESO SEGUNDA PLANTA)",
+        "sector": "Salida pistas",
+        "color": "blue",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [4598, 3828],
+          "infDer": [4241, 3959]
+        },
+        "ruta": [
+          [4007, 3252],
+          [4011, 3440],
+          [4010, 3640],
+          [4011, 3827],
+          [4013, 4017],
+          [4008, 4204],
+          [4123, 4250],
+          [4179, 4142]
+        ]
+      },
+      {
+        "id": "S67",
+        "nombre": "AULA DE APOYO PAS2 (PASILLO ESO SEGUNDA PLANTA)",
+        "sector": "Salida pistas",
+        "color": "blue",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [4230, 3461],
+          "infDer": [4089, 3826]
+        },
+        "ruta": [
+          [4007, 3252],
+          [4011, 3440],
+          [4010, 3640],
+          [4011, 3827],
+          [4013, 4017],
+          [4008, 4204],
+          [4123, 4250],
+          [4179, 4142]
+        ]
+      },
+      {
+        "id": "S69",
+        "nombre": "LABORATORIO DE CIENCIAS (PASILLO ESO SEGUNDA PLANTA)",
+        "sector": "Salida pistas",
+        "color": "blue",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [4598, 3320],
+          "infDer": [4092, 3459]
+        },
+        "ruta": [
+          [4007, 3252],
+          [4011, 3440],
+          [4010, 3640],
+          [4011, 3827],
+          [4013, 4017],
+          [4008, 4204],
+          [4123, 4250],
+          [4179, 4142]
+        ]
+      },
+      {
+        "id": "S54",
+        "nombre": "SALITA DE LOS SACERDOTES",
+        "sector": "Salida pistas",
+        "color": "blue",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [2700, 3992],
+          "infDer": [2411, 4162]
+        },
+        "ruta": [
+          [4007, 3252],
+          [4011, 3440],
+          [4010, 3640],
+          [4011, 3827],
+          [4013, 4017],
+          [4008, 4204],
+          [4123, 4250],
+          [4179, 4142]
+        ]
+      },
+      {
+        "id": "S83",
+        "nombre": "DEPARTAMENTO DE CALIDAD",
+        "sector": "Salida pistas",
+        "color": "blue",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [2923, 3991],
+          "infDer": [2735, 4180]
+        },
+        "ruta": [
+          [4007, 3252],
+          [4011, 3440],
+          [4010, 3640],
+          [4011, 3827],
+          [4013, 4017],
+          [4008, 4204],
+          [4123, 4250],
+          [4179, 4142]
+        ]
+      },
+      {
+        "id": "S84",
+        "nombre": "ORIENTACIÓN MIRIAM",
+        "sector": "Salida pistas",
+        "color": "blue",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [3724, 4004],
+          "infDer": [3543, 4202]
+        },
+        "ruta": [
+          [4007, 3252],
+          [4011, 3440],
+          [4010, 3640],
+          [4011, 3827],
+          [4013, 4017],
+          [4008, 4204],
+          [4123, 4250],
+          [4179, 4142]
+        ]
+      },
+      {
+        "id": "S85",
+        "nombre": "DESPACHO DE MARIENRIQUE",
+        "sector": "Salida pistas",
+        "color": "blue",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [3535, 4003],
+          "infDer": [3341, 4196]
+        },
+        "ruta": [
+          [4007, 3252],
+          [4011, 3440],
+          [4010, 3640],
+          [4011, 3827],
+          [4013, 4017],
+          [4008, 4204],
+          [4123, 4250],
+          [4179, 4142]
+        ]
+      },
+      {
+        "id": "S86",
+        "nombre": "DESPACHO DE PACO ALBALADEJO",
+        "sector": "Salida pistas",
+        "color": "blue",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [3329, 3996],
+          "infDer": [3141, 4195]
+        },
+        "ruta": [
+          [4007, 3252],
+          [4011, 3440],
+          [4010, 3640],
+          [4011, 3827],
+          [4013, 4017],
+          [4008, 4204],
+          [4123, 4250],
+          [4179, 4142]
+        ]
+      },
+      {
+        "id": "S87",
+        "nombre": "DESPACHO DE CLARA PERALES",
+        "sector": "Salida pistas",
+        "color": "blue",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [3129, 3992],
+          "infDer": [2936, 4190]
         },
         "ruta": [
           [4007, 3252],
@@ -2647,6 +2887,57 @@
         "coordenadas": {
           "supIzq": [4049, 4308],
           "infDer": [3762, 4627]
+        },
+        "ruta": [
+          [4002, 4244],
+          [4123, 4250],
+          [4179, 4142]
+        ]
+      },
+      {
+        "id": "S103",
+        "nombre": "ESTUDIO DE GRABACIÓN AULAS NUEVAS",
+        "sector": "Salida pistas",
+        "color": "blue",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [2894, 4315],
+          "infDer": [2734, 4499]
+        },
+        "ruta": [
+          [4002, 4244],
+          [4123, 4250],
+          [4179, 4142]
+        ]
+      },
+      {
+        "id": "S105",
+        "nombre": "SALA DE CONTROL AULAS NUEVAS",
+        "sector": "Salida pistas",
+        "color": "blue",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [2893, 4505],
+          "infDer": [2844, 4600]
+        },
+        "ruta": [
+          [4002, 4244],
+          [4123, 4250],
+          [4179, 4142]
+        ]
+      },
+      {
+        "id": "S108",
+        "nombre": "DEPARTAMENTOS DE CALIDAD",
+        "sector": "Salida pistas",
+        "color": "blue",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [4021, 4637],
+          "infDer": [3575, 4845]
         },
         "ruta": [
           [4002, 4244],
