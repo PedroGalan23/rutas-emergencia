@@ -7,6 +7,7 @@ import {
   Marker,
   Tooltip,
   useMapEvent,
+  Popup,
   useMap
 } from 'react-leaflet';
 import { CRS, divIcon } from 'leaflet';
@@ -29,6 +30,10 @@ import salidaAmarillo from './assets/salidaAmarillo.png';
 import salidaVerde from './assets/salidaVerde.png';
 import salidaAzul from './assets/salidaAzul.png';
 import salidaLeyenda from './assets/salidaLeyenda.png';
+import camerasData from './data/camaras.json';
+import cameraIconPng from './assets/fotos/camara-fotografica.png';
+import L from 'leaflet';
+
 
 import './App.css';
 
@@ -49,6 +54,15 @@ function App() {
     "src/assets/salidaVerde.png": salidaVerde,
     "src/assets/salidaAzul.png": salidaAzul
   };
+
+  const cameraIcon = new L.Icon({
+    iconUrl: cameraIconPng,
+    iconSize: [20, 20],
+    iconAnchor: [15, 15],
+    popupAnchor: [0, -15],
+    className: ''  // o añade estilos si lo necesitas
+  });
+
 
   const flechaIndex = useRef(0);
   const animationInterval = useRef(null);
@@ -365,6 +379,8 @@ function App() {
             <span>{item.sector}</span>
           </div>
         ))}
+
+
         {/* Nueva indicación para aulas coordinadoras */}
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <span className="legend-square-coordinadora"
@@ -482,6 +498,24 @@ function App() {
               })}
             />
           ))}
+
+          {!imprimible && camerasData[plantaSeleccionada]?.map(cam => (
+            <Marker
+              key={cam.id}
+              position={cam.coordenadas}
+              icon={cameraIcon}
+            >
+              <Popup>
+                {/* Requerimos dinámicamente la foto */}
+                <img
+                  src={require(`./assets/fotos/${cam.foto}`)}
+                  alt={`Foto ${cam.id}`}
+                  style={{ width: '200px', height: 'auto' }}
+                />
+              </Popup>
+            </Marker>
+          ))}
+
 
           {todas.map(a => {
             const isActive = a.id === aulaActiva?.id;
