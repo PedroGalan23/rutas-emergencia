@@ -632,25 +632,29 @@ function App() {
             </Marker>
           ))}
 
-          {/* Marcadores de las Escaleras */}
-          {escaleras.map(escalera => (
-            <Marker
-              key={escalera.id}
-              position={escalera.coordenadas}
-              icon={createEscaleraMarkerIcon()}
-              eventHandlers={{
-                click: () => {
-                  // Si no estás en Planta Baja, cámbiate sin ruta
-                  if (plantaSeleccionada !== 'Planta Baja') {
-                    setPlantaSeleccionada('Planta Baja');
-                  }
-                  // Resetea la animación de la flecha y selecciona la escalera
-                  setFlechaPosicion(null);
-                  setAulaActiva(escalera);
-                }
-              }}
-            />
-          ))}
+          {/* Marcadores de las Escaleras, ocultando escalera3 en Planta Intermedia */}
+            {escaleras
+              .filter(escalera =>
+                !(plantaSeleccionada === 'Planta Segunda' && escalera.id === 'escalera3')
+              )
+              .map(escalera => (
+                <Marker
+                  key={escalera.id}
+                  position={escalera.coordenadas}
+                  icon={createEscaleraMarkerIcon()}
+                  eventHandlers={{
+                    click: () => {
+                      if (plantaSeleccionada !== 'Planta Baja') {
+                        setPlantaSeleccionada('Planta Baja');
+                      }
+                      setFlechaPosicion(null);
+                      setAulaActiva(escalera);
+                    }
+                  }}
+                />
+              ))
+            }
+
 
 
 

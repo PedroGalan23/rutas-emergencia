@@ -2636,6 +2636,23 @@
           [4123, 4250],
           [4179, 4142]
         ]
+      },
+      {
+        "id": "S95",
+        "nombre": "AULA DE ATENAS",
+        "sector": "Salida pistas",
+        "color": "blue",
+        "grupo":"",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [4049, 4308],
+          "infDer": [3762, 4627]
+        },
+        "ruta": [
+          [4002, 4244],
+          [4123, 4250],
+          [4179, 4142]
+        ]
       }
     ],
     "Planta Cubierta": []
