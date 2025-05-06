@@ -3,14 +3,14 @@
     {
       "id": "salidaMiguelHernandez",
       "nombre": "SALIDA MIGUEL HERNÁNDEZ",
-      "coordenadas": [4196, 1757],
+      "coordenadas": [4218, 1741],
       "imagen": "src/assets/salidaVerde.png"
     },
     {
       
       "id": "salidaConserjeria",
       "nombre": "SALIDA CONSERJERíA",
-      "coordenadas": [740, 2468],
+      "coordenadas": [733, 2459],
       "imagen": "src/assets/salidaAmarillo.png"
     },
     {
