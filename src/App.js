@@ -80,6 +80,21 @@ function App() {
   // Importa las escaleras (comunes a todas las plantas) desde el JSON.
   const escaleras = escaleraData;
 
+  // justo bajo tus imports:
+  const fotosContext = require.context(
+    './assets/fotos',
+    false,
+    /\.(png|jpe?g|svg)$/
+  );
+
+  const fotosMap = fotosContext.keys().reduce((map, key) => {
+    // key tiene forma './miFoto.png'
+    const filename = key.replace('./', '');
+    map[filename] = fotosContext(key);
+    return map;
+  }, {});
+
+
   // Función para calcular el ángulo entre dos puntos.
   function calcularAngulo(p1, p2) {
     const dx = p2[1] - p1[1];
@@ -516,71 +531,71 @@ function App() {
               icon={cameraIcon}
             >
               <Popup>
-                {/* Requerimos dinámicamente la foto */}
                 <img
-                  src={require(`./assets/fotos/${cam.foto}`)}
+                  src={fotosMap[cam.foto]}
                   alt={`Foto ${cam.id}`}
                   style={{ width: '200px', height: 'auto' }}
                 />
               </Popup>
+
             </Marker>
           ))}
-            {todas.map(a => {
-              const isActive = a.id === aulaActiva?.id;
-              const isCoordinator = a.coordinadora && (!aulaActiva || a.sector === aulaActiva.sector);
+          {todas.map(a => {
+            const isActive = a.id === aulaActiva?.id;
+            const isCoordinator = a.coordinadora && (!aulaActiva || a.sector === aulaActiva.sector);
 
-              // Estado de relleno: si no hay selección, todas al 0.5; si hay, sólo activa y coordinadoras
-              const fillOpacity = aulaActiva
-                ? (isActive || isCoordinator ? 0.5 : 0)
-                : 0.65;
+            // Estado de relleno: si no hay selección, todas al 0.5; si hay, sólo activa y coordinadoras
+            const fillOpacity = aulaActiva
+              ? (isActive || isCoordinator ? 0.5 : 0)
+              : 0.65;
 
-              // Color de borde: morado si activa, rojo si coordinadora, sector otherwise
-              const borderColor = isActive
-                ? 'purple'
-                : isCoordinator
-                  ? 'red'
-                  : a.color;
-
-              // Color de relleno: morado si activa, sector otherwise
-              const fillColor = isActive
-                ? 'purple'
+            // Color de borde: morado si activa, rojo si coordinadora, sector otherwise
+            const borderColor = isActive
+              ? 'purple'
+              : isCoordinator
+                ? 'red'
                 : a.color;
 
-              // Grosor: 4 para activas y coordinadoras, 2 para el resto tras clic, 4 al inicio
-              const weight = aulaActiva
-                ? (isActive || isCoordinator ? 4 : 4)
-                : 4;
+            // Color de relleno: morado si activa, sector otherwise
+            const fillColor = isActive
+              ? 'purple'
+              : a.color;
 
-              const bounds = [a.coordenadas.infDer, a.coordenadas.supIzq];
-              const centro = calcularCentro(a.coordenadas);
+            // Grosor: 4 para activas y coordinadoras, 2 para el resto tras clic, 4 al inicio
+            const weight = aulaActiva
+              ? (isActive || isCoordinator ? 4 : 4)
+              : 4;
 
-              return (
-                <React.Fragment key={a.id}>
-                  <Rectangle
-                    bounds={bounds}
-                    pathOptions={{
-                      color: borderColor,
-                      fillColor,
-                      fillOpacity,
-                      weight
-                    }}
-                    interactive={true}  // ← siempre interactivo
+            const bounds = [a.coordenadas.infDer, a.coordenadas.supIzq];
+            const centro = calcularCentro(a.coordenadas);
+
+            return (
+              <React.Fragment key={a.id}>
+                <Rectangle
+                  bounds={bounds}
+                  pathOptions={{
+                    color: borderColor,
+                    fillColor,
+                    fillOpacity,
+                    weight
+                  }}
+                  interactive={true}  // ← siempre interactivo
+                >
+                  <Tooltip
+                    direction="top"
+                    offset={[0, -8]}
+                    sticky            // sigue al cursor cuando haces hover
                   >
-                    <Tooltip
-                      direction="top"
-                      offset={[0, -8]}
-                      sticky            // sigue al cursor cuando haces hover
-                    >
-                      {a.nombre}
-                    </Tooltip>
-                  </Rectangle>
-                  <EtiquetaAula position={centro} id={a.id} grupo={a.grupo} />
-                </React.Fragment>
-              );
-            })}
+                    {a.nombre}
+                  </Tooltip>
+                </Rectangle>
+                <EtiquetaAula position={centro} id={a.id} grupo={a.grupo} />
+              </React.Fragment>
+            );
+          })}
 
 
-          
+
 
 
           {/* Zonas comunes */}
@@ -593,27 +608,27 @@ function App() {
           ))}
 
           {/* Marcadores de las Escaleras, ocultando escalera3 en Planta Intermedia */}
-            {escaleras
-              .filter(escalera =>
-                !(plantaSeleccionada === 'Planta Segunda' && escalera.id === 'escalera3')
-              )
-              .map(escalera => (
-                <Marker
-                  key={escalera.id}
-                  position={escalera.coordenadas}
-                  icon={createEscaleraMarkerIcon()}
-                  eventHandlers={{
-                    click: () => {
-                      if (plantaSeleccionada !== 'Planta Baja') {
-                        setPlantaSeleccionada('Planta Baja');
-                      }
-                      setFlechaPosicion(null);
-                      setAulaActiva(escalera);
+          {escaleras
+            .filter(escalera =>
+              !(plantaSeleccionada === 'Planta Segunda' && escalera.id === 'escalera3')
+            )
+            .map(escalera => (
+              <Marker
+                key={escalera.id}
+                position={escalera.coordenadas}
+                icon={createEscaleraMarkerIcon()}
+                eventHandlers={{
+                  click: () => {
+                    if (plantaSeleccionada !== 'Planta Baja') {
+                      setPlantaSeleccionada('Planta Baja');
                     }
-                  }}
-                />
-              ))
-            }
+                    setFlechaPosicion(null);
+                    setAulaActiva(escalera);
+                  }
+                }}
+              />
+            ))
+          }
 
 
 
