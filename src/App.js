@@ -399,6 +399,16 @@ function App() {
           <img src={salidaLeyenda} alt="Salidas" style={{ height: '30px', marginRight: '6px' }} />
           <span>Salidas</span>
         </div>
+
+        {/* Imagen 360º */}
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <img
+            src={cameraIconPng}
+            alt="Imagen 360º"
+            style={{ height: '25px', marginRight: '6px' }}
+          />
+          <span>Imagen 360º</span>
+        </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <img src={escaleras2} alt="Escaleras" style={{ height: '30px', marginRight: '6px' }} />
           <span>Escaleras</span>
