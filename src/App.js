@@ -21,7 +21,6 @@ import planoIntermedia from './assets/PG2-Planta Intermedia.jpg';
 import planoPrimera from './assets/PG3-Planta Primera.jpg';
 import planoSegunda from './assets/PG4-Planta Segunda.jpg';
 import planoCubierta from './assets/PG5-Planta cubierta.jpg';
-import aulasData from './data/aulas.json';
 import zonasComunesData from './data/zonasComunes.json';
 import escaleraData from './data/escaleras.json'; // Crea este archivo JSON con la información de las escaleras.
 import monje1 from './assets/monje1.png';
@@ -48,6 +47,19 @@ function App() {
   const [flechaPosicion, setFlechaPosicion] = useState(null);
   const [monjeFrame, setMonjeFrame] = useState(0);
   const [imprimible, setImprimible] = useState(false);
+
+  // DATOS DE AULAS CARGADOS DINÁMICAMENTE
+  const [aulasData, setAulasData] = useState({});
+
+  useEffect(() => {
+    fetch('/data/aulas.json')
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then(setAulasData)
+      .catch(err => console.error('Error cargando aulas.json:', err));
+  }, []);
 
   const imagesSalida = {
     "src/assets/salidaAmarillo.png": salidaAmarillo,
