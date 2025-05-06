@@ -525,6 +525,59 @@ function App() {
               </Popup>
             </Marker>
           ))}
+            {todas.map(a => {
+              const isActive = a.id === aulaActiva?.id;
+              const isCoordinator = a.coordinadora && (!aulaActiva || a.sector === aulaActiva.sector);
+
+              // Estado de relleno: si no hay selección, todas al 0.5; si hay, sólo activa y coordinadoras
+              const fillOpacity = aulaActiva
+                ? (isActive || isCoordinator ? 0.5 : 0)
+                : 0.5;
+
+              // Color de borde: morado si activa, rojo si coordinadora, sector otherwise
+              const borderColor = isActive
+                ? 'purple'
+                : isCoordinator
+                  ? 'red'
+                  : a.color;
+
+              // Color de relleno: morado si activa, sector otherwise
+              const fillColor = isActive
+                ? 'purple'
+                : a.color;
+
+              // Grosor: 4 para activas y coordinadoras, 2 para el resto tras clic, 4 al inicio
+              const weight = aulaActiva
+                ? (isActive || isCoordinator ? 4 : 4)
+                : 4;
+
+              const bounds = [a.coordenadas.infDer, a.coordenadas.supIzq];
+              const centro = calcularCentro(a.coordenadas);
+
+              return (
+                <React.Fragment key={a.id}>
+                  <Rectangle
+                    bounds={bounds}
+                    pathOptions={{
+                      color: borderColor,
+                      fillColor,
+                      fillOpacity,
+                      weight
+                    }}
+                    interactive={true}  // ← siempre interactivo
+                  >
+                    <Tooltip
+                      direction="top"
+                      offset={[0, -8]}
+                      sticky            // sigue al cursor cuando haces hover
+                    >
+                      {a.nombre}
+                    </Tooltip>
+                  </Rectangle>
+                  <EtiquetaAula position={centro} id={a.id} grupo={a.grupo} />
+                </React.Fragment>
+              );
+            })}
 
 
           {todas.map(a => {
@@ -589,25 +642,29 @@ function App() {
             </Marker>
           ))}
 
-          {/* Marcadores de las Escaleras */}
-          {escaleras.map(escalera => (
-            <Marker
-              key={escalera.id}
-              position={escalera.coordenadas}
-              icon={createEscaleraMarkerIcon()}
-              eventHandlers={{
-                click: () => {
-                  // Si no estás en Planta Baja, cámbiate sin ruta
-                  if (plantaSeleccionada !== 'Planta Baja') {
-                    setPlantaSeleccionada('Planta Baja');
-                  }
-                  // Resetea la animación de la flecha y selecciona la escalera
-                  setFlechaPosicion(null);
-                  setAulaActiva(escalera);
-                }
-              }}
-            />
-          ))}
+          {/* Marcadores de las Escaleras, ocultando escalera3 en Planta Intermedia */}
+            {escaleras
+              .filter(escalera =>
+                !(plantaSeleccionada === 'Planta Segunda' && escalera.id === 'escalera3')
+              )
+              .map(escalera => (
+                <Marker
+                  key={escalera.id}
+                  position={escalera.coordenadas}
+                  icon={createEscaleraMarkerIcon()}
+                  eventHandlers={{
+                    click: () => {
+                      if (plantaSeleccionada !== 'Planta Baja') {
+                        setPlantaSeleccionada('Planta Baja');
+                      }
+                      setFlechaPosicion(null);
+                      setAulaActiva(escalera);
+                    }
+                  }}
+                />
+              ))
+            }
+
 
 
 
