@@ -15,7 +15,9 @@
         [956, 2480],
         [668, 2480]
       ],
-      "color": "orange"
+      "color": "orange",
+      "camaras": ["cam1"]
+
     },
     {
       "id": "escalera2",
@@ -29,7 +31,9 @@
         [928, 2457],
         [672, 2465]
       ],
-      "color": "orange"
+      "color": "orange",
+      "camaras": ["cam1"]
+
     },
     {
       "id": "escalera3",

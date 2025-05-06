@@ -524,22 +524,26 @@ function App() {
             />
           ))}
 
-          {!imprimible && camerasData[plantaSeleccionada]?.map(cam => (
-            <Marker
-              key={cam.id}
-              position={cam.coordenadas}
-              icon={cameraIcon}
-            >
-              <Popup>
-                <img
-                  src={fotosMap[cam.foto]}
-                  alt={`Foto ${cam.id}`}
-                  style={{ width: '200px', height: 'auto' }}
-                />
-              </Popup>
+          {/* Sólo muestra cámaras de la aula activa, según su array `camaras` */}
+          {!imprimible && aulaActiva && camerasData[plantaSeleccionada]
+            ?.filter(cam => aulaActiva.camaras?.includes(cam.id))
+            .map(cam => (
+              <Marker
+                key={cam.id}
+                position={cam.coordenadas}
+                icon={cameraIcon}
+              >
+                <Popup>
+                  <img
+                    src={fotosMap[cam.foto]}
+                    alt={`Foto ${cam.id}`}
+                    style={{ width: '200px', height: 'auto' }}
+                  />
+                </Popup>
+              </Marker>
+            ))
+          }
 
-            </Marker>
-          ))}
           {todas.map(a => {
             const isActive = a.id === aulaActiva?.id;
             const isCoordinator = a.coordinadora && (!aulaActiva || a.sector === aulaActiva.sector);

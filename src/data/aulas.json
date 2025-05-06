@@ -85,7 +85,8 @@
           [1197, 2450],
           [935, 2457],
           [747, 2474]
-        ]
+        ],
+        "camaras": ["cam1","cam2"]
       },
       {
         "id": "B18",
@@ -200,7 +201,8 @@
           [1089, 2448],
           [872, 2458],
           [749, 2472]
-        ]
+        ],
+        "camaras": ["cam1"]
       },
       {
         "id": "B95",
@@ -316,7 +318,8 @@
           [1197, 2450],
           [934, 2457],
           [747, 2474]
-        ]
+        ],
+        "camaras": ["cam1"]
       },
       {
         "id": "B109",
@@ -338,7 +341,8 @@
           [1197, 2450],
           [931, 2457],
           [747, 2474]
-        ]
+        ],
+        "camaras": ["cam1"]
       },
       {
         "id": "B80",
@@ -2237,14 +2241,16 @@
           [2260, 4100],
           [1964, 4100],
           [1886, 3998]
-        ]
-      }
+        ],
+        "camaras": ["cam1"]  
+        }
+      
 
     ],
     "Planta Segunda": [
       {
         "id": "S79",
-        "nombre": "AULA S79 (PASILLO MIGUEL HERNÁNDEZ SEGUNDA PLANTA)",
+        "nombre": "AULA S79 INFORMÁTICA(PASILLO MIGUEL HERNÁNDEZ SEGUNDA PLANTA)",
         "sector": "Salida pistas",
         "color": "blue",
         "grupo":"",
