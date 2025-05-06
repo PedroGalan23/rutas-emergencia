@@ -532,7 +532,7 @@ function App() {
               // Estado de relleno: si no hay selección, todas al 0.5; si hay, sólo activa y coordinadoras
               const fillOpacity = aulaActiva
                 ? (isActive || isCoordinator ? 0.5 : 0)
-                : 0.5;
+                : 0.3;
 
               // Color de borde: morado si activa, rojo si coordinadora, sector otherwise
               const borderColor = isActive
