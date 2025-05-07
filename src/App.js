@@ -610,12 +610,21 @@ function App() {
               </Tooltip>
             </Marker>
           ))}
-
-          {/* Marcadores de las Escaleras, ocultando escalera3 en Planta Intermedia */}
+          {/* Marcadores de las Escaleras */}
           {escaleras
-            .filter(escalera =>
-              !(plantaSeleccionada === 'Planta Segunda' && escalera.id === 'escalera3')
-            )
+            .filter(escalera => {
+              // escalera6 y escalera7 solo en Primera y Segunda
+              if (escalera.id === 'escalera6' || escalera.id === 'escalera7') {
+                return plantaSeleccionada === 'Planta Primera'
+                    || plantaSeleccionada === 'Planta Segunda';
+              }
+              // escalera1, escalera3 y escalera4 NO en Planta Segunda
+              if (['escalera1','escalera3','escalera4'].includes(escalera.id)) {
+                return plantaSeleccionada !== 'Planta Segunda';
+              }
+              // el resto en todas las plantas
+              return true;
+            })
             .map(escalera => (
               <Marker
                 key={escalera.id}
@@ -623,8 +632,12 @@ function App() {
                 icon={createEscaleraMarkerIcon()}
                 eventHandlers={{
                   click: () => {
-                    if (plantaSeleccionada !== 'Planta Baja') {
-                      setPlantaSeleccionada('Planta Baja');
+                    // escalera6 y 7 → Planta Primera; resto → Planta Baja
+                    const destino = (escalera.id === 'escalera6' || escalera.id === 'escalera7')
+                      ? 'Planta Primera'
+                      : 'Planta Baja';
+                    if (plantaSeleccionada !== destino) {
+                      setPlantaSeleccionada(destino);
                     }
                     setFlechaPosicion(null);
                     setAulaActiva(escalera);
@@ -633,10 +646,6 @@ function App() {
               />
             ))
           }
-
-
-
-
 
           {/* Ruta de flechas */}
           {aulaActiva?.ruta?.slice(0, -1).map((p, i) => {
