@@ -3,7 +3,12 @@
       {
         "id": "cam1",
         "coordenadas": [1290, 2456],
-        "foto": "2.jpg"
+        "foto": "4.jpg"
+      },
+      {
+        "id": "cam2",
+        "coordenadas": [1193, 4034],
+        "foto": "3.jpg"
       }
       
     ],

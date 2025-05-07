@@ -547,20 +547,27 @@ function App() {
             />
           ))}
 
-          {!imprimible &&
-            camerasData[plantaSeleccionada]?.map((cam) => (
-              <Marker key={cam.id} position={cam.coordenadas} icon={cameraIcon}>
+          {/* Sólo muestra cámaras de la aula activa, según su array `camaras` */}
+          {!imprimible && aulaActiva && camerasData[plantaSeleccionada]
+            ?.filter(cam => aulaActiva.camaras?.includes(cam.id))
+            .map(cam => (
+              <Marker
+                key={cam.id}
+                position={cam.coordenadas}
+                icon={cameraIcon}
+              >
                 <Popup>
                   <img
                     src={fotosMap[cam.foto]}
                     alt={`Foto ${cam.id}`}
-                    style={{ width: "200px", height: "auto" }}
+                    style={{ width: '200px', height: 'auto' }}
                   />
                 </Popup>
               </Marker>
-            ))}
+            ))
+          }
 
-          {todas.map((a) => {
+          {todas.map(a => {
             const isActive = a.id === aulaActiva?.id;
             const isCoordinator =
               a.coordinadora && (!aulaActiva || a.sector === aulaActiva.sector);
@@ -617,32 +624,44 @@ function App() {
               </Tooltip>
             </Marker>
           ))}
-
+          {/* Marcadores de las Escaleras */}
           {escaleras
-            .filter(
-              (escalera) =>
-                !(
-                  plantaSeleccionada === "Planta Segunda" &&
-                  escalera.id === "escalera3"
-                )
-            )
-            .map((escalera) => (
+            .filter(escalera => {
+              // escalera6 y escalera7 solo en Primera y Segunda
+              if (escalera.id === 'escalera6' || escalera.id === 'escalera7') {
+                return plantaSeleccionada === 'Planta Primera'
+                    || plantaSeleccionada === 'Planta Segunda';
+              }
+              // escalera1, escalera3 y escalera4 NO en Planta Segunda
+              if (['escalera1','escalera3','escalera4'].includes(escalera.id)) {
+                return plantaSeleccionada !== 'Planta Segunda';
+              }
+              // el resto en todas las plantas
+              return true;
+            })
+            .map(escalera => (
               <Marker
                 key={escalera.id}
                 position={escalera.coordenadas}
                 icon={createEscaleraMarkerIcon()}
                 eventHandlers={{
                   click: () => {
-                    if (plantaSeleccionada !== "Planta Baja") {
-                      setPlantaSeleccionada("Planta Baja");
+                    // escalera6 y 7 → Planta Primera; resto → Planta Baja
+                    const destino = (escalera.id === 'escalera6' || escalera.id === 'escalera7')
+                      ? 'Planta Primera'
+                      : 'Planta Baja';
+                    if (plantaSeleccionada !== destino) {
+                      setPlantaSeleccionada(destino);
                     }
                     setFlechaPosicion(null);
                     setAulaActiva(escalera);
                   },
                 }}
               />
-            ))}
+            ))
+          }
 
+          {/* Ruta de flechas */}
           {aulaActiva?.ruta?.slice(0, -1).map((p, i) => {
             const next = aulaActiva.ruta[i + 1];
             return (
