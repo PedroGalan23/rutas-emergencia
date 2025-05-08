@@ -183,7 +183,8 @@ function App() {
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
     const aulaParam = searchParams.get("id");
-    if (aulaParam) {
+
+    if (aulaParam && aulasData[plantaSeleccionada]) {
       const aulaPreseleccionada = aulasData[plantaSeleccionada]?.find(
         (aula) => aula.id === aulaParam
       );
@@ -191,7 +192,8 @@ function App() {
         setAulaActiva(aulaPreseleccionada);
       }
     }
-  }, [plantaSeleccionada]);
+  }, [plantaSeleccionada, aulasData]);
+
 
   // Animación del monje
   useEffect(() => {
@@ -218,7 +220,7 @@ function App() {
     useMapEvent('click', (e) => {
       const { lat, lng } = e.latlng;
       console.log(`📍 Coordenadas clic: [${Math.round(lat)}, ${Math.round(lng)}]`);
-  
+
       const aulaClicada = aulas.find((aula) => {
         const y1 = aula.coordenadas.infDer[0];
         const y2 = aula.coordenadas.supIzq[0];
@@ -226,12 +228,12 @@ function App() {
         const x2 = aula.coordenadas.infDer[1];
         return lat >= y1 && lat <= y2 && lng >= x1 && lng <= x2;
       });
-  
+
       setAulaActiva(aulaClicada || null);
     });
     return null;
   }
-  
+
 
   const QrOverlay = React.memo(function QrOverlay({
     aulaActiva,
@@ -240,11 +242,13 @@ function App() {
     const map = useMap();
     const overlayRef = useRef(null);
     const prevPointRef = useRef({ x: 0, y: 0 });
-    const qrCoords = { supIzq: [652, 3011], infDer: [182, 4541] };
-    const fixedCenter = {
-      lat: (qrCoords.supIzq[0] + qrCoords.infDer[0]) / 2,
-      lng: (qrCoords.supIzq[1] + qrCoords.infDer[1]) / 2,
-    };
+    const fixedCenter = React.useMemo(() => {
+      const qrCoords = { supIzq: [652, 3011], infDer: [182, 4541] };
+      return {
+        lat: (qrCoords.supIzq[0] + qrCoords.infDer[0]) / 2,
+        lng: (qrCoords.supIzq[1] + qrCoords.infDer[1]) / 2,
+      };
+    }, []);
 
     useLayoutEffect(() => {
       function updatePosition() {
@@ -329,11 +333,13 @@ function App() {
     const map = useMap();
     const overlayRef = useRef(null);
     const prevPointRef = useRef({ x: 0, y: 0 });
-    const leyendaCoords = { supIzq: [1775, 128], infDer: [327, 1224] };
-    const leyendaCenter = {
-      lat: (leyendaCoords.supIzq[0] + leyendaCoords.infDer[0]) / 2,
-      lng: (leyendaCoords.supIzq[1] + leyendaCoords.infDer[1]) / 2,
-    };
+    const leyendaCenter = React.useMemo(() => {
+      const leyendaCoords = { supIzq: [1775, 128], infDer: [327, 1224] };
+      return {
+        lat: (leyendaCoords.supIzq[0] + leyendaCoords.infDer[0]) / 2,
+        lng: (leyendaCoords.supIzq[1] + leyendaCoords.infDer[1]) / 2,
+      };
+    }, []);
 
     useLayoutEffect(() => {
       function updatePosition() {
@@ -450,19 +456,15 @@ function App() {
 
   // Filtrado de aulas
   const todas = aulasData[plantaSeleccionada] || [];
-  let destacadas = [];
-
   if (aulaActiva && todas.some((a) => a.id === aulaActiva.id)) {
     const sector = aulaActiva.sector;
     const coord = todas.filter((a) => a.sector === sector && a.coordinadora);
-    destacadas = aulaActiva.coordinadora
-      ? coord
-      : coord.length > 0
-        ? [...coord, aulaActiva]
-        : [aulaActiva];
+    if (!aulaActiva.coordinadora && coord.length > 0) {
+      coord.push(aulaActiva);
+    }
   }
 
-  const otras = todas.filter((a) => !destacadas.some((d) => d.id === a.id));
+  // Removed unused variable 'otras'
   const zonasComunes = zonasComunesData[plantaSeleccionada] || [];
 
   return (
