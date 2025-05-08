@@ -35,6 +35,9 @@ import L from "leaflet";
 import "./App.css";
 
 function App() {
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
+
   const imageWidth = 7017;
   const imageHeight = 4963;
   const imageBounds = [
@@ -52,6 +55,8 @@ function App() {
   // DATOS DE AULAS CARGADOS DINÁMICAMENTE
   const [aulasData, setAulasData] = useState({});
 
+
+  // Cargar datos de aulas.json
   useEffect(() => {
     fetch("/data/aulas.json")
       .then((res) => {
@@ -61,6 +66,15 @@ function App() {
       .then(setAulasData)
       .catch((err) => console.error("Error cargando aulas.json:", err));
   }, []);
+
+
+  // Detectar cambios de tamaño de la ventana
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 480);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
 
   const imagesSalida = {
     "src/assets/salidaAmarillo.png": salidaAmarillo,
@@ -81,6 +95,14 @@ function App() {
 
   const monjeFrames = [monje1, monje2];
 
+  const plantLabels = {
+    "Planta Baja": "PB",
+    "Planta Intermedia": "PE",
+    "Planta Palomar": "PL",
+    "Planta Primera": "P1",
+    "Planta Segunda": "P2",
+  };
+
   const planos = {
     "Planta Baja": planoBaja,
     "Planta Intermedia": planoIntermedia,
@@ -88,6 +110,7 @@ function App() {
     "Planta Primera": planoPrimera,
     "Planta Segunda": planoSegunda,
   };
+
 
   const escaleras = escaleraData;
 
@@ -113,28 +136,28 @@ function App() {
   }
 
   function EtiquetaAula({ position, id, grupo }) {
-  const map = useMap();
-  const zoom = map.getZoom();
-  const baseScale = Math.pow(1.5, zoom);
-  const scale = Math.max(baseScale, 0.7);
-  const textoEtiqueta = grupo || id;
+    const map = useMap();
+    const zoom = map.getZoom();
+    const baseScale = Math.pow(1.5, zoom);
+    const scale = Math.max(baseScale, 0.7);
+    const textoEtiqueta = grupo || id;
 
-  return (
-    <Marker
-      position={position}
-      icon={divIcon({
-        html: `
+    return (
+      <Marker
+        position={position}
+        icon={divIcon({
+          html: `
           <div class="label-aula-mejorada" style="transform: translate(-50%, -50%) scale(${scale});">
             ${textoEtiqueta}
           </div>
         `,
-        className: "",
-        iconAnchor: [0, 0],
-      })}
-      interactive={false}
-    />
-  );
-}
+          className: "",
+          iconAnchor: [0, 0],
+        })}
+        interactive={false}
+      />
+    );
+  }
 
 
   function calcularCentro(coordenadas) {
@@ -472,6 +495,7 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
+        {/* 2) H1: siempre mostramos la imagen, sólo el texto si NO es móvil */}
         <h1>
           <img
             src={monje2}
@@ -482,42 +506,46 @@ function App() {
               marginRight: "0.5em",
             }}
           />
-          PLAN DE EVACUACIÓN
+          {!isMobile && "PLAN DE EVACUACIÓN"}
         </h1>
+
         <div className="controls">
-          <div className="switch-wrapper">
-            <label className="switch">
-              <input
-                type="checkbox"
-                checked={imprimible}
-                onChange={(e) => setImprimible(e.target.checked)}
-              />
-              <span className="slider round"></span>
-            </label>
-            <span className="switch-label">Modo Impresión</span>
-          </div>
+          {/* 3) Switch sólo si NO es móvil */}
+          {!isMobile && (
+            <div className="switch-wrapper">
+              <label className="switch">
+                <input
+                  type="checkbox"
+                  checked={imprimible}
+                  onChange={(e) => setImprimible(e.target.checked)}
+                />
+                <span className="slider round" />
+              </label>
+              <span className="switch-label">Modo Impresión</span>
+            </div>
+          )}
+
+          {/* 4) Selector de planta siempre */}
           <div className="selector-wrapper">
             <label htmlFor="planta" className="selector-label">
               Selecciona una planta:
             </label>
-            <div className="custom-select">
-              <select
-                id="planta"
-                value={plantaSeleccionada}
-                onChange={(e) => {
-                  setPlantaSeleccionada(e.target.value);
-                  setAulaActiva(null);
-                  setFlechaPosicion(null);
-                  clearInterval(animationInterval.current);
-                }}
-              >
-                {Object.keys(planos).map((p) => (
-                  <option key={p} value={p}>
-                    {p}
-                  </option>
-                ))}
-              </select>
-              <span className="custom-arrow"></span>
+            <div className="plant-selector">
+              {Object.keys(planos).map((p) => (
+                <button
+                  key={p}
+                  className={`plant-button ${plantaSeleccionada === p ? "active" : ""
+                    }`}
+                  onClick={() => {
+                    setPlantaSeleccionada(p);
+                    setAulaActiva(null);
+                    setFlechaPosicion(null);
+                    clearInterval(animationInterval.current);
+                  }}
+                >
+                  {plantLabels[p]}
+                </button>
+              ))}
             </div>
           </div>
         </div>
@@ -530,6 +558,7 @@ function App() {
           maxZoom={1}
           maxBounds={imageBounds}
           maxBoundsViscosity={1}
+          attributionControl={false}  // <–– aquí
           style={{ width: "100%", height: "100%" }}
           whenCreated={(map) => {
             map.fitBounds(imageBounds);

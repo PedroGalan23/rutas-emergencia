@@ -27,6 +27,24 @@ body {
   align-items: center;
   gap: 1rem;
 }
+/* Quita cualquier borde alrededor del mapa */
+.leaflet-container {
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+
+
+.leaflet-control-attribution {
+  display: none !important;
+}
+/* (Opcional) Elimina cualquier borde en el contenedor del mapa */
+.leaflet-container {
+  border: none !important;
+}
 
 .imprimible-container label {
   display: flex;
@@ -71,10 +89,6 @@ body {
     visibility: hidden !important;
   }
 
-  .map-container,
-  .map-container * {
-    visibility: visible !important;
-  }
 
   /* 2) Hacer que el .map-container llene la página y se empuje hacia abajo */
   .map-container {
@@ -325,19 +339,11 @@ body {
 
 /* Header aún más compacto para pantallas muy pequeñas */
 @media (max-width: 480px) {
-
   /* El header ocupa el 100% en vertical y el título se centra */
   .app-header {
     flex-direction: column;
     align-items: center;
     padding: 0.5rem;
-  }
-
-  /* El Título se muestra en una línea completa arriba */
-  .app-header h1 {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 0.5rem;
   }
 
   /* Contenedor de controles: 
@@ -362,11 +368,6 @@ body {
     padding: 0.3rem 0.5rem;
   }
 
-  .map-container {
-    /* Antes: height: calc(100vh - 100px);
-       Ahora descontamos unos 140px (ajusta a tu header real) */
-    height: calc(100vh - 140px);
-  }
 
   /* Ajusta el tamaño del texto de "Modo de impresión" si deseas hacerlo más pequeño */
   .switch-label {
@@ -556,3 +557,37 @@ input:checked+.slider:before {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4) !important;
   pointer-events: none;
 }
+
+
+.plant-selector {
+  display: inline-flex;
+  background: #333;          /* color de fondo de la “banda” */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.plant-button {
+  flex: 1;
+  padding: 6px 12px;
+  background: #eee;          /* color de fondo de cada píldora */
+  border: none;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.plant-button:not(:last-child) {
+  border-right: 1px solid #ccc;  /* separación visual entre botones */
+}
+
+.plant-button:hover {
+  background: #e0e0e0;
+}
+
+.plant-button.active {
+  background: #fff;   /* píldora activa blanca */
+  color: #000;        /* texto más oscuro */
+  font-weight: bold;
+}
+
