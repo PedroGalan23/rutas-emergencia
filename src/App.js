@@ -113,28 +113,29 @@ function App() {
   }
 
   function EtiquetaAula({ position, id, grupo }) {
-    const map = useMap();
-    const zoom = map.getZoom();
-    const baseScale = Math.pow(1.5, zoom);
-    const scale = Math.max(baseScale, 0.7);
-    const textoEtiqueta = grupo || id;
+  const map = useMap();
+  const zoom = map.getZoom();
+  const baseScale = Math.pow(1.5, zoom);
+  const scale = Math.max(baseScale, 0.7);
+  const textoEtiqueta = grupo || id;
 
-    return (
-      <Marker
-        position={position}
-        icon={divIcon({
-          html: `
-            <div class="label-aula" style="transform: translate(-50%, -50%) scale(${scale});">
-              ${textoEtiqueta}
-            </div>
-          `,
-          className: "",
-          iconAnchor: [0, 0],
-        })}
-        interactive={false}
-      />
-    );
-  }
+  return (
+    <Marker
+      position={position}
+      icon={divIcon({
+        html: `
+          <div class="label-aula-mejorada" style="transform: translate(-50%, -50%) scale(${scale});">
+            ${textoEtiqueta}
+          </div>
+        `,
+        className: "",
+        iconAnchor: [0, 0],
+      })}
+      interactive={false}
+    />
+  );
+}
+
 
   function calcularCentro(coordenadas) {
     const centroY = (coordenadas.supIzq[0] + coordenadas.infDer[0]) / 2;
@@ -380,6 +381,7 @@ function App() {
           zIndex: 1000,
           padding: "10px",
           border: "2px solid black",
+          borderRadius: "5px",
           backgroundColor: "white",
           display: "flex",
           flexDirection: "column",
@@ -394,7 +396,7 @@ function App() {
             textAlign: "center",
           }}
         >
-          Leyenda
+          LEYENDA
         </div>
         {uniqueSectors.map((item, index) => (
           <div key={index} style={{ display: "flex", alignItems: "center" }}>

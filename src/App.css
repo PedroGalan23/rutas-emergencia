@@ -56,8 +56,10 @@ body {
 
 
 @media print {
+
   /* 0) Quitar TODO el padding/margin por defecto */
-  html, body {
+  html,
+  body {
     margin: 0 !important;
     padding: 0 !important;
     height: 100% !important;
@@ -68,6 +70,7 @@ body {
   body * {
     visibility: hidden !important;
   }
+
   .map-container,
   .map-container * {
     visibility: visible !important;
@@ -76,11 +79,14 @@ body {
   /* 2) Hacer que el .map-container llene la página y se empuje hacia abajo */
   .map-container {
     position: fixed !important;
-    top: 10mm !important;              /* Cambia -5mm por 0 para empujar hacia abajo */
+    top: 10mm !important;
+    /* Cambia -5mm por 0 para empujar hacia abajo */
     left: -70mm !important;
     width: calc(100% + 10mm) !important;
-    height: calc(100% + 0mm) !important; /* Elimina el aumento de altura si genera margen inferior */
-    transform: translateY(5mm);       /* Desplaza hacia abajo visualmente */
+    height: calc(100% + 0mm) !important;
+    /* Elimina el aumento de altura si genera margen inferior */
+    transform: translateY(5mm);
+    /* Desplaza hacia abajo visualmente */
   }
 
   .leaflet-container {
@@ -93,6 +99,7 @@ body {
     size: A4 landscape;
     margin: 0;
   }
+
 
   /* 4) Estilos de leyenda */
   .legend-circle {
@@ -125,7 +132,7 @@ body {
 
 
 
-  
+
 
 .planta-container label {
   font-size: 0.95rem;
@@ -167,7 +174,7 @@ body {
   background-color: #ffffff;
   padding: 1rem;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 }
 
@@ -206,19 +213,26 @@ body {
   color: #333;
 }
 
-.label-aula {
-  padding: 2px 5px;
-  background: white;
-  border: 1px solid #ccc;
-  font-size: 12px;
-  white-space: normal;       /* Permite que el texto se envuelva */
-  word-break: break-word;    /* Corta la palabra si es necesario */
-  transform: translate(-50%, -50%);
-  min-width: 40px;
-  max-width: 200px;          /* Ancho máximo para no ocupar toda la pantalla */
+.label-aula-mejorada {
+  padding: 0.5px 7px 0.5px 5px;
+  /* top right bottom left => más espacio a la derecha */
+  font-size: 13px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.95);
+  color: #000000;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
   text-align: center;
+  min-width: 40px;
+  max-width: 100px;
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  text-shadow: 0 0 1px #fff, 0 0 2px #fff;
+  letter-spacing: 0.5px;
 }
-
 
 .zona-tooltip {
   background: none;
@@ -228,7 +242,8 @@ body {
   font-weight: bold;
   font-size: 12px;
   text-align: center;
-  white-space: pre-line; /* respeta \n */
+  white-space: pre-line;
+  /* respeta \n */
 }
 
 
@@ -263,8 +278,13 @@ body {
 }
 
 @keyframes monjeBounce {
-  from { transform: translateY(0); }
-  to { transform: translateY(-4px); }
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-4px);
+  }
 }
 
 .app-header h1 img {
@@ -305,20 +325,21 @@ body {
 
 /* Header aún más compacto para pantallas muy pequeñas */
 @media (max-width: 480px) {
+
   /* El header ocupa el 100% en vertical y el título se centra */
   .app-header {
     flex-direction: column;
     align-items: center;
     padding: 0.5rem;
   }
-  
+
   /* El Título se muestra en una línea completa arriba */
   .app-header h1 {
     width: 100%;
     text-align: center;
     margin-bottom: 0.5rem;
   }
-  
+
   /* Contenedor de controles: 
      el switch (Modo de impresión) a la izquierda, 
      y el selector de planta a la derecha */
@@ -334,7 +355,7 @@ body {
   .planta-container label {
     font-size: 0.8rem;
   }
-  
+
   /* Disminuye un poco el tamaño del select en móvil */
   .planta-container select {
     font-size: 0.85rem;
@@ -346,12 +367,13 @@ body {
        Ahora descontamos unos 140px (ajusta a tu header real) */
     height: calc(100vh - 140px);
   }
-  
+
   /* Ajusta el tamaño del texto de "Modo de impresión" si deseas hacerlo más pequeño */
   .switch-label {
-    font-size: 0.85rem; 
+    font-size: 0.85rem;
   }
 }
+
 /* Estilos para el switch */
 /* Contenedor para centrar el switch y el texto */
 .switch-wrapper {
@@ -369,7 +391,7 @@ body {
   height: 34px;
 }
 
-.switch input { 
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -397,15 +419,15 @@ body {
   transition: 0.4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: #2196F3;
 }
 
-input:focus + .slider {
+input:focus+.slider {
   box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   transform: translateX(26px);
 }
 
@@ -444,13 +466,15 @@ input:checked + .slider:before {
 /* Contenedor personalizado para el select */
 .custom-select {
   position: relative;
-  width: 200px; /* Ajusta el ancho si es necesario */
+  width: 200px;
+  /* Ajusta el ancho si es necesario */
 }
 
 /* Estilos del select */
 .custom-select select {
   width: 100%;
-  padding: 8px 40px 8px 12px; /* Se deja espacio a la derecha para la flecha */
+  padding: 8px 40px 8px 12px;
+  /* Se deja espacio a la derecha para la flecha */
   border: 2px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
@@ -482,28 +506,46 @@ input:checked + .slider:before {
   border-top: 6px solid #333;
   transform: translateY(-50%);
 }
+
 /* Badge para el aula coordinadora */
 .coordinadora-badge {
-  display: inline-block;      /* for padding y min-width efectivos */
-  white-space: nowrap;        /* evita que el texto se parta */
-  padding: 4px 12px;          /* más espacio lateral */
-  min-width: 80px;            /* aseguras un ancho mínimo */
-  text-align: center;         /* centrar el texto */
-  background-color: #e74c3c;  
+  display: inline-block;
+  /* for padding y min-width efectivos */
+  white-space: nowrap;
+  /* evita que el texto se parta */
+  padding: 4px 12px;
+  /* más espacio lateral */
+  min-width: 80px;
+  /* aseguras un ancho mínimo */
+  text-align: center;
+  /* centrar el texto */
+  background-color: #e74c3c;
   color: white;
   border-radius: 4px;
   font-weight: bold;
   font-size: 12px;
   text-transform: uppercase;
-  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
   animation: pulse 2s ease-in-out infinite;
 }
 
 @keyframes pulse {
-  0%   { transform: scale(1);   opacity: 1; }
-  50%  { transform: scale(1.1); opacity: 0.8; }
-  100% { transform: scale(1);   opacity: 1; }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
+
 /* Etiqueta profesional para aula coordinadora */
 .coordinadora-label {
   background: transparent !important;
@@ -511,6 +553,6 @@ input:checked + .slider:before {
   color: #2c3e50 !important;
   font-size: 14px !important;
   font-weight: bold !important;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.4) !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4) !important;
   pointer-events: none;
 }
