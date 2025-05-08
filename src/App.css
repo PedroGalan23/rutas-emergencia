@@ -77,7 +77,7 @@ body {
   .map-container {
     position: fixed !important;
     top: 10mm !important;              /* Cambia -5mm por 0 para empujar hacia abajo */
-    left: -50mm !important;
+    left: -70mm !important;
     width: calc(100% + 10mm) !important;
     height: calc(100% + 0mm) !important; /* Elimina el aumento de altura si genera margen inferior */
     transform: translateY(5mm);       /* Desplaza hacia abajo visualmente */

@@ -3238,6 +3238,79 @@
         ]
       }
     ],
-    "Planta Cubierta": []
+    "Planta Palomar": [
+      {
+        "id": "E28",
+        "nombre": "PALOMAR PRIMERA PLANTA - A",
+        "sector": "Salida M.Hernández",
+        "color": "green",
+        "grupo":"3PRIA",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [4044, 2280],
+          "infDer": [3450, 4396]
+        },
+        "ruta": [
+          [1425, 2892],
+          [1134, 2906],
+          [794, 2795],
+          [752, 2498]
+        ]
+      },
+      {
+        "id": "E29",
+        "nombre": "PALOMAR PRIMERA PLANTA - B",
+        "sector": "Salida M.Hernández",
+        "color": "green",
+        "grupo":"3PRIC",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [3426, 2280],
+          "infDer": [2873, 4397]
+        },
+        "ruta": [
+          [1425, 2892],
+          [1134, 2906],
+          [794, 2795],
+          [752, 2498]
+        ]
+      },
+      {
+        "id": "E30",
+        "nombre": "PALOMAR SEGUNDA PLANTA - A",
+        "sector": "Salida M.Hernández",
+        "color": "green",
+        "grupo":"3PRID",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [2850, 2280],
+          "infDer": [2275, 4396]
+        },
+        "ruta": [
+          [1425, 2892],
+          [1134, 2906],
+          [794, 2795],
+          [752, 2498]
+        ]
+      },
+      {
+        "id": "E31",
+        "nombre": "SEGUNDA PLANTA PALOMAR - B",
+        "sector": "Salida M.Hernández",
+        "color": "green",
+        "grupo":"3PRIB",
+        "coordinadora": false,
+        "coordenadas": {
+          "supIzq": [2244, 2280],
+          "infDer": [1532, 4396]
+        },
+        "ruta": [
+          [1425, 2892],
+          [1134, 2906],
+          [794, 2795],
+          [752, 2498]
+        ]
+      }
+    ]
   }
   

@@ -19,7 +19,7 @@ import planoBaja from "./assets/PG1-PlantaBaja.jpg";
 import planoIntermedia from "./assets/PG2-Planta Intermedia.jpg";
 import planoPrimera from "./assets/PG3-Planta Primera.jpg";
 import planoSegunda from "./assets/PG4-Planta Segunda.jpg";
-import planoCubierta from "./assets/PG5-Planta cubierta.jpg";
+import planoPalomar from "./assets/Palomar.png";
 import zonasComunesData from "./data/zonasComunes.json";
 import escaleraData from "./data/escaleras.json"; // Crea este archivo JSON con la información de las escaleras.
 import monje1 from "./assets/monje1.png";
@@ -84,9 +84,9 @@ function App() {
   const planos = {
     "Planta Baja": planoBaja,
     "Planta Intermedia": planoIntermedia,
+    "Planta Palomar": planoPalomar,
     "Planta Primera": planoPrimera,
     "Planta Segunda": planoSegunda,
-    "Planta Cubierta": planoCubierta,
   };
 
   const escaleras = escaleraData;
@@ -215,8 +215,10 @@ function App() {
   }, [aulaActiva]);
 
   function ClickHandler({ aulas }) {
-    useMapEvent("click", (e) => {
+    useMapEvent('click', (e) => {
       const { lat, lng } = e.latlng;
+      console.log(`📍 Coordenadas clic: [${Math.round(lat)}, ${Math.round(lng)}]`);
+  
       const aulaClicada = aulas.find((aula) => {
         const y1 = aula.coordenadas.infDer[0];
         const y2 = aula.coordenadas.supIzq[0];
@@ -224,10 +226,12 @@ function App() {
         const x2 = aula.coordenadas.infDer[1];
         return lat >= y1 && lat <= y2 && lng >= x1 && lng <= x2;
       });
+  
       setAulaActiva(aulaClicada || null);
     });
     return null;
   }
+  
 
   const QrOverlay = React.memo(function QrOverlay({
     aulaActiva,
@@ -257,9 +261,8 @@ function App() {
         const h = el.offsetHeight;
         const offsetX = -w / 2;
         const offsetY = -h / 2;
-        el.style.transform = `translate3d(${point.x + offsetX}px, ${
-          point.y + offsetY
-        }px, 0)`;
+        el.style.transform = `translate3d(${point.x + offsetX}px, ${point.y + offsetY
+          }px, 0)`;
         prevPointRef.current = { x: point.x, y: point.y };
       }
 
@@ -455,8 +458,8 @@ function App() {
     destacadas = aulaActiva.coordinadora
       ? coord
       : coord.length > 0
-      ? [...coord, aulaActiva]
-      : [aulaActiva];
+        ? [...coord, aulaActiva]
+        : [aulaActiva];
   }
 
   const otras = todas.filter((a) => !destacadas.some((d) => d.id === a.id));
@@ -537,9 +540,8 @@ function App() {
               position={salida.coordenadas}
               interactive={false}
               icon={divIcon({
-                html: `<img src="${
-                  imagesSalida[salida.imagen]
-                }" style="width:45px;height:45px" alt="Salida"/>`,
+                html: `<img src="${imagesSalida[salida.imagen]
+                  }" style="width:45px;height:45px" alt="Salida"/>`,
                 className: "",
                 iconSize: [25, 25],
                 iconAnchor: [10, 10],
@@ -581,8 +583,8 @@ function App() {
             const borderColor = isActive
               ? "purple"
               : isCoordinator
-              ? "red"
-              : a.color;
+                ? "red"
+                : a.color;
 
             const fillColor = isActive ? "purple" : a.color;
 
@@ -627,16 +629,19 @@ function App() {
           {/* Marcadores de las Escaleras */}
           {escaleras
             .filter(escalera => {
+              // No mostrar escaleras en la planta Palomar
+              if (plantaSeleccionada === "Planta Palomar") return false;
+
               // escalera6 y escalera7 solo en Primera y Segunda
               if (escalera.id === 'escalera6' || escalera.id === 'escalera7') {
-                return plantaSeleccionada === 'Planta Primera'
-                    || plantaSeleccionada === 'Planta Segunda';
+                return plantaSeleccionada === 'Planta Primera' || plantaSeleccionada === 'Planta Segunda';
               }
+
               // escalera1, escalera3 y escalera4 NO en Planta Segunda
-              if (['escalera1','escalera3','escalera4'].includes(escalera.id)) {
+              if (['escalera1', 'escalera3', 'escalera4'].includes(escalera.id)) {
                 return plantaSeleccionada !== 'Planta Segunda';
               }
-              // el resto en todas las plantas
+
               return true;
             })
             .map(escalera => (
@@ -646,7 +651,6 @@ function App() {
                 icon={createEscaleraMarkerIcon()}
                 eventHandlers={{
                   click: () => {
-                    // escalera6 y 7 → Planta Primera; resto → Planta Baja
                     const destino = (escalera.id === 'escalera6' || escalera.id === 'escalera7')
                       ? 'Planta Primera'
                       : 'Planta Baja';
@@ -660,6 +664,7 @@ function App() {
               />
             ))
           }
+
 
           {/* Ruta de flechas */}
           {aulaActiva?.ruta?.slice(0, -1).map((p, i) => {
