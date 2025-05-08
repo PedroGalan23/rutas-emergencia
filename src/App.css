@@ -591,3 +591,82 @@ input:checked+.slider:before {
   font-weight: bold;
 }
 
+/* antes teneías esto */
+.btn-play {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5em;
+}
+
+/* añade o ajusta tu contenedor de controles */
+.app-header .controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;       /* espacio homogéneo entre elementos */
+}
+
+/* fondo semitransparente, centrado */
+.slider-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+/* caja blanca centrada, tamaño ~40% pantalla */
+.slider-content {
+  position: relative;
+  width: 40vw;
+  max-width: 600px;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+
+/* botón cerrar */
+.slider-close {
+  position: absolute;
+  top: 0.5rem; right: 0.5rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* imágenes apiladas, sólo la .active visible */
+.slider-img {
+  width: 100%;
+  height: auto;
+  display: none;
+  border-radius: 4px;
+}
+.slider-img.active {
+  display: block;
+}
+
+/* flechas de navegación */
+.slider-prev,
+.slider-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.slider-prev { left: -1.25rem; }
+.slider-next { right: -1.25rem; }

@@ -86,8 +86,8 @@
           [935, 2457],
           [747, 2474]
         ],
-        "camaras": ["cam1","cam2"]
-      },
+      "fotos": ["3.jpg", "4.jpg"]  
+       },
       {
         "id": "B18",
         "nombre": "SACRISTÍA",
