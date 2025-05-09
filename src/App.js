@@ -31,6 +31,7 @@ import salidaLeyenda from "./assets/salidaLeyenda.png";
 import camerasData from "./data/camaras.json";
 import cameraIconPng from "./assets/fotos/camara-fotografica.png";
 import L from "leaflet";
+import playIcon from "./assets/play.svg"; // tu icono de “play”
 
 import "./App.css";
 
@@ -51,7 +52,8 @@ function App() {
   const [flechaPosicion, setFlechaPosicion] = useState(null);
   const [monjeFrame, setMonjeFrame] = useState(0);
   const [imprimible, setImprimible] = useState(false);
-
+  const [sliderOpen, setSliderOpen] = useState(false);
+  const [slideIndex, setSlideIndex] = useState(0);
   // DATOS DE AULAS CARGADOS DINÁMICAMENTE
   const [aulasData, setAulasData] = useState({});
 
@@ -508,7 +510,12 @@ function App() {
           />
           {!isMobile && "PLAN DE EVACUACIÓN"}
         </h1>
-
+             {/* <-- aquí dentro, junto al selector */}
+             {aulaActiva && (
+                <button className="btn-play" onClick={() => setSliderOpen(true)}>
+                  <img src={playIcon} alt="Ver ruta en fotos" />
+                </button>
+              )}       
         <div className="controls">
           {/* 3) Switch sólo si NO es móvil */}
           {!isMobile && (
@@ -582,25 +589,6 @@ function App() {
             />
           ))}
 
-          {/* Sólo muestra cámaras de la aula activa, según su array `camaras` */}
-          {!imprimible && aulaActiva && camerasData[plantaSeleccionada]
-            ?.filter(cam => aulaActiva.camaras?.includes(cam.id))
-            .map(cam => (
-              <Marker
-                key={cam.id}
-                position={cam.coordenadas}
-                icon={cameraIcon}
-              >
-                <Popup>
-                  <img
-                    src={fotosMap[cam.foto]}
-                    alt={`Foto ${cam.id}`}
-                    style={{ width: '200px', height: 'auto' }}
-                  />
-                </Popup>
-              </Marker>
-            ))
-          }
 
           {todas.map(a => {
             const isActive = a.id === aulaActiva?.id;
@@ -734,6 +722,34 @@ function App() {
           <LeyendaOverlay plantaSeleccionada={plantaSeleccionada} />
         </MapContainer>
       </div>
+      {sliderOpen && (
+  <div className="slider-overlay" onClick={() => setSliderOpen(false)}>
+    <div className="slider-content" onClick={e => e.stopPropagation()}>
+      <button className="slider-close" onClick={() => setSliderOpen(false)}>×</button>
+      {aulaActiva.fotos.map((f, i) => (
+        <img
+          key={i}
+          src={fotosMap[f]}
+          alt={`Punto ${i+1}`}
+          className={`slider-img ${i === slideIndex ? 'active' : ''}`}
+        />
+      ))}
+      <button
+        className="slider-prev"
+        onClick={() =>
+          setSlideIndex((slideIndex + aulaActiva.fotos.length - 1) % aulaActiva.fotos.length)
+        }
+      >‹</button>
+      <button
+        className="slider-next"
+        onClick={() =>
+          setSlideIndex((slideIndex + 1) % aulaActiva.fotos.length)
+        }
+      >›</button>
+    </div>
+  </div>
+)}
+
     </div>
   );
 }
