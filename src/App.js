@@ -6,7 +6,6 @@ import {
   Marker,
   Tooltip,
   useMapEvent,
-  Popup,
   useMap,
 } from "react-leaflet";
 import { CRS, divIcon } from "leaflet";
@@ -28,17 +27,17 @@ import salidaAmarillo from "./assets/salidaAmarillo.png";
 import salidaVerde from "./assets/salidaVerde.png";
 import salidaAzul from "./assets/salidaAzul.png";
 import salidaLeyenda from "./assets/salidaLeyenda.png";
-import camerasData from "./data/camaras.json";
-import cameraIconPng from "./assets/fotos/camara-fotografica.png";
-import L from "leaflet";
 import playIcon from "./assets/play.svg"; // tu icono de “play”
 
 import "./App.css";
 
 function App() {
-
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
 
+
+  const [setAlertMessage] = useState(null);
+
+  
   const imageWidth = 7017;
   const imageHeight = 4963;
   const imageBounds = [
@@ -83,14 +82,6 @@ function App() {
     "src/assets/salidaVerde.png": salidaVerde,
     "src/assets/salidaAzul.png": salidaAzul,
   };
-
-  const cameraIcon = new L.Icon({
-    iconUrl: cameraIconPng,
-    iconSize: [20, 20],
-    iconAnchor: [15, 15],
-    popupAnchor: [0, -15],
-    className: "",
-  });
 
   const flechaIndex = useRef(0);
   const animationInterval = useRef(null);
@@ -463,14 +454,6 @@ function App() {
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
           <img
-            src={cameraIconPng}
-            alt="Imagen 360º"
-            style={{ height: "25px", marginRight: "6px" }}
-          />
-          <span>Imagen 360º</span>
-        </div>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <img
             src={escaleras2}
             alt="Escaleras"
             style={{ height: "30px", marginRight: "6px" }}
@@ -512,10 +495,22 @@ function App() {
         </h1>
              {/* <-- aquí dentro, junto al selector */}
              {aulaActiva && (
-                <button className="btn-play" onClick={() => setSliderOpen(true)}>
-                  <img src={playIcon} alt="Ver ruta en fotos" />
-                </button>
-              )}       
+              <button
+                className="btn-play"
+                onClick={() => {
+                     if (!aulaActiva.fotos || aulaActiva.fotos.length === 0) {
+                       window.alert("Esta aula no tiene carrusel de fotos asignado.");
+                     } else {
+                     if (!aulaActiva.fotos || aulaActiva.fotos.length === 0) {
+                       setAlertMessage("Esta aula no tiene carrusel de fotos asignado.");
+                     } else {
+                        setSlideIndex(0);
+                        setSliderOpen(true);
+                      }
+                    }}}>
+                <img src={playIcon} alt="Ver ruta en fotos" />
+              </button>
+            )}    
         <div className="controls">
           {/* 3) Switch sólo si NO es móvil */}
           {!isMobile && (

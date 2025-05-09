@@ -88,7 +88,11 @@ body {
   body * {
     visibility: hidden !important;
   }
-
+  /* Mostrar el mapa */
+  .map-container,
+  .map-container * {
+    visibility: visible !important;
+  }
 
   /* 2) Hacer que el .map-container llene la página y se empuje hacia abajo */
   .map-container {
@@ -341,11 +345,21 @@ body {
 @media (max-width: 480px) {
   /* El header ocupa el 100% en vertical y el título se centra */
   .app-header {
-    flex-direction: column;
+    flex-direction:row;
     align-items: center;
-    padding: 0.5rem;
+  }
+  
+
+
+  .btn-play {
+    padding: 0.25em;
   }
 
+  /* Ajustamos el ancho/alto de la imagen interna */
+  .btn-play img {
+    width: 2rem;    /* o 24px, según prefieras */
+    height: 2rem;   /* mantiene la proporción */
+  }
   /* Contenedor de controles: 
      el switch (Modo de impresión) a la izquierda, 
      y el selector de planta a la derecha */
@@ -596,9 +610,8 @@ input:checked+.slider:before {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5em;
+  padding: 0.3em;
 }
-
 /* añade o ajusta tu contenedor de controles */
 .app-header .controls {
   display: flex;
