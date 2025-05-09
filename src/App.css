@@ -680,6 +680,14 @@ input:checked+.slider:before {
   text-align: center;
   border-radius: 50%;
   cursor: pointer;
+  z-index: 10; /* por si acaso */
+  /* Ahora las empujamos 1rem dentro */
 }
-.slider-prev { left: -1.25rem; }
-.slider-next { right: -1.25rem; }
+.slider-prev {
+  left: 1rem;    /* antes era left: -1.25rem */
+}
+
+.slider-next {
+  right: 1rem; 
+}
+
