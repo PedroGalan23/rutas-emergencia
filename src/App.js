@@ -37,7 +37,7 @@ function App() {
 
   const [setAlertMessage] = useState(null);
 
-  
+
   const imageWidth = 7017;
   const imageHeight = 4963;
   const imageBounds = [
@@ -493,24 +493,25 @@ function App() {
           />
           {!isMobile && "PLAN DE EVACUACIÓN"}
         </h1>
-             {/* <-- aquí dentro, junto al selector */}
-             {aulaActiva && (
-              <button
-                className="btn-play"
-                onClick={() => {
-                     if (!aulaActiva.fotos || aulaActiva.fotos.length === 0) {
-                       window.alert("Esta aula no tiene carrusel de fotos asignado.");
-                     } else {
-                     if (!aulaActiva.fotos || aulaActiva.fotos.length === 0) {
-                       setAlertMessage("Esta aula no tiene carrusel de fotos asignado.");
-                     } else {
-                        setSlideIndex(0);
-                        setSliderOpen(true);
-                      }
-                    }}}>
-                <img src={playIcon} alt="Ver ruta en fotos" />
-              </button>
-            )}    
+        {/* <-- aquí dentro, junto al selector */}
+        {aulaActiva && (
+          <button
+            className="btn-play"
+            onClick={() => {
+              if (!aulaActiva.fotos || aulaActiva.fotos.length === 0) {
+                window.alert("Esta aula no tiene carrusel de fotos asignado.");
+              } else {
+                if (!aulaActiva.fotos || aulaActiva.fotos.length === 0) {
+                  setAlertMessage("Esta aula no tiene carrusel de fotos asignado.");
+                } else {
+                  setSlideIndex(0);
+                  setSliderOpen(true);
+                }
+              }
+            }}>
+            <img src={playIcon} alt="Ver ruta en fotos" />
+          </button>
+        )}
         <div className="controls">
           {/* 3) Switch sólo si NO es móvil */}
           {!isMobile && (
@@ -718,32 +719,40 @@ function App() {
         </MapContainer>
       </div>
       {sliderOpen && (
-  <div className="slider-overlay" onClick={() => setSliderOpen(false)}>
-    <div className="slider-content" onClick={e => e.stopPropagation()}>
-      <button className="slider-close" onClick={() => setSliderOpen(false)}>×</button>
-      {aulaActiva.fotos.map((f, i) => (
-        <img
-          key={i}
-          src={fotosMap[f]}
-          alt={`Punto ${i+1}`}
-          className={`slider-img ${i === slideIndex ? 'active' : ''}`}
-        />
-      ))}
-      <button
-        className="slider-prev"
-        onClick={() =>
-          setSlideIndex((slideIndex + aulaActiva.fotos.length - 1) % aulaActiva.fotos.length)
-        }
-      >‹</button>
-      <button
-        className="slider-next"
-        onClick={() =>
-          setSlideIndex((slideIndex + 1) % aulaActiva.fotos.length)
-        }
-      >›</button>
-    </div>
-  </div>
-)}
+        <div className="slider-overlay" onClick={() => setSliderOpen(false)}>
+          <div className="slider-content" onClick={e => e.stopPropagation()}>
+            <button className="slider-close" onClick={() => setSliderOpen(false)}>×</button>
+            {aulaActiva.fotos.map((f, i) => (
+              <img
+                key={i}
+                src={fotosMap[f]}
+                alt={`Punto ${i + 1}`}
+                className={`slider-img ${i === slideIndex ? 'active' : ''}`}
+              />
+            ))}
+            <button
+              className="slider-prev"
+              onClick={() =>
+                setSlideIndex((slideIndex + aulaActiva.fotos.length - 1) % aulaActiva.fotos.length)
+              }
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M15 6L9 12L15 18" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            <button
+              className="slider-next"
+              onClick={() =>
+                setSlideIndex((slideIndex + 1) % aulaActiva.fotos.length)
+              }
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M9 6L15 12L9 18" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
 
     </div>
   );

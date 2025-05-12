@@ -634,13 +634,23 @@ input:checked+.slider:before {
 /* caja blanca centrada, tamaño ~40% pantalla */
 .slider-content {
   position: relative;
-  width: 40vw;
-  max-width: 600px;
-  background: #fff;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
   padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
   overflow: hidden;
+  animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* botón cerrar */
@@ -669,25 +679,131 @@ input:checked+.slider:before {
 .slider-next {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  color: #fff;
-  border: none;
-  font-size: 2rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  line-height: 2.5rem;
-  text-align: center;
+  transform: translateY(-50%);/* centrar verticalmente */
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  border: 2px solid #ccc;
+  font-weight: bold;
+  font-size: 2.2rem;
+  width: 4rem;
+  height: 4rem;
+  line-height: 4rem;
   border-radius: 50%;
   cursor: pointer;
-  z-index: 10; /* por si acaso */
-  /* Ahora las empujamos 1rem dentro */
+  transition: background 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10;
 }
+
 .slider-prev {
   left: 1rem;    /* antes era left: -1.25rem */
 }
 
 .slider-next {
   right: 1rem; 
+}
+
+.slider-prev svg,
+.slider-next svg {
+  display: block;
+  margin: auto;
+}
+
+.slider-prev:hover,
+.slider-next:hover {
+  background: #f0f0f0;
+  transform: scale(1.3);
+}
+
+
+/* Slider adaptable y más bonito */
+@media (min-width: 769px) {
+  .slider-content {
+    width: 40vw;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .slider-content {
+    width: 90vw;
+    max-width: 95vw;
+    padding: 1.2rem;
+    border-radius: 12px;
+  }
+
+  .slider-prev,
+  .slider-next {
+    width: 3rem;
+    height: 3rem;
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+
+  .slider-close {
+    font-size: 2rem;
+  }
+}
+
+/* Tablet específica: iPad, Galaxy Tab, etc. */
+@media (min-width: 481px) and (max-width: 1024px) and (orientation: portrait), 
+       (min-width: 601px) and (max-width: 1366px) and (orientation: landscape) {
+  .slider-content {
+    width: 60vw;
+    max-width: 500px;
+  }
+
+  .slider-prev,
+  .slider-next {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 2rem;
+  }
+
+  .slider-prev svg,
+  .slider-next svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+/* Móviles en horizontal: simplificar header */
+@media (max-width: 767px) and (orientation: landscape) {
+  .app-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .app-header h1 span {
+    display: none; /* ocultar "PLAN DE EVACUACIÓN" */
+  }
+
+  .switch-wrapper {
+    display: none !important; /* ocultar modo impresión */
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+
+  .btn-play {
+    padding: 0.25em;
+  }
+
+  .btn-play img {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .selector-wrapper {
+    margin: 0;
+  }
 }
 
