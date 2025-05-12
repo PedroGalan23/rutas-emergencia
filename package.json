@@ -13,6 +13,7 @@
     "fs-extra": "^11.3.0",
     "leaflet": "^1.9.4",
     "node-cron": "^3.0.3",
+    "qrcode": "^1.5.4",
     "qrcode.react": "^4.2.0",
     "react": "^19.1.0",
     "react-device-detect": "^2.2.3",
