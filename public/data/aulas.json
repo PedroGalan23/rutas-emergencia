@@ -21,7 +21,8 @@
           [1197, 2448],
           [928, 2456],
           [745, 2472]
-        ]
+        ],
+        "fotos": ["puerta_conserjeria.jpg"]
       },
       {
         "id": "B15",
@@ -42,7 +43,8 @@
           [1169, 2465],
           [901, 2465],
           [741, 2469]
-        ]
+        ],
+        "fotos": ["puerta_conserjeria.jpg"]
       }, 
       {
         "id": "B11",
@@ -63,7 +65,8 @@
           [1169, 2465],
           [901, 2465],
           [741, 2469]
-        ]
+        ],
+        "fotos": ["puerta_conserjeria.jpg"]
       },
       {
         "id": "B104",
@@ -86,7 +89,7 @@
           [935, 2457],
           [747, 2474]
         ],
-      "fotos": ["3.jpg", "4.jpg"]  
+        "fotos": ["puerta_conserjeria.jpg"] 
        },
       {
         "id": "B18",
@@ -108,7 +111,8 @@
           [1169, 2465],
           [901, 2465],
           [741, 2469]
-        ]
+        ],
+        "fotos": ["puerta_conserjeria.jpg"]
       },
       {
         "id": "B19",
@@ -130,7 +134,8 @@
           [1169, 2465],
           [901, 2465],
           [741, 2469]
-        ]
+        ],
+        "fotos": ["puerta_conserjeria.jpg"]
       },
       {
         "id": "B21",
@@ -179,7 +184,8 @@
           [4197, 2530],
           [4198, 2224],
           [4186, 1840]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "B2",
@@ -202,7 +208,8 @@
           [872, 2458],
           [749, 2472]
         ],
-        "camaras": ["cam1"]
+        "camaras": ["cam1"],
+        "fotos": ["puerta_conserjeria.jpg"]
       },
       {
         "id": "B95",
@@ -227,7 +234,8 @@
         [1204, 2454],
         [898, 2464],
         [716, 2466]
-      ]
+      ],
+      "fotos": ["puerta_conserjeria.jpg"]
       },
       {
         "id": "B51",
@@ -249,7 +257,8 @@
           [4265, 2344],
           [4171, 1850],
           [4175, 1606]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "B52",
@@ -271,7 +280,8 @@
           [4265, 2344],
           [4171, 1850],
           [4175, 1606]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "B93",
@@ -296,7 +306,8 @@
           [1202, 2446],
           [928, 2472],
           [748, 2470]
-        ]
+        ],
+        "fotos": ["puerta_conserjeria.jpg"]
       },
       {
         "id": "B106",
@@ -319,7 +330,8 @@
           [934, 2457],
           [747, 2474]
         ],
-        "camaras": ["cam1"]
+        "camaras": ["cam1"],
+        "fotos": ["puerta_conserjeria.jpg"]
       },
       {
         "id": "B109",
@@ -342,7 +354,8 @@
           [931, 2457],
           [747, 2474]
         ],
-        "camaras": ["cam1"]
+        "camaras": ["cam1"],
+        "fotos": ["puerta_conserjeria.jpg"]
       },
       {
         "id": "B80",
@@ -372,7 +385,8 @@
           [1180, 2452],
           [908, 2464],
           [728, 2460]
-        ]
+        ],
+        "fotos": ["puerta_conserjeria.jpg"]
       },
       {
         "id": "B94",
@@ -400,7 +414,8 @@
           [1180, 2452],
           [908, 2464],
           [728, 2460]
-        ]
+        ],
+        "fotos": ["puerta_conserjeria.jpg"]
       },
       {
         "id": "B89",
@@ -427,7 +442,8 @@
           [1190, 2448],
           [914, 2468],
           [750, 2468]
-        ]
+        ],
+        "fotos": ["puerta_conserjeria.jpg"]
       },
       {
         "id": "B92",
@@ -454,7 +470,8 @@
           [1190, 2448],
           [914, 2468],
           [750, 2468]
-        ]
+        ],
+        "fotos": ["puerta_conserjeria.jpg"]
       },
       {
         "id": "B100",
@@ -477,7 +494,8 @@
           [1190, 2448],
           [914, 2468],
           [750, 2468]
-        ]
+        ],
+        "fotos": ["puerta_conserjeria.jpg"]
       },
       {
         "id": "B100A",
@@ -500,7 +518,8 @@
           [1190, 2448],
           [914, 2468],
           [750, 2468]
-        ]
+        ],
+        "fotos": ["puerta_conserjeria.jpg"]
       },
       {
         "id": "B76",
@@ -529,7 +548,8 @@
           [1194, 2450],
           [904, 2448],
           [698, 2484]
-        ]
+        ],
+        "fotos": ["puerta_conserjeria.jpg"]
       },
       {
         "id": "B57",
@@ -553,7 +573,8 @@
           [4182, 2574],
           [4198, 2252],
           [4188, 1954]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "B34",
@@ -574,7 +595,8 @@
           [4182, 2574],
           [4198, 2252],
           [4188, 1954]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "B32",
@@ -596,7 +618,8 @@
           [4182, 2574],
           [4198, 2252],
           [4188, 1954]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "B55",
@@ -620,7 +643,8 @@
           [4188, 2470],
           [4192, 2224],
           [4190, 1828]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "B36",
@@ -639,7 +663,8 @@
           [4185, 2350],
           [4185, 2040],
           [4185, 1826]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "B27",
@@ -663,7 +688,8 @@
           [4185, 2350],
           [4185, 2040],
           [4185, 1826]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "B26",
@@ -687,7 +713,8 @@
           [4185, 2350],
           [4185, 2040],
           [4185, 1826]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "B73",
@@ -717,7 +744,8 @@
           [4197, 2530],
           [4198, 2224],
           [4186, 1840]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "B75",
@@ -748,7 +776,8 @@
           [4197, 2530],
           [4198, 2224],
           [4186, 1840]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "B53",
@@ -771,7 +800,8 @@
           [4196, 2554],
           [4204, 2167],
           [4190, 1828]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       }
     ],
     "Planta Intermedia": [
@@ -789,7 +819,8 @@
         "ruta": [
           [2114, 4252],
           [2054, 4058]
-        ]
+        ],
+        "fotos": ["escalera1.jpg","puerta_conserjeria.jpg"]
       },
       {
         "id": "E2",
@@ -805,7 +836,8 @@
         "ruta": [
           [2921, 4296],
           [2851, 4110]
-        ]
+        ],
+        "fotos": ["escalera1.jpg","puerta_conserjeria.jpg"]
       },
       {
         "id": "E5",
@@ -824,7 +856,8 @@
           [3215, 4277],
           [2921, 4296],
           [2851, 4110]
-        ]
+        ],
+        "fotos": ["escalera1.jpg","puerta_conserjeria.jpg"]
       },
       {
         "id": "E6",
@@ -844,7 +877,8 @@
           [3215, 4277],
           [2921, 4296],
           [2851, 4110]
-        ]
+        ],
+        "fotos": ["escalera1.jpg","puerta_conserjeria.jpg"]
       },
       {
         "id": "E10",
@@ -866,7 +900,8 @@
           [4012, 3468],
           [4016, 3700],
           [4004, 3816]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E11",
@@ -890,7 +925,8 @@
           [4012, 3468],
           [4016, 3700],
           [4004, 3816]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E12",
@@ -914,7 +950,8 @@
           [4012, 3468],
           [4016, 3700],
           [4004, 3816]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E14",
@@ -934,7 +971,8 @@
           [4012, 3468],
           [4016, 3700],
           [4004, 3816]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E15",
@@ -953,7 +991,8 @@
           [4012, 3468],
           [4016, 3700],
           [4004, 3816]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E16",
@@ -971,7 +1010,8 @@
           [4012, 3468],
           [4016, 3700],
           [4004, 3816]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E18",
@@ -989,7 +1029,8 @@
           [4012, 3468],
           [4016, 3700],
           [4004, 3816]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E19",
@@ -1005,7 +1046,8 @@
         "ruta": [
           [4016, 3700],
           [4004, 3816]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E20",
@@ -1020,7 +1062,8 @@
         },
         "ruta": [
           [4064, 3980]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E21",
@@ -1035,7 +1078,8 @@
         },
         "ruta": [
           [4192, 3864]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E22",
@@ -1051,7 +1095,8 @@
         },
         "ruta": [
           [4192, 3864]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E23",
@@ -1067,7 +1112,8 @@
         "ruta": [
           [922, 3584],
           [860, 3466]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       }
     ],
     "Planta Primera": [
@@ -3255,7 +3301,8 @@
           [1134, 2906],
           [794, 2795],
           [752, 2498]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E29",
@@ -3273,7 +3320,8 @@
           [1134, 2906],
           [794, 2795],
           [752, 2498]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E30",
@@ -3291,7 +3339,8 @@
           [1134, 2906],
           [794, 2795],
           [752, 2498]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E31",
@@ -3309,7 +3358,8 @@
           [1134, 2906],
           [794, 2795],
           [752, 2498]
-        ]
+        ],
+        "fotos": ["puerta_miguel_hernandez.jpg"]
       }
     ]
   }
