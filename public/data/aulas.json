@@ -2366,7 +2366,8 @@
           [4008, 4204],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S78",
@@ -2397,7 +2398,8 @@
           [4008, 4204],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S77",
@@ -2426,7 +2428,8 @@
           [4008, 4204],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S74",
@@ -2452,7 +2455,8 @@
           [4008, 4204],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S71",
@@ -2476,7 +2480,8 @@
           [4008, 4204],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S70",
@@ -2498,7 +2503,8 @@
           [4008, 4204],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S68",
@@ -2518,7 +2524,8 @@
           [4008, 4204],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S57",
@@ -2537,7 +2544,8 @@
           [4084, 4270],
           [4184, 4271],
           [4182, 4138]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S38",
@@ -2555,7 +2563,8 @@
         [2428, 4574],
         [2580, 4500],
         [2652, 4422]
-        ]
+        ],
+        "fotos":["escalera_superior_principal.jpg", "escalera_principal.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S37",
@@ -2574,7 +2583,8 @@
           [2428, 4574],
           [2580, 4500],
           [2652, 4422]
-          ]
+          ],
+        "fotos":["escalera_superior_principal.jpg", "escalera_principal.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S36",
@@ -2594,7 +2604,8 @@
           [2428, 4574],
           [2580, 4500],
           [2652, 4422]
-          ]
+          ],
+        "fotos":["escalera_superior_principal.jpg", "escalera_principal.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S28",
@@ -2618,7 +2629,8 @@
           [2428, 4574],
           [2580, 4500],
           [2652, 4422]
-          ]
+          ],
+        "fotos":["escalera_superior_principal.jpg", "escalera_principal.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S29",
@@ -2641,7 +2653,8 @@
           [2428, 4574],
           [2580, 4500],
           [2652, 4422]
-          ]
+          ],
+        "fotos":["escalera_superior_principal.jpg", "escalera_principal.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S30",
@@ -2659,7 +2672,8 @@
           [2449, 4494],
           [2650, 4532],
           [2654, 4444]
-        ]
+        ],
+        "fotos":["escalera_superior_principal.jpg", "escalera_principal.jpg", "puerta_conserjeria.jpg"]
 
       },
       {
@@ -2682,7 +2696,8 @@
           [2428, 4574],
           [2580, 4500],
           [2652, 4422]
-          ]
+          ],
+        "fotos":["escalera_superior_principal.jpg", "escalera_principal.jpg", "puerta_conserjeria.jpg"]
 
       },
       {
@@ -2704,7 +2719,8 @@
           [2428, 4574],
           [2580, 4500],
           [2652, 4422]
-          ]
+          ],
+        "fotos":["escalera_superior_principal.jpg", "escalera_principal.jpg", "puerta_conserjeria.jpg"]
 
       },
       {
@@ -2727,7 +2743,8 @@
           [2428, 4574],
           [2580, 4500],
           [2652, 4422]
-          ]
+          ],
+        "fotos":["escalera_superior_principal.jpg", "escalera_principal.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S14",
@@ -2745,7 +2762,8 @@
           [996, 4836],
           [948, 4936],
           [870, 4940]
-        ]
+        ],
+        "fotos": ["escalera_superior_villanueva.jpg","escalera_secretaria1.jpg", "escalera_secretaria2.jpg", "puerta_conserjeria.jpg"]
       }, 
       {
         "id": "S25",
@@ -2769,7 +2787,8 @@
           [2428, 4574],
           [2580, 4500],
           [2652, 4422]
-          ]
+          ],
+        "fotos":["escalera_superior_principal.jpg", "escalera_principal.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S23",
@@ -2788,7 +2807,8 @@
           [998, 5072],
           [994, 4902],
           [892, 4908]
-        ]
+        ],
+        "fotos": ["escalera_superior_villanueva.jpg","escalera_secretaria1.jpg", "escalera_secretaria2.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S20",
@@ -2806,7 +2826,8 @@
           [998, 5072],
           [994, 4902],
           [892, 4908]
-        ]
+        ],
+        "fotos": ["escalera_superior_villanueva.jpg","escalera_secretaria1.jpg", "escalera_secretaria2.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S24",
@@ -2825,7 +2846,8 @@
           [998, 5072],
           [994, 4902],
           [892, 4908]
-        ]
+        ],
+        "fotos": ["escalera_superior_villanueva.jpg","escalera_secretaria1.jpg", "escalera_secretaria2.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S18",
@@ -2842,7 +2864,8 @@
           [998, 5072],
           [994, 4902],
           [892, 4908]
-        ]
+        ],
+        "fotos": ["escalera_superior_villanueva.jpg","escalera_secretaria1.jpg", "escalera_secretaria2.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S15",
@@ -2859,7 +2882,8 @@
           [996, 4836],
           [948, 4936],
           [870, 4940]
-        ]
+        ],
+        "fotos": ["escalera_superior_villanueva.jpg","escalera_secretaria1.jpg", "escalera_secretaria2.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S11",
@@ -2877,7 +2901,8 @@
           [988, 3618],
           [942, 3524],
           [834, 3510]
-        ]
+        ],
+        "fotos": ["escalera_secretaria1.jpg", "escalera_secretaria2.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S13",
@@ -2895,7 +2920,8 @@
           [988, 3618],
           [942, 3524],
           [834, 3510]
-        ]
+        ],
+        "fotos": ["escalera_secretaria1.jpg", "escalera_secretaria2.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S9",
@@ -2913,7 +2939,8 @@
           [990, 3464],
           [916, 3520],
           [840, 3512]
-        ]
+        ],
+        "fotos": ["escalera_secretaria1.jpg", "escalera_secretaria2.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S5",
@@ -2933,7 +2960,8 @@
           [990, 3464],
           [916, 3520],
           [840, 3512]
-        ]
+        ],
+        "fotos": ["escalera_secretaria1.jpg", "escalera_secretaria2.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S4",
@@ -2954,7 +2982,8 @@
           [994, 3292],
           [986, 3524],
           [836, 3528]
-        ]
+        ],
+        "fotos": ["escalera_secretaria1.jpg", "escalera_secretaria2.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S3",
@@ -2975,7 +3004,8 @@
           [994, 3292],
           [986, 3524],
           [836, 3528]
-        ]
+        ],
+        "fotos": ["escalera_secretaria1.jpg", "escalera_secretaria2.jpg", "puerta_conserjeria.jpg"]
       },
 
       {
@@ -2997,7 +3027,8 @@
           [994, 3292],
           [986, 3524],
           [836, 3528]
-        ]
+        ],
+        "fotos": ["escalera_secretaria1.jpg", "escalera_secretaria2.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S7",
@@ -3016,7 +3047,8 @@
           [990, 3464],
           [916, 3520],
           [840, 3512]
-        ]
+        ],
+        "fotos": ["escalera_secretaria1.jpg", "escalera_secretaria2.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S58",
@@ -3038,7 +3070,8 @@
           [4008, 4204],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S66",
@@ -3060,7 +3093,8 @@
           [4008, 4204],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S67",
@@ -3082,7 +3116,8 @@
           [4008, 4204],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S69",
@@ -3104,7 +3139,8 @@
           [4008, 4204],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S54",
@@ -3122,7 +3158,8 @@
         [2449, 4494],
         [2650, 4532],
         [2654, 4444]
-      ]
+      ],
+        "fotos":["escalera_superior_principal.jpg", "escalera_principal.jpg", "puerta_conserjeria.jpg"]
       },
       {
         "id": "S83",
@@ -3144,7 +3181,8 @@
           [4008, 4204],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S84",
@@ -3166,7 +3204,8 @@
           [4008, 4204],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S85",
@@ -3188,7 +3227,8 @@
           [4008, 4204],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S86",
@@ -3210,7 +3250,8 @@
           [4008, 4204],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S87",
@@ -3232,7 +3273,8 @@
           [4008, 4204],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S95",
@@ -3249,7 +3291,8 @@
           [4002, 4244],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S98",
@@ -3266,7 +3309,8 @@
           [4002, 4244],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S103",
@@ -3283,7 +3327,8 @@
           [4002, 4244],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S105",
@@ -3300,7 +3345,8 @@
           [4002, 4244],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S106",
@@ -3317,7 +3363,8 @@
           [4002, 4244],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       },
       {
         "id": "S108",
@@ -3334,7 +3381,8 @@
           [4002, 4244],
           [4123, 4250],
           [4179, 4142]
-        ]
+        ],
+        "fotos":["escalera_superior_pistas.jpg", "escalera_pistas.jpg"]
       }
     ],
     "Planta Palomar": [
