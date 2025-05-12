@@ -28,7 +28,7 @@ export const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSelec
   if (!aulaActiva || !qrDataUrl) return null;
 
   // Coordenadas donde debe aparecer el QR (dentro del plano)
-  const qrCoords = { supIzq: [697, 4290], infDer: [114, 6907] };
+  const qrCoords = { supIzq: [600, 4014], infDer: [175, 5851] };
   const center = [
     (qrCoords.supIzq[0] + qrCoords.infDer[0]) / 2,
     (qrCoords.supIzq[1] + qrCoords.infDer[1]) / 2,
@@ -56,7 +56,7 @@ export const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSelec
         ID: ${aulaActiva.id}<br/>
         ${aulaActiva.coordinadora ? '<strong style="color: red;">Aula Coordinadora</strong><br/>' : ''}
         <div style="display: flex; align-items: center; margin-top: 4px;">
-          <div style="width: 8px; height: 8px; background-color: purple; border-radius: 50%; margin-right: 4px;"></div>
+          <div class="qr-circle"></div>
           Usted está aquí
         </div>
       </div>

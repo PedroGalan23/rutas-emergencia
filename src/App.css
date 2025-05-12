@@ -807,3 +807,14 @@ input:checked+.slider:before {
   }
 }
 
+
+.qr-circle {
+  width: 8px;
+  height: 8px;
+  background-color: purple;
+  border-radius: 50%;
+  margin-right: 4px;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
