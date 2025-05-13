@@ -1,7 +1,6 @@
 // src/components/ClickHandler.js
 // Componente invisible para capturar clics en el mapa y seleccionar aulas
 
-import React from "react";
 import { useMapEvent } from "react-leaflet";
 
 export function ClickHandler({ aulas, onAulaSelect }) {

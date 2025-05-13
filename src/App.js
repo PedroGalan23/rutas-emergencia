@@ -13,7 +13,7 @@ import "leaflet/dist/leaflet.css";
 
 import { useIsMobile, useAulasData, useUrlParams, useMonjeAnimation, useRouteAnimation } from "./hooks";
 import { calcularAngulo, crearIconoFlecha } from "./utils/mapUtils";
-import { imageBounds, imagesSalida, monjeFrames, plantLabels, planos, salidasEmergencia, zonasComunesData } from "./constants/AppConstants";
+import { imageBounds, imagesSalida, monjeFrames,planos, salidasEmergencia, zonasComunesData } from "./constants/AppConstants";
 import { AppHeader } from "./components/AppHeader";
 import { AulasLayer } from "./components/AulasLayer";
 import { EscalerasOverlay } from "./components/EscalerasOverlay";
@@ -31,7 +31,6 @@ function App() {
   const [imprimible, setImprimible] = useState(false);
   const [sliderOpen, setSliderOpen] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
-  const [alertMessage, setAlertMessage] = useState(null);
 
   // Hooks personalizados para gestionar lógica de la aplicación
   const isMobile = useIsMobile();
@@ -64,7 +63,6 @@ function App() {
         plantaSeleccionada={plantaSeleccionada}
         setPlantaSeleccionada={setPlantaSeleccionada}
         setAulaActiva={setAulaActiva}
-        setAlertMessage={setAlertMessage}
       />
       <div className="map-container">
         <MapContainer
