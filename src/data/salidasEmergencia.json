@@ -19,5 +19,21 @@
       "coordenadas": [4140, 5104],
       "imagen": "src/assets/salidaAzul.png"
     }
+  ],
+  "Planta Intermedia": [
+    {
+      "id": "salidaMiguelHernandez",
+      "nombre": "SALIDA MIGUEL HERNÁNDEZ",
+      "coordenadas": [4218, 1741],
+      "imagen": "src/assets/salidaVerde.png"
+    }
+  ],
+  "Planta Primera": [
+    {
+      "id": "salidaPistas",
+      "nombre": "SALIDA PISTAS",
+      "coordenadas": [4214, 5160],
+      "imagen": "src/assets/salidaAzul.png"
+    }
   ]
 }
