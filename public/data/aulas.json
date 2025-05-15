@@ -883,8 +883,8 @@
       {
         "id": "E10",
         "nombre": "AULA E10 (ENTREPLANTA MIGUEL HERNÁNDEZ)",
-        "sector": "Salida pistas",
-        "color": "blue",
+        "sector": "Salida M.Hernández",
+        "color": "green",
         "grupo":"1PRIB",
         "coordinadora": false,
         "coordenadas": {
@@ -892,72 +892,60 @@
           "infDer": [3711, 2158]
         },
         "ruta": [
-          [3960, 2217],
-          [4005, 2380],
-          [4009, 2691],
-          [4016, 2928],
-          [4016, 3272],
-          [4012, 3468],
-          [4016, 3700],
-          [4004, 3816]
+          [3709, 2189],
+          [3877, 2209],
+          [3972, 2211],
+          [3967, 2345],
+          [3800, 2323]
         ],
         "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E11",
         "nombre": "AULA E11 (ENTREPLANTA MIGUEL HERNÁNDEZ)",
-        "sector": "Salida pistas",
-        "color": "blue",
+        "sector": "Salida M.Hernández",
+        "color": "green",
         "grupo":"1PRIC",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [3699, 1944],
           "infDer": [3375, 2134]
         },
-        "ruta": [
-          [3460, 2181],
-          [3782, 2198],
-          [3960, 2217],
-          [4005, 2380],
-          [4009, 2691],
-          [4016, 2928],
-          [4016, 3272],
-          [4012, 3468],
-          [4016, 3700],
-          [4004, 3816]
+       "ruta": [
+          [3659, 2184],
+          [3834, 2198],
+          [3973, 2207],
+          [3966, 2340],
+          [3804, 2330]
         ],
         "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E12",
         "nombre": "AULA E12 (ENTREPLANTA MIGUEL HERNÁNDEZ)",
-        "sector": "Salida pistas",
-        "color": "blue",
+        "sector": "Salida M.Hernández",
+        "color": "green",
         "grupo":"1PRID",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [3369, 1910],
           "infDer": [3101, 2170]
         },
-        "ruta": [
-          [3460, 2181],
-          [3782, 2198],
-          [3960, 2217],
-          [4005, 2380],
-          [4009, 2691],
-          [4016, 2928],
-          [4016, 3272],
-          [4012, 3468],
-          [4016, 3700],
-          [4004, 3816]
-        ],
+       "ruta": [
+        [3415, 2174],
+        [3643, 2190],
+        [3867, 2208],
+        [3975, 2212],
+        [3960, 2350],
+        [3815, 2315]
+      ],
         "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E14",
         "nombre": "AULA E14 (ENTREPLANTA MONJAS)",
-        "sector": "Salida pistas",
-        "color": "blue",
+        "sector": "Salida M.Hernández",
+        "color": "green",
         "grupo":"2PRIA",
         "coordinadora": false,
         "coordenadas": {
@@ -965,59 +953,59 @@
           "infDer": [3753, 2716]
         },
         "ruta": [
-          [4009, 2691],
-          [4016, 2928],
-          [4016, 3272],
-          [4012, 3468],
-          [4016, 3700],
-          [4004, 3816]
+          [3981, 2437],
+          [4004, 2380],
+          [3937, 2298],
+          [3807, 2326]
         ],
         "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E15",
         "nombre": "AULA E15 (ENTREPLANTA MONJAS)",
-        "sector": "Salida pistas",
-        "color": "blue",
+        "sector": "Salida M.Hernández",
+        "color": "green",
         "grupo":"1PRIA",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [3961, 2736],
           "infDer": [3783, 3036]
         },
-        "ruta": [
-          [4016, 2928],
-          [4016, 3272],
-          [4012, 3468],
-          [4016, 3700],
-          [4004, 3816]
+      "ruta": [
+          [4007, 2781],
+          [4009, 2606],
+          [4005, 2388],
+          [3863, 2301]
         ],
-        "fotos": ["puerta_miguel_hernandez.jpg"]
+      "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E16",
         "nombre": "AULA E16 (ENTREPLANTA MONJAS)",
-        "sector": "Salida pistas",
-        "color": "blue",
+        "sector": "Salida M.Hernández",
+        "color": "green",
         "grupo":"4INFB",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [3961, 3046],
           "infDer": [3761, 3418]
         },
-        "ruta": [
-          [4016, 3272],
-          [4012, 3468],
-          [4016, 3700],
-          [4004, 3816]
-        ],
-        "fotos": ["puerta_miguel_hernandez.jpg"]
+       "ruta": [
+        [4027, 3309],
+        [4269, 3269],
+        [4493, 3295],
+        [4656, 2861],
+        [4301, 2665],
+        [4169, 2137],
+        [4199, 1490]
+      ],
+      "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E18",
         "nombre": "AULA E18 (ENTREPLANTA MONJAS)",
-        "sector": "Salida pistas",
-        "color": "blue",
+        "sector": "Salida M.Hernández",
+        "color": "green",
         "grupo":"5INFB",
         "coordinadora": false,
         "coordenadas": {
@@ -1025,35 +1013,43 @@
           "infDer": [4079, 3268]
         },
         "ruta": [
-          [4128, 3324],
-          [4012, 3468],
-          [4016, 3700],
-          [4004, 3816]
+          [4399, 3299],
+          [4561, 3273],
+          [4581, 2953],
+          [4235, 2779],
+          [4193, 2415],
+          [4193, 1847]
         ],
         "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E19",
         "nombre": "AULA E19 (ENTREPLANTA MONJAS)",
-        "sector": "Salida pistas",
-        "color": "blue",
+        "sector": "Salida M.Hernández",
+        "color": "green",
         "grupo":"4INFD",
         "coordinadora": false,
         "coordenadas": {
           "supIzq": [3961, 3438],
           "infDer": [3763, 3776]
         },
-        "ruta": [
-          [4016, 3700],
-          [4004, 3816]
-        ],
+      "ruta": [
+        [4002, 3419],
+        [4006, 3305],
+        [4258, 3298],
+        [4505, 3283],
+        [4646, 2906],
+        [4242, 2758],
+        [4221, 2352],
+        [4194, 1824]
+      ],
         "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E20",
         "nombre": "AULA E20 (ENTREPLANTA MONJAS)",
-        "sector": "Salida pistas",
-        "color": "blue",
+        "sector": "Salida M.Hernández",
+        "color": "green",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -1061,15 +1057,23 @@
           "infDer": [3763, 4026]
         },
         "ruta": [
-          [4064, 3980]
-        ],
+        [4006, 3731],
+        [4002, 3419],
+        [4006, 3305],
+        [4258, 3298],
+        [4505, 3283],
+        [4646, 2906],
+        [4242, 2758],
+        [4221, 2352],
+        [4194, 1824]
+      ],
         "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E21",
         "nombre": "LABORATORIO DE FÍSICA  (BUNKER)",
-        "sector": "Salida pistas",
-        "color": "blue",
+        "sector": "Salida M.Hernández",
+        "color": "green",
         "grupo":"",
         "coordinadora": false,
         "coordenadas": {
@@ -1077,16 +1081,23 @@
           "infDer": [4231, 4022]
         },
         "ruta": [
-          [4192, 3864]
-        ],
+        [4002, 3419],
+        [4006, 3305],
+        [4258, 3298],
+        [4505, 3283],
+        [4646, 2906],
+        [4242, 2758],
+        [4221, 2352],
+        [4194, 1824]
+      ],
         "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
         "id": "E22",
         "nombre": "AULA DE AUDICIÓN Y LENGUAJE (ENTREPLANTA MONJAS)",
         "nivel": "AULAS CURSOS",
-        "sector": "Salida pistas",
-        "color": "blue",
+        "sector": "Salida M.Hernández",
+        "color": "green",
         "grupo":"5INFA",
         "coordinadora": false,
         "coordenadas": {
@@ -1094,8 +1105,15 @@
           "infDer": [4079, 3870]
         },
         "ruta": [
-          [4192, 3864]
-        ],
+        [4002, 3419],
+        [4006, 3305],
+        [4258, 3298],
+        [4505, 3283],
+        [4646, 2906],
+        [4242, 2758],
+        [4221, 2352],
+        [4194, 1824]
+      ],
         "fotos": ["puerta_miguel_hernandez.jpg"]
       },
       {
