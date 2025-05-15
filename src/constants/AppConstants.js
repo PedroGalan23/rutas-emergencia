@@ -53,6 +53,21 @@ export const planos = {
   "Planta Segunda": planoSegunda,
 };
 
+
+export const fotosLabels = {
+  "camara-fotografica.png": "Cámara Fotográfica",
+  "escalera_pistas.jpg": "Escalera Pistas",
+  "escalera_principal.jpg": "Escalera Principal",
+  "escalera_secretaria1.jpg": "Escalera Secretaría 1",
+  "escalera_secretaria2.jpg": "Escalera Secretaría 2",
+  "escalera_superior_pistas.jpg": "Escalera Superior Pistas",
+  "escalera_superior_principal.jpg": "Escalera Superior Principal",
+  "escalera_superior_villanueva.jpg": "Escalera Superior Villanueva",
+  "escalera1.jpg": "Escalera 1",
+  "puerta_conserjeria.jpg": "Puerta Conserjería",
+  "puerta_miguel_hernandez.jpg": "Puerta Miguel Hernández"
+};
+
 // Exportar todo lo necesario
 export {
   salidaLeyenda,
