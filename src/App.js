@@ -1,5 +1,5 @@
 // src/App.js
-// Archivo principal de la aplicación: importa los componentes y hooks, y arma la vista completa
+// Archivo principal de la aplicación: importa componentes y hooks, y monta la vista completa sobre un mapa Leaflet
 
 import React, { useState } from "react";
 import {
@@ -11,9 +11,29 @@ import {
 import { CRS, divIcon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-import { useIsMobile, useAulasData, useUrlParams, useMonjeAnimation, useRouteAnimation } from "./hooks";
+// Importación de hooks personalizados
+import {
+  useIsMobile,
+  useAulasData,
+  useUrlParams,
+  useMonjeAnimation,
+  useRouteAnimation,
+} from "./hooks";
+
+// Utilidades para cálculos geométricos y creación de iconos
 import { calcularAngulo, crearIconoFlecha } from "./utils/mapUtils";
-import { imageBounds, imagesSalida, monjeFrames,planos, salidasEmergencia, zonasComunesData } from "./constants/AppConstants";
+
+// Constantes globales: planos, límites, imágenes y datos estáticos
+import {
+  imageBounds,
+  imagesSalida,
+  monjeFrames,
+  planos,
+  salidasEmergencia,
+  zonasComunesData,
+} from "./constants/AppConstants";
+
+// Componentes de interfaz
 import { AppHeader } from "./components/AppHeader";
 import { AulasLayer } from "./components/AulasLayer";
 import { EscalerasOverlay } from "./components/EscalerasOverlay";
@@ -25,34 +45,34 @@ import { SliderOverlay } from "./components/SliderOverlay";
 import "./App.css";
 
 function App() {
-  // Estados principales de la aplicación
-  const [aulaActiva, setAulaActiva] = useState(null);
-  const [plantaSeleccionada, setPlantaSeleccionada] = useState("Planta Baja");
-  const [imprimible, setImprimible] = useState(false);
-  const [sliderOpen, setSliderOpen] = useState(false);
-  const [slideIndex, setSlideIndex] = useState(0);
+  // Estados principales
+  const [aulaActiva, setAulaActiva] = useState(null);            // Aula actualmente seleccionada
+  const [plantaSeleccionada, setPlantaSeleccionada] = useState("Planta Baja"); // Planta visible
+  const [imprimible, setImprimible] = useState(false);           // Modo impresión activa
+  const [sliderOpen, setSliderOpen] = useState(false);           // Visibilidad del slider de fotos
+  const [slideIndex, setSlideIndex] = useState(0);               // Índice de foto en el slider
 
-  // Hooks personalizados para gestionar lógica de la aplicación
-  const isMobile = useIsMobile();
-  const aulasData = useAulasData();
-  useUrlParams(plantaSeleccionada, aulasData, setPlantaSeleccionada, setAulaActiva);
-  const monjeFrame = useMonjeAnimation(monjeFrames);
-  const { flechaPosicion, resetRoute } = useRouteAnimation(aulaActiva);
+  // Obtención de lógica compartida mediante hooks
+  const isMobile = useIsMobile();                                // Detecta si es dispositivo móvil
+  const aulasData = useAulasData();                              // Carga datos de aulas por planta
+  useUrlParams(
+    plantaSeleccionada,
+    aulasData,
+    setPlantaSeleccionada,
+    setAulaActiva
+  );                                                             // Sincroniza estado con parámetros URL
+  const monjeFrame = useMonjeAnimation(monjeFrames);             // Índice de fotograma animado del monje
+  const { flechaPosicion, resetRoute } = useRouteAnimation(aulaActiva); // Posición y control de la flecha de ruta
 
-  // Filtrado de aulas por planta seleccionada
+  // Filtrar las aulas que corresponden a la planta seleccionada
   const todas = aulasData[plantaSeleccionada] || [];
-  if (aulaActiva && todas.some((a) => a.id === aulaActiva.id)) {
-    const sector = aulaActiva.sector;
-    const coord = todas.filter((a) => a.sector === sector && a.coordinadora);
-    if (!aulaActiva.coordinadora && coord.length > 0) {
-      coord.push(aulaActiva);
-    }
-  }
-  // Removed unused variable 'otras'
+
+  // Datos de zonas comunes para la planta actual
   const zonasComunes = zonasComunesData[plantaSeleccionada] || [];
 
   return (
     <div className="app">
+      {/* Cabecera con título, controles de planta e impresión, y botón de slider */}
       <AppHeader
         isMobile={isMobile}
         aulaActiva={aulaActiva}
@@ -64,7 +84,9 @@ function App() {
         setPlantaSeleccionada={setPlantaSeleccionada}
         setAulaActiva={setAulaActiva}
       />
+
       <div className="map-container">
+        {/* Contenedor de mapa Leaflet con coordenadas simples */}
         <MapContainer
           crs={CRS.Simple}
           bounds={imageBounds}
@@ -75,13 +97,14 @@ function App() {
           attributionControl={false}
           style={{ width: "100%", height: "100%" }}
           whenCreated={(map) => {
-            map.fitBounds(imageBounds);
-            map.dragging.disable();
+            map.fitBounds(imageBounds);     // Ajustar vista inicial
+            map.dragging.disable();         // Desactivar arrastre para fijar el plano
           }}
         >
-          {/* Imagen de fondo del plano de la planta seleccionada */}
+          {/* Fondo de plano correspondiente a la planta seleccionada */}
           <ImageOverlay url={planos[plantaSeleccionada]} bounds={imageBounds} />
-          {/* Marcadores de salidas de emergencia */}
+
+          {/* Marcadores de salidas de emergencia (no interactivos) */}
           {salidasEmergencia[plantaSeleccionada]?.map((salida, i) => (
             <Marker
               key={i}
@@ -95,9 +118,11 @@ function App() {
               })}
             />
           ))}
-          {/* Aulas (rectángulos y etiquetas) */}
+
+          {/* Capa de aulas (rectángulos y etiquetas) */}
           <AulasLayer aulas={todas} aulaActiva={aulaActiva} />
-          {/* Marcadores de zonas comunes (etiquetas permanentes) */}
+
+          {/* Zonas comunes con tooltips permanentes */}
           {zonasComunes.map((z, i) => (
             <Marker
               key={i}
@@ -110,25 +135,31 @@ function App() {
               </Tooltip>
             </Marker>
           ))}
-          {/* Marcadores de escaleras */}
+
+          {/* Overlay de escaleras y control de cambio de planta */}
           <EscalerasOverlay
             plantaSeleccionada={plantaSeleccionada}
             setPlantaSeleccionada={setPlantaSeleccionada}
             setAulaActiva={setAulaActiva}
             resetRoute={resetRoute}
           />
-          {/* Ruta de flechas de evacuación */}
+
+          {/* Ruta de evacuación: flechas orientadas entre puntos */}
           {aulaActiva?.ruta?.slice(0, -1).map((p, i) => {
             const next = aulaActiva.ruta[i + 1];
             return (
               <Marker
                 key={i}
                 position={p}
-                icon={crearIconoFlecha(calcularAngulo(p, next), aulaActiva.color)}
+                icon={crearIconoFlecha(
+                  calcularAngulo(p, next),
+                  aulaActiva.color
+                )}
               />
             );
           })}
-          {/* Icono animado del monje (solo se muestra si no es modo impresión) */}
+
+          {/* Icono animado del monje en la posición actual de la ruta */}
           {!imprimible && flechaPosicion && aulaActiva?.ruta && (
             <Marker
               position={flechaPosicion}
@@ -140,14 +171,23 @@ function App() {
               })}
             />
           )}
-          {/* Componente para manejar clics en el mapa */}
+
+          {/* Captura de clics en el mapa para seleccionar aulas */}
           <ClickHandler aulas={todas} onAulaSelect={setAulaActiva} />
+
           {/* Overlays de QR y leyenda */}
-          <QrOverlay aulaActiva={aulaActiva} plantaSeleccionada={plantaSeleccionada} />
-          <LeyendaOverlay plantaSeleccionada={plantaSeleccionada} aulasData={aulasData} />
+          <QrOverlay
+            aulaActiva={aulaActiva}
+            plantaSeleccionada={plantaSeleccionada}
+          />
+          <LeyendaOverlay
+            plantaSeleccionada={plantaSeleccionada}
+            aulasData={aulasData}
+          />
         </MapContainer>
       </div>
-      {/* Overlay de carrusel de fotos (slider) */}
+
+      {/* Carrusel de fotos sobre el aula activa */}
       {sliderOpen && (
         <SliderOverlay
           aula={aulaActiva}

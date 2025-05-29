@@ -1,16 +1,24 @@
 // src/components/LeyendaOverlay.js
-// Componente de overlay para la leyenda del mapa (significado de colores y símbolos)
+// Componente que muestra una leyenda flotante sobre el mapa con la simbología de colores y elementos gráficos
 
 import React, { useRef, useLayoutEffect, useMemo } from "react";
-import { useMap } from "react-leaflet";
-import { escaleras2, salidaLeyenda } from "../constants/AppConstants";
+import { useMap } from "react-leaflet"; // Hook para obtener el mapa Leaflet actual
+import { escaleras2, salidaLeyenda } from "../constants/AppConstants"; // Imágenes utilizadas en la leyenda
 
+/**
+ * Componente LeyendaOverlayComponent
+ * Muestra una leyenda estática sobre el mapa que informa del significado de colores por sector,
+ * y de símbolos como escaleras, salidas o aulas coordinadoras.
+ *
+ * @param {string} plantaSeleccionada - Planta actualmente visible en el mapa.
+ * @param {object} aulasData - Objeto con las aulas agrupadas por planta.
+ */
 function LeyendaOverlayComponent({ plantaSeleccionada, aulasData }) {
-  const map = useMap();
-  const overlayRef = useRef(null);
-  const prevPointRef = useRef({ x: 0, y: 0 });
+  const map = useMap(); // Referencia al objeto del mapa Leaflet
+  const overlayRef = useRef(null); // Referencia al contenedor de la leyenda en el DOM
+  const prevPointRef = useRef({ x: 0, y: 0 }); // Almacena la última posición para evitar renders innecesarios
 
-  // Coordenadas fijas donde se debe posicionar la leyenda en el mapa
+  // Coordenadas fijas donde se ubicará la leyenda (en el centro de un área reservada del plano)
   const leyendaCenter = useMemo(() => {
     const leyendaCoords = { supIzq: [1775, 128], infDer: [327, 1224] };
     return {
@@ -19,11 +27,12 @@ function LeyendaOverlayComponent({ plantaSeleccionada, aulasData }) {
     };
   }, []);
 
-  // Reposicionar la leyenda en la pantalla en eventos de zoom o pan del mapa
+  // Actualiza la posición de la leyenda cuando se mueve o hace zoom en el mapa
   useLayoutEffect(() => {
     function updatePosition() {
       if (overlayRef.current) {
         const point = map.latLngToContainerPoint(leyendaCenter);
+        // Evita reposicionar si el cambio de coordenadas es insignificante
         if (
           Math.abs(point.x - prevPointRef.current.x) < 1 &&
           Math.abs(point.y - prevPointRef.current.y) < 1
@@ -35,14 +44,17 @@ function LeyendaOverlayComponent({ plantaSeleccionada, aulasData }) {
         prevPointRef.current = { x: point.x, y: point.y };
       }
     }
+
+    // Escuchar eventos de zoom y desplazamiento del mapa
     map.on("zoomend moveend", updatePosition);
     updatePosition();
+
     return () => {
       map.off("zoomend moveend", updatePosition);
     };
   }, [map, leyendaCenter]);
 
-  // Obtener la lista de sectores únicos presentes en la planta seleccionada
+  // Obtener los sectores únicos en la planta actual, para mostrar su color en la leyenda
   const currentAulas = aulasData[plantaSeleccionada] || [];
   const uniqueSectors = [];
   currentAulas.forEach((aula) => {
@@ -68,6 +80,7 @@ function LeyendaOverlayComponent({ plantaSeleccionada, aulasData }) {
         maxWidth: "200px",
       }}
     >
+      {/* Título de la leyenda */}
       <div
         style={{
           fontWeight: "bold",
@@ -77,6 +90,8 @@ function LeyendaOverlayComponent({ plantaSeleccionada, aulasData }) {
       >
         LEYENDA
       </div>
+
+      {/* Colores por sector */}
       {uniqueSectors.map((item, index) => (
         <div key={index} style={{ display: "flex", alignItems: "center" }}>
           <span
@@ -93,6 +108,7 @@ function LeyendaOverlayComponent({ plantaSeleccionada, aulasData }) {
         </div>
       ))}
 
+      {/* Aula coordinadora */}
       <div style={{ display: "flex", alignItems: "center" }}>
         <span
           className="legend-square-coordinadora"
@@ -107,6 +123,8 @@ function LeyendaOverlayComponent({ plantaSeleccionada, aulasData }) {
         ></span>
         <span>Aula Coordinadora</span>
       </div>
+
+      {/* Salidas */}
       <div style={{ display: "flex", alignItems: "center" }}>
         <img
           src={salidaLeyenda}
@@ -115,6 +133,8 @@ function LeyendaOverlayComponent({ plantaSeleccionada, aulasData }) {
         />
         <span>Salidas</span>
       </div>
+
+      {/* Escaleras */}
       <div style={{ display: "flex", alignItems: "center" }}>
         <img
           src={escaleras2}
@@ -127,4 +147,5 @@ function LeyendaOverlayComponent({ plantaSeleccionada, aulasData }) {
   );
 }
 
+// Memoización para evitar renders innecesarios si las props no cambian
 export const LeyendaOverlay = React.memo(LeyendaOverlayComponent);

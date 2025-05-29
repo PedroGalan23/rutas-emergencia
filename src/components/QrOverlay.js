@@ -1,9 +1,10 @@
 // src/components/QrOverlay.js
+// Componente que genera y muestra un marcador con código QR sobre el mapa indicando el aula activa y su información contextual
 
 import React, { useEffect, useState } from "react";
-import { Marker } from "react-leaflet";
-import { divIcon } from "leaflet";
-import QRCode from "qrcode";
+import { Marker } from "react-leaflet"; // Componente de Leaflet para colocar un marcador
+import { divIcon } from "leaflet"; // Utilidad para crear iconos personalizados en HTML
+import QRCode from "qrcode"; // Librería externa para generar códigos QR
 
 export const QrOverlay = React.memo(function QrOverlay({ aulaActiva }) {
   const [qrDataUrl, setQrDataUrl] = useState(null);
@@ -15,25 +16,27 @@ export const QrOverlay = React.memo(function QrOverlay({ aulaActiva }) {
 
   useEffect(() => {
     if (!aulaActiva) return;
+
     QRCode.toDataURL(url, { width: 100, margin: 1 }, (err, url) => {
       if (err) {
         console.error("Error generando QR:", err);
         return;
       }
-      setQrDataUrl(url);
+      setQrDataUrl(url); // Se guarda la imagen del QR como Data URL
     });
   }, [aulaActiva, url]);
 
+  // Si no hay aula activa o aún no se ha generado el QR, no se muestra nada
   if (!aulaActiva || !qrDataUrl) return null;
 
-  // Coordenadas donde debe aparecer el QR (dentro del plano)
+  // Coordenadas fijas en el plano donde debe colocarse el QR
   const qrCoords = { supIzq: [600, 4014], infDer: [175, 5851] };
   const center = [
     (qrCoords.supIzq[0] + qrCoords.infDer[0]) / 2,
     (qrCoords.supIzq[1] + qrCoords.infDer[1]) / 2,
   ];
 
-  // HTML que se insertará como contenido del marcador Leaflet
+  // HTML personalizado que se mostrará dentro del marcador
   const html = `
     <div style="
       width: 200px;
@@ -62,6 +65,7 @@ export const QrOverlay = React.memo(function QrOverlay({ aulaActiva }) {
     </div>
   `;
 
+  // Renderizar el marcador en el mapa
   return (
     <Marker
       position={center}
