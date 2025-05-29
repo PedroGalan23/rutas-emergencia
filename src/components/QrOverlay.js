@@ -5,15 +5,14 @@ import { Marker } from "react-leaflet";
 import { divIcon } from "leaflet";
 import QRCode from "qrcode";
 
-export const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSeleccionada }) {
+export const QrOverlay = React.memo(function QrOverlay({ aulaActiva }) {
   const [qrDataUrl, setQrDataUrl] = useState(null);
 
-  // URL del QR (aunque no haya aulaActiva, para mantener el orden de hooks)
+  // URL del QR solo con el parámetro id
   const url = aulaActiva
-    ? `${window.location.origin}?planta=${encodeURIComponent(plantaSeleccionada)}&id=${encodeURIComponent(aulaActiva.id)}`
+    ? `${window.location.origin}?id=${encodeURIComponent(aulaActiva.id)}`
     : "";
 
-  // Hook siempre se ejecuta, pero solo genera QR si hay aula
   useEffect(() => {
     if (!aulaActiva) return;
     QRCode.toDataURL(url, { width: 100, margin: 1 }, (err, url) => {
@@ -69,7 +68,7 @@ export const QrOverlay = React.memo(function QrOverlay({ aulaActiva, plantaSelec
       icon={divIcon({
         html,
         className: "",
-        iconAnchor: [100, 40], // centra el recuadro respecto al marcador
+        iconAnchor: [100, 40],
       })}
     />
   );
