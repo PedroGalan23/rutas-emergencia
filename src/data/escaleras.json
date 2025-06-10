@@ -16,7 +16,7 @@
         [668, 2480]
       ],
       "color": "orange",
-      "camaras": ["cam1"]
+      "fotos": ["puerta_conserjeria.jpg"]
 
     },
     {
@@ -32,7 +32,7 @@
         [672, 2465]
       ],
       "color": "orange",
-      "camaras": ["cam1"]
+      "fotos": ["puerta_conserjeria.jpg"]
 
     },
     {
@@ -51,7 +51,8 @@
         [1080, 2444],
         [740, 2472]
       ],
-      "color": "orange"
+      "color": "orange",
+      "fotos": ["puerta_conserjeria.jpg"]
     },
     {
       "id": "escalera4",
@@ -64,7 +65,8 @@
         [4215, 2301],
         [4211, 1776]
       ],
-      "color": "green"
+      "color": "green",
+      "fotos": ["puerta_miguel_hernandez.jpg"]
     },
     {
         "id": "escalera5",
@@ -78,7 +80,8 @@
             [3829, 5498],
             [3845, 5763]
         ],
-        "color":"blue"
+        "color":"blue",
+        "fotos": ["escalera_pistas.jpg"]
     },
     {
       "id": "escalera6",
@@ -91,7 +94,8 @@
         [1627, 4064],
         [1887, 4092]
       ],
-      "color":"orange"
+      "color":"orange",
+      "fotos": ["escalera_principal.jpg"]
     },
     {
       "id": "escalera7",
@@ -104,7 +108,8 @@
       [1903, 4112],
       [1883, 3972]
       ],
-      "color":"orange"
+      "color":"orange",
+      "fotos": ["escalera_principal.jpg"]
     }
   ]
   
